@@ -36,7 +36,7 @@
                 // uji jika ukuran file dibawah 1mb
                 if($ukuran < 1044070){
                     // jika ukuran file dibawah 1mb
-                    move_uploaded_file($file_tmp, '../assets/user-img/'.$nama);
+                    move_uploaded_file($file_tmp, '../sources/user-img/'.$nama);
                 }else{
                     // jika ukuran file diatas 1mb
                     echo "<script>alert('Ukuran file terlalu besar');document.location.href = '../Source/form.php';</script>";
