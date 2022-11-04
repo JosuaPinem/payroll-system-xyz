@@ -11,8 +11,8 @@
     }
 
 // lakukan query untuk mengambil data dari tabel data_karyawan mengambil foto dan nama lengkap
-$username = $_GET['user'];
-$kode = $_GET['kode'];  
+$username = $_SESSION['user'];
+$kode = $_SESSION['kode'];  
 $query = mysqli_query($koneksi, "SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'");
 $user = mysqli_fetch_assoc($query);
 

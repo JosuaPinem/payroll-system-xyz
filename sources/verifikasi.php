@@ -14,8 +14,6 @@ include '../php/koneksi.php';
     //     exit;
     // }
 
-    $username = $_GET['user'];
-
     // cek apakah sesion sebagai admin sudah dimulai
     if(!isset($_SESSION['admin'])){
     echo "<script>
@@ -31,7 +29,10 @@ include '../php/koneksi.php';
             alert('User tidak diketahui, silahkan login ulang')
           </script>";
     header('refresh:0; ../index.php');
+    return false;
     }
+
+    $username = $_GET['user'];
 
 // ambil database dari tabel verify
 $query = mysqli_query($koneksi, "SELECT * FROM verify WHERE username = '$username'");

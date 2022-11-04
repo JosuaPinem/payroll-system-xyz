@@ -21,7 +21,8 @@ if(!isset($_SESSION['karyawan'])){
 </head>
 
 <body>
-    hai employee
+    <h1>Hai <?= $_SESSION['user']; ?></h1>
+    <a href="../../php/logoutController.php">logout</a>
 </body>
 
 </html>

@@ -9,17 +9,14 @@
     <script src="https://kit.fontawesome.com/531b145c34.js" crossorigin="anonymous"></script>
 </head>
 <?php 
-// session_start();
-// if(isset($_SESSION['login'])){
-//     if($_SESSION['posisi'] == "karyawan"){
-//         header("location:./php/lo.php");
-//         exit;
-//     }else if($_SESSION['posisi'] == "hrd" || $_SESSION['posisi'] == "ceo"){
-//         header("location:./Source/admin-dashboard.php");
-//         exit;
-//     }   
-// }
-
+session_start();
+if(isset($_SESSION['admin'])){
+    header('refresh:0; sources/admin/admin-dashboard.php');
+    exit;
+}else if(isset($_SESSION['karyawan'])){
+    header('refresh:0; sources/employee/employee-dashboard.php');
+    exit;
+}
 ?>
 
 <body>

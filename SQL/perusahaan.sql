@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2022 at 03:05 AM
+-- Generation Time: Nov 04, 2022 at 10:41 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -50,7 +50,9 @@ INSERT INTO `data_karyawan` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `t
 (16, 'TQX268', 'novi', '987789006', '1997-05-05', 'Bali', 'Jakarta', 'LOGO FMIPA.png'),
 (27, 'KXU654', 'Grace Oktavia', '12345', '2022-11-29', 'Medan', 'Medan', 'bright.jpg'),
 (28, 'TOW966', 'Sasuke Uchiha', '12345', '2022-11-09', 'Konoha', 'Konoha', 'josua.jpg'),
-(29, 'NMH809', 'Bright Ginting', '12345', '2022-11-01', 'Medan', 'Medan', 'logo solvedx-04.png');
+(29, 'NMH809', 'Bright Ginting', '12345', '2022-11-01', 'Medan', 'Medan', 'logo solvedx-04.png'),
+(31, 'AWN937', 'Cristiano Ronaldo', '123456', '2022-11-15', 'Portugal', 'Portugal', 'WhatsApp Image 2022-10-31 at 08.40.59.jpeg'),
+(32, 'AHD971', 'Wahyu Abdilla', '12345', '2022-11-15', 'Medan', 'Medan', 'WhatsApp Image 2022-10-31 at 08.40.59.jpeg');
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,9 @@ INSERT INTO `login` (`id`, `kode_karyawan`, `username`, `password`, `posisi`, `e
 (6, 'KRT698', 'josua', '$2y$10$p9u6tU.1SbNhvqQI5KmvI.rfCZlqmZg2r9ZPfS/QH7rxDQRwR88w6', 'hrd', 'josua@gmail.com'),
 (7, 'XYT221', 'raihan', '$2y$10$O3Vd0cEAtwDOXv/ox6.95OGGed5WXlrPXae0xJ3B2.WYaE/XINrl6', 'karyawan', 'raihan@gmail.com'),
 (8, 'OEF501', 'rendy', '$2y$10$6UNcx1gDkgDx440/5z98humxFVwxfei4t9cdltAFfa1oycTySNCcK', 'karyawan', 'rendy@gmail.com'),
-(9, 'TQX268', 'novi', '$2y$10$Nw307Pq16DclMrezrcWDZeIlgYf60rX8QNOx8iJVcszGTBVp2HlW6', 'karyawan', 'novi123@gmail.com');
+(9, 'TQX268', 'novi', '$2y$10$Nw307Pq16DclMrezrcWDZeIlgYf60rX8QNOx8iJVcszGTBVp2HlW6', 'karyawan', 'novi123@gmail.com'),
+(13, 'KXU654', 'grace', '$2y$10$VOTGGs55q//3Wj4pn97zkeSWJUgizoXWmhIC.rsRBbbYlR.kUcOJa', 'karyawan', 'grace@gmail.com'),
+(14, 'AWN937', 'ronaldo', '$2y$10$W5BUlf3ebFAxxnmLDzOq2eHhDDDfdWtybvizYD2rI5e4qN/Lonv..', 'admin', 'ronaldo@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -97,9 +101,9 @@ CREATE TABLE `verify` (
 --
 
 INSERT INTO `verify` (`id`, `kode_karyawan`, `username`, `password`, `email`) VALUES
-(25, 'KXU654', 'grace', '$2y$10$VOTGGs55q//3Wj4pn97zkeSWJUgizoXWmhIC.rsRBbbYlR.kUcOJa', 'grace@gmail.com'),
 (26, 'TOW966', 'sasuke', '$2y$10$rAtXxaeiEvCnisGQwbPk4.no9K5gpuvtfca5i4mst7/jqE8i1WMU.', 'sasuke@gmail.com'),
-(27, 'NMH809', 'bright', '$2y$10$YY0.zdWmd6BOC1soRGNPV.8gaKhKB2rlR4/Lq2RyXsOXycOLdVPIG', 'bright@gmail.com');
+(27, 'NMH809', 'bright', '$2y$10$YY0.zdWmd6BOC1soRGNPV.8gaKhKB2rlR4/Lq2RyXsOXycOLdVPIG', 'bright@gmail.com'),
+(30, 'AHD971', 'wahyu', '$2y$10$rx1b1q2F/QcSJ0FMMuSVM.nRqmY9CH5r6JHOqf6e4ls9CzqhzgaKG', 'wahyu@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -131,19 +135,19 @@ ALTER TABLE `verify`
 -- AUTO_INCREMENT for table `data_karyawan`
 --
 ALTER TABLE `data_karyawan`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `verify`
 --
 ALTER TABLE `verify`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -152,18 +152,21 @@ if(isset($_POST['login'])){
     }
 
     $kode = $login['kode_karyawan'];
-
     if($login){
         if($username = $login['username']){
             if($password = password_verify($password, $login['password'])){
                 if($login['posisi'] = $login['posisi']){
                     if($login['posisi'] == "karyawan"){
                         $_SESSION["karyawan"] = true;
-                        header("refresh:0; ../sources/employee/employee-dashboard.php?user=$username&kode=$kode");
+                        $_SESSION['user'] = $username;
+                        $_SESSION['kode'] = $kode;
+                        header("refresh:0; ../sources/employee/employee-dashboard.php");
                         return false;
                     }else{
                         $_SESSION["admin"] = true;
-                        header("refresh:0; ../sources/admin/admin-dashboard.php?user=$username&kode=$kode");
+                        $_SESSION['user'] = $username;
+                        $_SESSION['kode'] =$kode;
+                        header("refresh:0; ../sources/admin/admin-dashboard.php");
                         return false;
                     }
                 }
