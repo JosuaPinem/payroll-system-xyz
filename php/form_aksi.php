@@ -7,12 +7,11 @@
     $tempat = $_POST['tempat'];
     $tanggal = $_POST['tanggal'];
     $alamat = $_POST['adress'];
-    $foto = $_FILES['foto'];
     
     
     // menolak akses jika tidak terdapat data
 
-    if($tanggal =="" | $nip =="" | $tempat =="" | $alamat =="" | $foto ==""){
+    if($tanggal =="" || $nip =="" || $tempat =="" || $alamat ==""){
         echo "  <srcipt>
                     alert('Mohon masukkan data yang valid');
                     document.location.href = '../Source/form.php';

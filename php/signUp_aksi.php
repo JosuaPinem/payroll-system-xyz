@@ -6,12 +6,12 @@
     $email = $_POST['email'];
 
     // menolak akses data kosong
-    if($user =="" | $pass =="" | $email ==""){
-        echo "  <srcipt>
-                    alert('Mohon masukkan data yang valid');
-                    document.location.href = '../index.php';
-                </script>";
-        exit;
+    if($username == "" || $password == "" || $email == ""){
+        echo "<script>
+                alert('Pastikan semua kolom sudah terisi');
+              </script>";
+        header('refresh:0; ../index.php');
+        return false;
     }
 
     // membuat kode karyawan baru 
