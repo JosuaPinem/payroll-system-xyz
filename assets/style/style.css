@@ -1,0 +1,164 @@
+/** @format */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
+
+:root {
+	/* ===== COLORS =====  */
+	--body-color: #f6f5ff;
+	--primary-color: #0d6efd;
+	--text-color: #404040;
+	--text-color-2: #fff;
+
+	/* ====== TRANSITIONS ======  */
+	--tran-02: all 0.2s ease;
+	--tran-03: all 0.3s ease;
+	--tran-04: all 0.4s ease;
+	--tran-05: all 0.5s ease;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+	list-style: none;
+}
+
+.main-container {
+	min-height: 100vh;
+	font-size: 16px;
+	background-color: var(--body-color);
+}
+
+#sidebar-nav {
+	width: 285px;
+	min-height: 100%;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	transition: var(--tran-05);
+	z-index: 1;
+}
+
+.menu-icon {
+	margin: 0 10px;
+}
+
+.logo {
+	margin-left: 18px;
+}
+
+.toggle {
+	right: -16px;
+	transition: var(--tran-05);
+}
+
+.toggle-icon {
+	transition: var(--tran-05);
+}
+
+#brand-text,
+.text-sidebar {
+	white-space: nowrap;
+	animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+#sidebar-nav.minimize {
+	width: 102px;
+}
+
+#sidebar-nav.minimize #brand-text,
+#sidebar-nav.minimize .text-sidebar {
+	display: none;
+}
+
+#sidebar-nav.minimize .toggle {
+	right: -16px;
+}
+
+#sidebar-nav.minimize .toggle-icon {
+	transform: rotate(180deg);
+}
+
+.content {
+	width: 100%;
+}
+
+.sidebar li a {
+	color: var(--text-color);
+}
+
+.sidebar li.active {
+	background-color: var(--primary-color);
+	border-radius: 8px;
+}
+
+.sidebar li.active a,
+.sidebar li.active a:hover {
+	color: var(--text-color-2);
+}
+
+#topbar {
+	min-height: 100px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+#profile-img {
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+}
+
+.card {
+	background: rgba(255, 255, 255, 0.4);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	border: 0;
+}
+
+#user-img {
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+}
+
+.calendar {
+	max-width: 200px;
+}
+
+.table th {
+	height: 42px;
+	width: 40px;
+}
+
+@media (max-width: 991px) {
+	#topbar {
+		min-height: 20px;
+		max-height: 100%;
+	}
+
+	#profile-img {
+		width: 40px;
+		height: 40px;
+	}
+
+	.main-container {
+		min-height: 100vh;
+	}
+
+	#sidebar-nav,
+	#sidebar-nav.minimize {
+		width: 100vw;
+		min-height: 40px;
+		max-height: 40px;
+		position: fixed;
+		bottom: 0;
+	}
+}
