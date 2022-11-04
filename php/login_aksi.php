@@ -111,7 +111,7 @@ if(isset($_POST['login'])){
     $password = mysqli_real_escape_string($koneksi, trim(strtolower(htmlspecialchars($_POST['password']))));
     
     // cek apakah ada kolom yang kosong
-    if($username == " " || $password == " "){
+    if($username == "" || $password == ""){
         echo "<script>
                 alert('Pastikan semua kolom sudah terisi');
               </script>";
