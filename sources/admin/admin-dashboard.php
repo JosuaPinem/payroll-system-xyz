@@ -1,6 +1,7 @@
 <!-- php script -->
 <?php 
     session_start();
+    require '../../php/functions.php';
     include '../../php/koneksi.php';
     if(!isset($_SESSION['admin'])){
         echo "<script>
@@ -13,12 +14,17 @@
 // lakukan query untuk mengambil data dari tabel data_karyawan mengambil foto dan nama lengkap
 $username = $_SESSION['user'];
 $kode = $_SESSION['kode'];  
-$query = mysqli_query($koneksi, "SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'");
-$user = mysqli_fetch_assoc($query);
 
-// lakukan query untuk mengambil data dari tabel login mengambil posisi/jabatan
-$query2 = mysqli_query($koneksi, "SELECT * FROM login WHERE username = '$username'");
-$user2 = mysqli_fetch_assoc($query2);
+// $query untuk mengambil data nama lengkap karyawan dari tabel data_karyawan
+$query = query("SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'");
+
+// $query2 untuk mengambil data posisi karyawan dari tabel login
+$query2 = query("SELECT * FROM  login WHERE username = '$username'");
+
+// $query3 untuk mengambil data karyawan yang belum diverifikasi
+$query3 = query("SELECT * FROM verify");
+
+
 
 ?>
 
@@ -138,15 +144,15 @@ $user2 = mysqli_fetch_assoc($query2);
                 </div>
                 <div class="dropdown d-flex">
                     <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img id="profile-img" src="<?php echo "../../assets/user-img/".$user['foto'] ?>"
+                        <img id="profile-img" src="<?php echo "../../assets/user-img/".$query['foto'] ?>"
                             class="rounded-circle shadow-2 border-1 " alt="Avatar" />
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
 
                         <li>
                             <a class="dropdown-item d-flex flex-column">
-                                <span class="fs-5"><?= $user['nama']; ?></span>
-                                <span class="fs-5 fw-bold text-danger"><?= $user2['posisi']; ?></span>
+                                <span class="fs-5"><?= $query['nama']; ?></span>
+                                <span class="fs-5 fw-bold text-danger"><?= $query2['posisi']; ?></span>
                             </a>
                         </li>
                         <li><a class="dropdown-item active" href="#">Dashboard</a></li>
@@ -232,13 +238,14 @@ $user2 = mysqli_fetch_assoc($query2);
                                         </tr>
                                         <?php 
                                         // lakukan query untuk mengambil data dari tabel verify mengambil karyawan yang perlu diverifikasi
+                                        // $i = 1;
+                                        // $query3 = mysqli_query($koneksi, "SELECT * FROM verify");
+                                        // $rows = [];
+                                        // while($row= mysqli_fetch_assoc($query3)){
+                                        //     $rows[] = $row; 
+                                        // }
                                         $i = 1;
-                                        $query3 = mysqli_query($koneksi, "SELECT * FROM verify");
-                                        $rows = [];
-                                        while($row= mysqli_fetch_assoc($query3)){
-                                            $rows[] = $row; 
-                                        }
-                                        $antrianVerifikasi = $rows;
+                                        $antrianVerifikasi = $query3;
                                         foreach($antrianVerifikasi as $antrian):
                                         ?>
                                         <tr>
