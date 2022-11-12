@@ -23,7 +23,8 @@
     // $query3 untuk mengambil data karyawan yang belum diverifikasi
     $query3 = query("SELECT * FROM verify");
 
-
+    // $query4 untuk mengambil top karyawan
+    $query5 = query("SELECT * FROM top_karyawan");
 
 ?>
 
@@ -254,39 +255,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php 
+                                
+                                    $i = 1;
+                                    $top = $query5;
+                                    foreach($top as $karyawan):
+                                
+                                ?>
                                     <tr class="d-flex col px-2 py-1">
                                         <td class="col-6 d-flex align-items-center gap-3 ">
                                             <img id="profile-img"
-                                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                                                src="<?php echo "../../assets/user-img/".$karyawan['foto'] ?>"
                                                 class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text">Roberto Firmino</span>
+                                            <span class="text"><?= $karyawan['nama']; ?></span>
                                         </td>
                                         <td class="col-6 d-flex align-items-center">
-                                            <span class="text">HRD</span>
+                                            <span class="text"><?= $karyawan['posisi']; ?></span>
                                         </td>
                                     </tr>
-                                    <tr class="d-flex col px-2 py-1">
-                                        <td class="col-6 d-flex align-items-center gap-3 ">
-                                            <img id="profile-img"
-                                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text">Van Djik</span>
-                                        </td>
-                                        <td class="col-6 d-flex align-items-center">
-                                            <span class="text">Senior Engineer</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="d-flex col px-2 py-1 ">
-                                        <td class="col-6 d-flex align-items-center gap-3 ">
-                                            <img id="profile-img"
-                                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text">Allison</span>
-                                        </td>
-                                        <td class="col-6 d-flex align-items-center">
-                                            <span class="text">Junior Developer</span>
-                                        </td>
-                                    </tr>
+                                <?php endforeach; ?>    
                                 </tbody>
                             </table>
                             <a href="admin-employee.php" class="text-decoration-none fs-6 p-3 mt-auto">Go to
@@ -297,22 +284,22 @@
                         <div class="container col col-xxl-5 rounded-4 shadow border-0 d-flex flex-column p-2">
                             <h3 class="fw-bold p-3 header">Verification</h3>
                             <table class="table table-borderless">
-                            <?php 
                             
-                                $i = 1;
-                                $antrianVerifikasi = $query3;
-                                foreach($antrianVerifikasi as $antrian):
-                                
-                            ?>
                                 <tbody height="250px" h class="d-flex flex-column gap-2 px-2 overflow-auto">
-                                    <tr class="d-flex align-items-center p-2 rounded-2 shadow-sm background">
-                                        <td class="col d-flex align-items-center gap-3 ">
-                                            <?php
+                                <?php 
+                                    $i = 1;
+                                    $antrianVerifikasi = $query3;
+                                    foreach($antrianVerifikasi as $antrian):
+
+                                ?>
+                                <?php
                                                 require '../../php/koneksi.php';
                                                 $getkode = $antrian['kode_karyawan'];
                                                 $konek = mysqli_query($koneksi, "SELECT * FROM data_karyawan WHERE kode_karyawan = '$getkode'");
                                                 $cek = mysqli_fetch_assoc($konek);
-                                            ?>
+                                ?>
+                                    <tr class="d-flex align-items-center p-2 rounded-2 shadow-sm background">
+                                        <td class="col d-flex align-items-center gap-3 ">
                                             <img id="profile-img"
                                                 src="<?php echo "../../assets/user-img/".$cek['foto'] ?>"
                                                 class="rounded-circle bg-light shadow-sm" alt="Avatar" />
@@ -341,8 +328,9 @@
                                             </button>
                                         </td>
                                     </tr> -->
+                                    <?php endforeach; ?>
                                 </tbody>
-                                <?php endforeach; ?>
+                                
                             </table>
                             <a href="" class="text-decoration-none fs-6 p-3 mt-auto">Go to Verification</a>
                         </div>
