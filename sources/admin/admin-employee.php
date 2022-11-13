@@ -94,7 +94,7 @@ $user1 = query("SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'") //qu
                 </a>
             </li>
             <li class="mt-auto d-none d-md-none d-lg-flex sign-out">
-                <a href="../logout.php" onclick="return confirm('Apakah anda ingin logout')"
+                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')"
                     class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9ba</i>
                     <div class="align-items-center">
