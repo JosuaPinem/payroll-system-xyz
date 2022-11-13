@@ -6,15 +6,25 @@
     $nip = $_POST['nip'];
     $tempat = $_POST['tempat'];
     $tanggal = $_POST['tanggal'];
+    $gender = $_POST['gender'];
     $alamat = $_POST['adress'];
+    $foto = $_FILES['foto'];
+
+    if($gender == ""){
+        echo "  <script>
+                    alert('Mohon masukkan data yang valid');
+                    document.location.href = '../sources/form.php';
+                </script>";
+        exit;
+    }
     
     
     // menolak akses jika tidak terdapat data
 
-    if($tanggal =="" || $nip =="" || $tempat =="" || $alamat ==""){
-        echo "  <srcipt>
+    if($tanggal =="" || $nip =="" || $tempat =="" || $alamat =="" || $foto['name'] == ""){
+        echo "  <script>
                     alert('Mohon masukkan data yang valid');
-                    document.location.href = '../Source/form.php';
+                    document.location.href = '../sources/form.php';
                 </script>";
         exit;
     }
@@ -52,7 +62,8 @@
     //--------------------------------------------------------------------
 
     // Upload data dari form ke database
-    $query2 = mysqli_query($koneksi, "INSERT INTO data_karyawan VALUES (null,'$kode', '$name', '$nip', '$tanggal', '$tempat', '$alamat', '$nama')");
+    $query2 = mysqli_query($koneksi, "INSERT INTO data_karyawan (id, kode_karyawan, nama, nip, tanggal, tempat, alamat, foto, jenis_kelamin) 
+                                      VALUES (null,'$kode', '$name', '$nip', '$tanggal', '$tempat', '$alamat' , '$nama', '$gender')");                            
     if($query2){
         $_SESSION['posisi'] = " ";
         $_SESSION = [];

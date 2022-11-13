@@ -15,11 +15,29 @@
     <!-- Google Material -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
         rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/styles/main.css">
+    <link rel="stylesheet" href="../../assets/style/main.css">
     <title>XYZ Company</title>
 </head>
 
 <!-- PHP Config -->
+<?php
+
+require '../../php/functions.php';
+session_start();
+if(!isset($_SESSION['admin'])){
+    echo "<script>
+            alert('Anda belum login, silahkan login terlebih dahulu!')
+          </script>";
+    header('refresh:0; ../../index.php');
+    exit;
+}
+
+$username = $_SESSION['user'];
+$kode = $_SESSION['kode'];
+
+$user1 = query("SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'") //query untuk mendapatkan data personal pekerja yang login
+
+?>
 
 
 <body class="d-flex">
@@ -44,7 +62,7 @@
         <ul id="menu-bar"
             class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
             <li>
-                <a href="admin-dashboard.html" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                <a href="admin-dashboard.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9b0</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
                         <span class="text-sidebar">Dashboard</span>
@@ -60,7 +78,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                <a href="admin-verification.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe6b1</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
                         <span class="text-sidebar">Verification</span>
@@ -76,7 +94,7 @@
                 </a>
             </li>
             <li class="mt-auto d-none d-md-none d-lg-flex sign-out">
-                <a href="../../index.html" onclick="return confirm('Apakah anda ingin logout')"
+                <a href="../logout.php" onclick="return confirm('Apakah anda ingin logout')"
                     class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9ba</i>
                     <div class="align-items-center">
@@ -119,12 +137,11 @@
                     <!-- Toggle Dropdown -->
                     <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img id="profile-img"
-                            src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                        <img id="profile-img" src="../user-img/<?= $user1['foto']?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex col flex-column align-items-start me-1 ">
-                            <span class="fs-6 fw-semibold text">Roberto Firmino</span>
-                            <span class="fs-6 text opacity-75">CEO</span>
+                            <span class="fs-6 fw-semibold text"><?= $user1['nama']; ?></span>
+                            <span class="fs-6 text opacity-75"><?=$user1['posisi']?></span>
                         </span>
                     </button>
 
@@ -166,7 +183,7 @@
                 <div class="d-flex flex-column flex-lg-row col justify-content-between px-1 px-lg-2">
                     <h1 class="fw-bold header">Employee</h1>
                     <ol class="breadcrumb p-lg-2">
-                        <li class="breadcrumb-item"><a class="text-decoration-none" href="admin-dashboard.html">Home</a>
+                        <li class="breadcrumb-item"><a class="text-decoration-none" href="admin-dashboard.php">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Employee</li>
                     </ol>
@@ -184,7 +201,10 @@
                             <!-- Info Employee -->
                             <div class="container col col-lg-4 rounded-4 shadow border-0 p-3 gap-3 d-flex flex-column">
                                 <span class="fs-4">Total Employee</span>
-                                <span class="display-3 fw-bold">100</span>
+                                <?php
+                                $jumlahKaryawan = count(query("SELECT * FROM login"));
+                                ?>
+                                <span class="display-3 fw-bold"><?= $jumlahKaryawan; ?></span>
                                 <div class="d-flex flex-column gap-1">
                                     <div class="d-flex flex-column background px-2 py-1">
                                         <span class="fs-6">Attendance</span>
@@ -195,7 +215,7 @@
                                         <span class="fs-6 fw-bold">5</span>
                                     </div>
                                 </div>
-                                <a href="admin-employee-list.html"
+                                <a href="admin-employee-list.php"
                                     class="text-decoration-none btn btn-primary fs-6 p-2 mt-auto">Employee
                                     List</a>
                             </div>
@@ -400,7 +420,7 @@
     <!-- JQuery Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="../../assets/scripts/main.js"></script>
+    <script src="../../assets/script/main.js"></script>
 </body>
 
 </html>

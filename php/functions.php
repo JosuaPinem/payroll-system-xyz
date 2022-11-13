@@ -42,4 +42,5 @@ function query ($query){
 //         return false;
 //     }
 // }
+
 ?>

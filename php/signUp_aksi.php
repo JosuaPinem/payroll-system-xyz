@@ -3,10 +3,10 @@
     require('koneksi.php');
     $user = mysqli_real_escape_string($koneksi, trim(strtolower(htmlspecialchars($_POST['username']))));
     $pass = mysqli_real_escape_string($koneksi, htmlspecialchars($_POST['password']));
-    $email = $_POST['email'];
+    $email = mysqli_real_escape_string($koneksi, htmlspecialchars($_POST['email']));
 
     // menolak akses data kosong
-    if($username == "" || $password == "" || $email == ""){
+    if($user == "" || $pass == "" || $email == ""){
         echo "<script>
                 alert('Pastikan semua kolom sudah terisi');
               </script>";
@@ -32,10 +32,10 @@
     $gabungan = "$result1$result2";
     
 
-    $cek = mysqli_query($koneksi, "SELECT * FROM login WHERE username='$user' AND email='$email'");
+    $cek = mysqli_query($koneksi, "SELECT * FROM login WHERE username='$user' OR email='$email'");
 
     // cek di data verify
-    $cekRegistrasiAkun = mysqli_query($koneksi, "SELECT * FROM verify WHERE username = '$user' AND email='$email'");
+    $cekRegistrasiAkun = mysqli_query($koneksi, "SELECT * FROM verify WHERE username = '$user' OR email='$email'");
 
     // cek di data login
     if(mysqli_num_rows($cek) === 0 && mysqli_num_rows($cekRegistrasiAkun) === 0){
@@ -55,9 +55,9 @@
             </script>";
         header('refresh:0; ../sources/form.php');
         }
-    }else{
+    }else {
         echo "<script>
-                alert('Username atau Password atau email telah digunakan');
+                alert('Username dan Email telah digunakan');
             </script>";
     header('refresh:0; ../index.php');
     }

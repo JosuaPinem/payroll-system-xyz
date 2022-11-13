@@ -81,8 +81,15 @@ $user = mysqli_fetch_assoc($query);
                             <option value="CEO">CEO</option>
                             <option value="Admin">Admin</option>
                             <option value="HRD">HRD</option>
-                            <option value="Karyawan">Karyawan</option>
+                            <option value="Web Developer">Web Developer</option>
+                            <option value="Android Developer">Android Developer</option>
+                            <option value="Data Scientist">Data Scientist</option>
+                            <option value="IT Security">IT Security</option>
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gaji" class="form-label">Gaji</label>
+                        <input type="number" class="form-control" id="gaji" name="gaji">
                     </div>
                     <button type="submit" class="btn btn-primary" name="verifikasi">Verifikasi</button>
                 </form>

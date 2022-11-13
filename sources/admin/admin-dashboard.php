@@ -21,7 +21,7 @@
     $query2 = query("SELECT * FROM  login WHERE username = '$username'");
 
     // $query3 untuk mengambil data karyawan yang belum diverifikasi
-    $query3 = query("SELECT * FROM verify");
+    $query3 = query("SELECT * FROM verify ORDER BY id DESC");
 
     // $query4 untuk mengambil top karyawan
     $query5 = query("SELECT * FROM top_karyawan");
@@ -89,7 +89,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                <a href="admin-verification.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe6b1</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
                         <span class="text-sidebar">Verification</span>
@@ -148,8 +148,7 @@
                     <!-- Toggle Dropdown -->
                     <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img id="profile-img"
-                            src="<?php echo "../../assets/user-img/".$query['foto'] ?>"
+                        <img id="profile-img" src="<?php echo "../../assets/user-img/".$query['foto'] ?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex flex-column align-items-start me-1 ">
                             <span class="fs-6 fw-semibold text"><?= strtoupper($query['nama']); ?></span>
@@ -255,7 +254,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php 
+                                    <?php 
                                 
                                     $i = 1;
                                     $top = $query5;
@@ -273,7 +272,7 @@
                                             <span class="text"><?= $karyawan['posisi']; ?></span>
                                         </td>
                                     </tr>
-                                <?php endforeach; ?>    
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                             <a href="admin-employee.php" class="text-decoration-none fs-6 p-3 mt-auto">Go to
@@ -284,15 +283,15 @@
                         <div class="container col col-xxl-5 rounded-4 shadow border-0 d-flex flex-column p-2">
                             <h3 class="fw-bold p-3 header">Verification</h3>
                             <table class="table table-borderless">
-                            
+
                                 <tbody height="250px" h class="d-flex flex-column gap-2 px-2 overflow-auto">
-                                <?php 
+                                    <?php 
                                     $i = 1;
                                     $antrianVerifikasi = $query3;
                                     foreach($antrianVerifikasi as $antrian):
 
                                 ?>
-                                <?php
+                                    <?php
                                                 require '../../php/koneksi.php';
                                                 $getkode = $antrian['kode_karyawan'];
                                                 $konek = mysqli_query($koneksi, "SELECT * FROM data_karyawan WHERE kode_karyawan = '$getkode'");
@@ -330,9 +329,10 @@
                                     </tr> -->
                                     <?php endforeach; ?>
                                 </tbody>
-                                
+
                             </table>
-                            <a href="" class="text-decoration-none fs-6 p-3 mt-auto">Go to Verification</a>
+                            <a href="admin-verification.php" class="text-decoration-none fs-6 p-3 mt-auto">Go to
+                                Verification</a>
                         </div>
                     </div>
                 </div>
@@ -343,8 +343,7 @@
                     <div class="container col rounded-4 shadow border-0 d-flex flex-column p-3 gap-5">
                         <h3 class="fw-bold p-3 header d-flex justify-content-center">Profile</h3>
                         <div class="d-flex flex-column align-items-center gap-3">
-                            <img id="profile-img-container"
-                                src="<?php echo "../../assets/user-img/".$query['foto'] ?>"
+                            <img id="profile-img-container" src="<?php echo "../../assets/user-img/".$query['foto'] ?>"
                                 class="rounded-circle bg-light border shadow-sm" alt="Avatar" />
                         </div>
                         <div class="d-flex flex-column gap-1 py-3">
@@ -381,7 +380,7 @@
     <!-- JQuery Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="../../assets/scripts/main.js"></script>
+    <script src="../../assets/script/main.js"></script>
 </body>
 
 </html>
