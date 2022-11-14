@@ -22,16 +22,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+<meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <!-- Google Material -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round" rel="stylesheet">
+    <!-- Bootstrap Datepicker -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="../assets/style/main.css">
     <title>XYZ Company</title>
 </head>
@@ -154,7 +157,7 @@
                             <a href="#" id="a"
                                 class="btn btn-primary rounded-circle position-absolute d-flex p-2 change-image">
                                 <i class="material-icons-round fs-6">&#xe439</i>
-                                <input type="file" name="foto" class="file-input" hidden>
+                                <input type="file" name="foto" class="file-input" id="file" hidden>
                             </a>
                         </div>
 
@@ -216,7 +219,7 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Birth Date</span>
-                                        <input class="user-edit form-control text text-field profile-info" type="date" name="tanggal"
+                                        <input class="user-edit form-control text text-field profile-info" type="date" name="tanggal" id="datepicker"
                                             value="<?= $query['tanggal']; ?>" aria-label="readonly input example" readonly>
                                     </div>
                                 </div>
