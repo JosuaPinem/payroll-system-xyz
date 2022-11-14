@@ -26,6 +26,7 @@
     // $query4 untuk mengambil top karyawan
     $query5 = query("SELECT * FROM top_karyawan");
 
+
 ?>
 
 
@@ -220,16 +221,21 @@
                                 <span class="display-4 fw-bold mb-3"><?= $jumlahAkun; ?></span>
                                 <a href="admin-employee.php" class="text-decoration-none fs-6">Go to Employee</a>
                             </div>
-
+                            <?php
+                                $total = 0;
+                                $query6 = mysqli_query($koneksi, "SELECT * FROM data_karyawan");
+                                while($gaji = $query6->fetch_array()){
+                                    $total += $gaji['gaji'];
+                                }
+                            ?>
                             <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
                                 <div class="d-flex justify-content-between">
                                     <span class="fs-5">Payroll</span>
                                     <i class="material-icons-round card-icon two rounded-2 p-3">&#xef63</i>
                                 </div>
-                                <span class="display-4 fw-bold mb-3">$ 200K</span>
+                                <span class="display-4 fw-bold mb-3">Rp <?php echo $total; ?></span>
                                 <a href="" class="text-decoration-none fs-6">Go to Payroll</a>
                             </div>
-
                             <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
                                 <div class="d-flex justify-content-between">
                                     <span class="fs-5">Revenue</span>
