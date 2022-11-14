@@ -13,7 +13,7 @@
     // lakukan query untuk mengambil data dari tabel data_karyawan mengambil foto dan nama lengkap
     $username = $_SESSION['user'];
     $kode = $_SESSION['kode'];  
-
+    $_SESSION['posisi'] = "admin";
     // $query untuk mengambil data nama lengkap karyawan dari tabel data_karyawan
     $query = query("SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'");
 
@@ -169,7 +169,7 @@
                             <a class=" dropdown-item active" href="#">Home</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="../profile.php">Profile</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="#">Help</a>

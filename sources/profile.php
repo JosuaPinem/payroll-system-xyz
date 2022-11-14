@@ -1,3 +1,21 @@
+<?php 
+    session_start();
+    require '../php/functions.php';
+    include '../php/koneksi.php';
+    // if(!isset($_SESSION['admin']) || !isset($_SESSION['karyawan'])){
+    //     echo "<script>
+    //                 alert('Anda belum login, silahkan login terlebih dahulu!')
+    //             </script>";
+    //         header('refresh:0; ../index.php');
+    //         return false;
+    // }
+    $kode = $_SESSION['kode'];
+    
+    $query = query("SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'");
+
+    $query2 = query("SELECT * FROM login WHERE kode_karyawan = '$kode'");
+?>
+
 <!-- @format -->
 
 <!DOCTYPE html>
@@ -8,13 +26,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <!-- Google Material -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/styles/main.css">
+    <link rel="stylesheet" href="../assets/style/main.css">
     <title>XYZ Company</title>
 </head>
 
@@ -22,6 +40,7 @@
 
 
 <body class="d-flex">
+
     <!-- Content -->
     <div class="content col d-flex flex-column gap-3 mb-2">
         <!-- Topbar -->
@@ -31,7 +50,7 @@
                 <!-- Topbar Logo Display md-xs -->
                 <div class="d-flex align-items-center gap-3">
                     <div class="d-flex">
-                        <img src="../../assets/img/xyz_logo.svg" height="30px" width="30px" alt="">
+                        <img src="../assets/img/xyz_logo.svg" height="30px" width="30px" alt="">
                     </div>
                     <span id="brand-text" class="fs-4 fw-bold d-none d-sm-flex text">XYZ Company</span>
                 </div>
@@ -49,17 +68,18 @@
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xef5e</label>
                 </div>
 
+                
                 <!-- Dropdown -->
                 <div class="dropdown d-flex">
                     <!-- Toggle Dropdown -->
                     <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <img id="profile-img"
-                            src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                            src="../sources/user-img/<?php echo $query['foto'] ?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex col flex-column align-items-start me-1 ">
-                            <span class="fs-6 fw-semibold text">Roberto Firmino</span>
-                            <span class="fs-6 text opacity-75">CEO</span>
+                            <span class="fs-6 fw-semibold text"><?= strtoupper($query['nama']); ?></span>
+                            <span class="fs-6 text opacity-75"><?= strtoupper($query['posisi']); ?></span>
                         </span>
                     </button>
 
@@ -67,8 +87,8 @@
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                         <li>
                             <a class="dropdown-item d-flex d-lg-none flex-column">
-                                <span class="fs-5">Roberto Firmino</span>
-                                <span class="fs-5 fw-bold text-danger">CEO</span>
+                                <span class="fs-5"><?= strtoupper($query['nama']); ?></span>
+                                <span class="fs-5 fw-bold text-danger"><?= strtoupper($query['posisi']); ?></span>
                             </a>
                         </li>
                         <li>
@@ -128,7 +148,7 @@
                     <div class="d-flex justify-content-center p-3">
                         <div class="d-flex position-relative">
                             <img id="profile-img-container"
-                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                                src="../sources/user-img/<?php echo $query['foto'] ?>"
                                 class="rounded-circle bg-light col-2 border " alt="Avatar" />
                             <a href="#"
                                 class="btn btn-primary rounded-circle position-absolute d-flex p-2 change-image">
@@ -157,7 +177,7 @@
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Name</span>
                                         <input class="user-edit form-control text text-field profile-info" type="text"
-                                            value="Roberto Firmino" aria-label="readonly input example" readonly>
+                                            value="<?= $query['nama']; ?>" aria-label="readonly input example" readonly>
                                     </div>
                                 </div>
                                 <div class="d-flex px-3 py-2 gap-4 background rounded-4">
@@ -168,7 +188,7 @@
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">Email</span>
                                             <input class="user-edit form-control text text-field profile-info"
-                                                type="text" value="roberto@gmail.com"
+                                                type="text" value="<?= $query2['email']; ?>"
                                                 aria-label="readonly input example" readonly>
                                         </div>
                                     </div>
@@ -195,7 +215,7 @@
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Birth Date</span>
                                         <input class="user-edit form-control text text-field profile-info" type="text"
-                                            value="02-07-2003" aria-label="readonly input example" readonly>
+                                            value="<?= date('d m Y',strtotime($query['tanggal'])); ?>" aria-label="readonly input example" readonly>
                                     </div>
                                 </div>
                                 <div class="d-flex px-3 py-2 gap-4 background rounded-4">
@@ -206,7 +226,7 @@
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">Gender</span>
                                             <input class="user-edit form-control text text-field profile-info user-edit"
-                                                type="text" value="Male" aria-label="readonly input example" readonly>
+                                                type="text" value="<?= $query['jenis_kelamin']; ?>" aria-label="readonly input example" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +238,7 @@
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">Location</span>
                                             <input class="user-edit form-control text text-field profile-info"
-                                                type="text" value="Medan, Indonesia" aria-label="readonly input example"
+                                                type="text" value="<?= $query['alamat']; ?>" aria-label="readonly input example"
                                                 readonly>
                                         </div>
                                     </div>
@@ -244,7 +264,7 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Position</span>
-                                        <input class="form-control text text-field profile-info" type="text" value="CEO"
+                                        <input class="form-control text text-field profile-info" type="text" value="<?= strtoupper($query['posisi']); ?>"
                                             aria-label="readonly input example" readonly>
                                     </div>
                                 </div>
@@ -257,7 +277,7 @@
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Salary</span>
                                         <input class="form-control text text-field profile-info" type="text"
-                                            value="Rp. 10,000,000" aria-label="readonly input example" readonly>
+                                            value="Rp. <?= $query['gaji']; ?>" aria-label="readonly input example" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +292,7 @@
                 <!-- JQuery Library -->
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-                <script src="../assets/scripts/main.js"></script>
+                <script src="../assets/script/main.js"></script>
 </body>
 
 </html>

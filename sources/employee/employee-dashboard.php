@@ -7,7 +7,7 @@ if(!isset($_SESSION['karyawan'])){
     header('refresh:0; ../../index.php');
     return false;
 }
-
+    $_SESSION['posisi'] = "karyawan";
 ?>
 
 <!DOCTYPE html>
