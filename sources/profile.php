@@ -2,16 +2,16 @@
     session_start();
     require '../php/functions.php';
     include '../php/koneksi.php';
-    // if(!isset($_SESSION['admin']) || !isset($_SESSION['karyawan'])){
-    //     echo "<script>
-    //                 alert('Anda belum login, silahkan login terlebih dahulu!')
-    //             </script>";
-    //         header('refresh:0; ../index.php');
-    //         return false;
-    // }
+    if(!isset($_SESSION['admin'])){
+        echo "<script>
+                alert('Anda belum login, silahkan login terlebih dahulu!')
+            </script>";
+        header('refresh:0; ../../index.php');
+        return false;
+    }
     $kode = $_SESSION['kode'];
     
-    $query = query("SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'");
+    $query = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
 
     $query2 = query("SELECT * FROM login WHERE kode_karyawan = '$kode'");
 ?>
@@ -92,7 +92,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class=" dropdown-item" href="admin/admin-dashboard.html">Home</a>
+                            <a class=" dropdown-item" href="./admin/admin-dashboard.php">Home</a>
                         </li>
                         <li>
                             <a class="dropdown-item active">Profile</a>
@@ -134,8 +134,8 @@
                     </ol>
                 </div>
             </div>
-
-            <!-- Content Body -->
+            <form action="" method="POST">
+                <!-- Content Body -->
             <div class="d-flex mx-1 mx-lg-4 mb-4 p-2 justify-content-center">
                 <!-- Profile -->
                 <div class="flex-container d-flex flex-column gap-3 p-4 rounded-4 ">
@@ -176,7 +176,7 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Name</span>
-                                        <input class="user-edit form-control text text-field profile-info" type="text"
+                                        <input class="user-edit form-control text text-field profile-info" type="text" name="nama"
                                             value="<?= $query['nama']; ?>" aria-label="readonly input example" readonly>
                                     </div>
                                 </div>
@@ -187,7 +187,7 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">Email</span>
-                                            <input class="user-edit form-control text text-field profile-info"
+                                            <input class="user-edit form-control text text-field profile-info" name="email"
                                                 type="text" value="<?= $query2['email']; ?>"
                                                 aria-label="readonly input example" readonly>
                                         </div>
@@ -214,7 +214,7 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Birth Date</span>
-                                        <input class="user-edit form-control text text-field profile-info" type="text"
+                                        <input class="user-edit form-control text text-field profile-info" type="date" name="tanggal"
                                             value="<?= date('d m Y',strtotime($query['tanggal'])); ?>" aria-label="readonly input example" readonly>
                                     </div>
                                 </div>
@@ -225,7 +225,7 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">Gender</span>
-                                            <input class="user-edit form-control text text-field profile-info user-edit"
+                                            <input class="user-edit form-control text text-field profile-info user-edit" name="gender"
                                                 type="text" value="<?= $query['jenis_kelamin']; ?>" aria-label="readonly input example" readonly>
                                         </div>
                                     </div>
@@ -237,7 +237,7 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">Location</span>
-                                            <input class="user-edit form-control text text-field profile-info"
+                                            <input class="user-edit form-control text text-field profile-info" name="alamat"
                                                 type="text" value="<?= $query['alamat']; ?>" aria-label="readonly input example"
                                                 readonly>
                                         </div>
@@ -245,11 +245,12 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-primary my-2 me-auto p-2 gap-2 d-none" id="save-profile">
+                        <button type="submit" href="" class="btn btn-primary my-2 me-auto p-2 gap-2 d-none" id="save-profile" name="simpan">
                             <i class="material-icons-round">&#xe161</i>
                             <span>Simpan</span>
-                        </a>
+                        </button>
                     </div>
+            </form>
                     <div class="d-flex flex-column gap-3 mt-2">
                         <div class="d-flex">
                             <h4 class="fw-semibold header">
@@ -296,3 +297,21 @@
 </body>
 
 </html>
+<?php
+
+    if(isset($_POST['simpan'])){
+        $nama = $_POST['nama'];
+        $tanggal = $_POST['tanggal'];
+        $email = $_POST['email'];
+        $gender = $_POST['gender'];
+        $alamat = $_POST['alamat'];
+
+        $id = $_SESSION['kode'];
+        $update = mysqli_query($koneksi, "UPDATE karyawan_tetap SET nama='$nama', tanggal='$tanggal', jenis_kelamin='$gender', alamat='$alamat' WHERE kode_karyawan='$id'");
+        $update .= mysqli_query($koneksi, "UPDATE login SET email='$email' WHERE kode_karyawan='$id'");
+
+        if($update){
+            echo "<script>alert('Data berhasil diubah');window.location='profile.php';</script>";
+        }
+    }
+?>

@@ -140,8 +140,8 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
                         <img id="profile-img" src="../user-img/<?=$akun['foto']?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex flex-column align-items-start me-1 ">
-                            <span class="fs-6 fw-semibold text"><?= $akun['nama']; ?></span>
-                            <span class="fs-6 text opacity-75"><?= $akun['posisi']; ?></span>
+                            <span class="fs-6 fw-semibold text"><?= strtoupper($akun['nama']); ?></span>
+                            <span class="fs-6 text opacity-75"><?= strtoupper($akun['posisi']); ?></span>
                         </span>
                     </button>
 
@@ -219,7 +219,7 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
                         </thead>
                         <tbody>
                             <?php 
-                            $batas = 3;
+                            $batas = 5;
                             $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
                             $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
                              
