@@ -36,3 +36,19 @@ onload = function () {
 		sessionStorage.setItem("maximized", true);
 	}
 };
+
+/* Edit Profile */
+$("#edit-profile").on("click", function () {
+	$(".user-edit").removeClass("profile-info").prop("readonly", false).change();
+	$("#save-profile").removeClass("d-none");
+	$("#save-profile").addClass("d-flex");
+	$("#edit-profile").addClass("d-none");
+});
+
+/* Save Profile */
+$("#save-profile").on("click", function () {
+	$(".user-edit").addClass("profile-info").prop("readonly", true).change();
+	$("#save-profile").addClass("d-none");
+	$("#save-profile").removeClass("d-flex");
+	$("#edit-profile").removeClass("d-none");
+});
