@@ -205,7 +205,7 @@ $user1 = query("SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'"); //q
                                             <i class="material-icons">&#xe3c9</i>
                                         </button>
                                     </a>
-                                    <a href="../deleteKaryawan.php?user=<?=$u['nama']?>" style="text-decoration: none;"
+                                    <a href="../deleteKaryawan.php?user=<?=$u['kode_karyawan']?>" style="text-decoration: none;"
                                         onclick="return confirm('Apakah anda ingin menghapus data <?=$u['nama']?>')">
                                         <button type="button"
                                             class="btn btn-danger d-flex align-items-center p-md-2 p-1" title="print">

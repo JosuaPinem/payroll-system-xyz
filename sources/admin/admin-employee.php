@@ -155,10 +155,10 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                             </a>
                         </li>
                         <li>
-                            <a class=" dropdown-item active" href="#">Home</a>
+                            <a class=" dropdown-item active" href="./admin-dashboard.php">Home</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="../profile.php">Profile</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="#">Help</a>
