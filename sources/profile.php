@@ -135,7 +135,7 @@
                     </ol>
                 </div>
             </div>
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 <!-- Content Body -->
             <div class="d-flex mx-1 mx-lg-4 mb-4 p-2 justify-content-center">
                 <!-- Profile -->
@@ -151,9 +151,10 @@
                             <img id="profile-img-container"
                                 src="../sources/user-img/<?php echo $query['foto'] ?>"
                                 class="rounded-circle bg-light col-2 border " alt="Avatar" />
-                            <a href="#"
+                            <a href="#" id="a"
                                 class="btn btn-primary rounded-circle position-absolute d-flex p-2 change-image">
                                 <i class="material-icons-round fs-6">&#xe439</i>
+                                <input type="file" name="foto" class="file-input" hidden>
                             </a>
                         </div>
 
@@ -216,7 +217,7 @@
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Birth Date</span>
                                         <input class="user-edit form-control text text-field profile-info" type="date" name="tanggal"
-                                            value="<?= date('d m Y',strtotime($query['tanggal'])); ?>" aria-label="readonly input example" readonly>
+                                            value="<?= $query['tanggal']; ?>" aria-label="readonly input example" readonly>
                                     </div>
                                 </div>
                                 <div class="d-flex px-3 py-2 gap-4 background rounded-4">
@@ -295,6 +296,8 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
                 <script src="../assets/script/main.js"></script>
+
+                <script src="../assets/script/editFoto.js"></script>
 </body>
 
 </html>

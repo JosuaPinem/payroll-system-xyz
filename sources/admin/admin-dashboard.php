@@ -223,7 +223,7 @@
                             </div>
                             <?php
                                 $total = 0;
-                                $query6 = mysqli_query($koneksi, "SELECT * FROM data_karyawan");
+                                $query6 = mysqli_query($koneksi, "SELECT * FROM karyawan_tetap");
                                 while($gaji = $query6->fetch_array()){
                                     $total += $gaji['gaji'];
                                 }
