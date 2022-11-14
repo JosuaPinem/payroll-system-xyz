@@ -9,13 +9,13 @@
             header('refresh:0; ../../index.php');
             return false;
         }
-
+        $_SESSION['halaman'] = "admin";
     // lakukan query untuk mengambil data dari tabel data_karyawan mengambil foto dan nama lengkap
     $username = $_SESSION['user'];
     $kode = $_SESSION['kode'];  
     $_SESSION['posisi'] = "admin";
     // $query untuk mengambil data nama lengkap karyawan dari tabel data_karyawan
-    $query = query("SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'");
+    $query = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
 
     // $query2 untuk mengambil data posisi karyawan dari tabel login
     $query2 = query("SELECT * FROM  login WHERE username = '$username'");

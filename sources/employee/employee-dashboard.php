@@ -8,6 +8,7 @@ if(!isset($_SESSION['karyawan'])){
     return false;
 }
     $_SESSION['posisi'] = "karyawan";
+    $_SESSION['halaman'] = "karyawan";
 ?>
 
 <!DOCTYPE html>

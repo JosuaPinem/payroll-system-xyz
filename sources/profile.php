@@ -2,11 +2,11 @@
     session_start();
     require '../php/functions.php';
     include '../php/koneksi.php';
-    if(!isset($_SESSION['admin'])){
+    if(!isset($_SESSION['halaman'])){
         echo "<script>
                 alert('Anda belum login, silahkan login terlebih dahulu!')
             </script>";
-        header('refresh:0; ../../index.php');
+        header('refresh:0; ../index.php');
         return false;
     }
     $kode = $_SESSION['kode'];
@@ -117,8 +117,9 @@
             <!-- Content Header -->
             <div class="d-flex my-2 mx-0 mx-lg-4 px-1 gap-1">
                 <div class="p-2 d-flex align-items-center">
+                    
                     <div class="d-flex">
-                        <a type="button" href="admin/admin-dashboard.html"
+                        <a type="button" href="../php/profileController.php"
                             class="d-flex rounded-circle p-1 btn btn-primary align-items-center justify-content-center">
                             <i class="material-icons-round">&#xe5c4</i>
                         </a>

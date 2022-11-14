@@ -35,7 +35,7 @@ if(!isset($_SESSION['admin'])){
 $username = $_SESSION['user'];
 $kode = $_SESSION['kode'];
 
-$user1 = query("SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'") //query untuk mendapatkan data personal pekerja yang login
+$user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //query untuk mendapatkan data personal pekerja yang login
 
 ?>
 
