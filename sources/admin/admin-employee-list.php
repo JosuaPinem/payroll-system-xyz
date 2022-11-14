@@ -78,8 +78,8 @@ $user1 = query("SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'"); //q
                         <img id="profile-img" src="../user-img/<?=$user1['foto']?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex col flex-column align-items-start me-1 ">
-                            <span class="fs-6 fw-semibold text"><?= $user1['nama']?></span>
-                            <span class="fs-6 text opacity-75"><?= $user1['posisi']?></span>
+                        <span class="fs-6 fw-semibold text"><?= strtoupper($user1['nama']); ?></span>
+                            <span class="fs-6 text opacity-75"><?=strtoupper($user1['posisi']);?></span>
                         </span>
                     </button>
 
