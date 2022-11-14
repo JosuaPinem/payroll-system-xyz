@@ -149,7 +149,7 @@
                     <!-- Toggle Dropdown -->
                     <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img id="profile-img" src="<?php echo "../../assets/user-img/".$query['foto'] ?>"
+                        <img id="profile-img" src="../user-img/<?php echo $query['foto'] ?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex flex-column align-items-start me-1 ">
                             <span class="fs-6 fw-semibold text"><?= strtoupper($query['nama']); ?></span>
@@ -305,8 +305,7 @@
                                 ?>
                                     <tr class="d-flex align-items-center p-2 rounded-2 shadow-sm background">
                                         <td class="col d-flex align-items-center gap-3 ">
-                                            <img id="profile-img"
-                                                src="<?php echo "../../assets/user-img/".$cek['foto'] ?>"
+                                            <img id="profile-img" src="../user-img/<?php echo $cek['foto'] ?>"
                                                 class="rounded-circle bg-light shadow-sm" alt="Avatar" />
                                             <span class="text"><?= $antrian['username']; ?></span>
                                         </td>
@@ -349,7 +348,7 @@
                     <div class="container col rounded-4 shadow border-0 d-flex flex-column p-3 gap-5">
                         <h3 class="fw-bold p-3 header d-flex justify-content-center">Profile</h3>
                         <div class="d-flex flex-column align-items-center gap-3">
-                            <img id="profile-img-container" src="<?php echo "../../assets/user-img/".$query['foto'] ?>"
+                            <img id="profile-img-container" src="../user-img/<?php echo $query['foto'] ?>"
                                 class="rounded-circle bg-light border shadow-sm" alt="Avatar" />
                         </div>
                         <div class="d-flex flex-column gap-1 py-3">
