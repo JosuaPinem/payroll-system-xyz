@@ -205,7 +205,8 @@ body.dark .card:hover a {
 }
 
 .profile-info,
-.profile-info:focus {
+.profile-info:focus,
+.form-select:disabled {
 	box-shadow: none;
 	border: none;
 	background: none;

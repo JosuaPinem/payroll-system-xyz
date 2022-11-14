@@ -40,15 +40,26 @@ onload = function () {
 /* Edit Profile */
 $("#edit-profile").on("click", function () {
 	$(".user-edit").removeClass("profile-info").prop("readonly", false).change();
+	$(".form-select").prop("disabled", false).change();
 	$("#save-profile").removeClass("d-none");
 	$("#save-profile").addClass("d-flex");
 	$("#edit-profile").addClass("d-none");
+	/* Datepicker */
+	$("#datepicker").datepicker({
+		editableDateField: false,
+		format: "dd/mm/yyyy",
+		autoclose: true,
+		todayHighlight: true,
+		uiLibrary: "bootstrap4",
+	});
 });
 
 /* Save Profile */
 $("#save-profile").on("click", function () {
 	$(".user-edit").addClass("profile-info").prop("readonly", true).change();
+	$(".form-select").prop("disabled", true).change();
 	$("#save-profile").addClass("d-none");
 	$("#save-profile").removeClass("d-flex");
 	$("#edit-profile").removeClass("d-none");
+	$("#datepicker").datepicker("remove");
 });

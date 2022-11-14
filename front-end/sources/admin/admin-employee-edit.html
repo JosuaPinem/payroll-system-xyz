@@ -18,7 +18,7 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/styles/main.css">
+    <link rel="stylesheet" href="../../assets/styles/main.css">
     <title>XYZ Company</title>
 </head>
 
@@ -76,10 +76,10 @@
                             </a>
                         </li>
                         <li>
-                            <a class=" dropdown-item" href="admin/admin-dashboard.html">Home</a>
+                            <a class=" dropdown-item" href="admin-dashboard.html">Home</a>
                         </li>
                         <li>
-                            <a class="dropdown-item active">Profile</a>
+                            <a class="dropdown-item" href="../profile.html">Profile</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="#">Help</a>
@@ -102,19 +102,19 @@
             <div class="d-flex my-2 mx-0 mx-lg-4 px-1 gap-1">
                 <div class="p-2 d-flex align-items-center">
                     <div class="d-flex">
-                        <a type="button" href="admin/admin-dashboard.html"
+                        <a type="button" href="admin-employee-list.html"
                             class="d-flex rounded-circle p-1 btn btn-primary align-items-center justify-content-center">
                             <i class="material-icons-round">&#xe5c4</i>
                         </a>
                     </div>
                 </div>
                 <div class="d-flex flex-column flex-lg-row col align-items-lg-center justify-content-between p-1">
-                    <span class="fs-3 fw-bold">Profile</span>
+                    <span class="fs-3 fw-bold">Edit Data</span>
                     <ol class="d-flex my-0 breadcrumb p-lg-2">
                         <li class="breadcrumb-item"><a class="text-decoration-none"
-                                href="admin/admin-dashboard.html">Home</a>
+                                href="admin-employee-list.html">Employee List</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        <li class="breadcrumb-item active" aria-current="page">Employee Profile</li>
                     </ol>
                 </div>
             </div>
@@ -125,7 +125,7 @@
                 <div class="flex-container d-flex flex-column gap-3 p-4 rounded-4 ">
                     <!-- My Profile -->
                     <div class="d-flex justify-content-center">
-                        <h2 class="fw-bold header">My Profile</h2>
+                        <h2 class="fw-bold header">User Profile</h2>
                     </div>
 
                     <!-- Profile Picture -->
@@ -134,9 +134,6 @@
                             <img id="profile-img-container"
                                 src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
                                 class="rounded-circle bg-light col-2 border " alt="Avatar" />
-                            <a class="btn btn-primary rounded-circle position-absolute d-flex p-2 change-image">
-                                <i class="material-icons-round fs-6">&#xe439</i>
-                            </a>
                         </div>
 
                     </div>
@@ -147,9 +144,6 @@
                             <h4 class="fw-semibold header">
                                 Personal Information
                             </h4>
-                            <a class="btn btn-primary ms-auto d-flex p-2" id="edit-profile">
-                                <i class="material-icons-round">&#xe3c9</i>
-                            </a>
                         </div>
                         <div class="d-flex flex-column flex-md-row gap-3 ">
                             <div class="d-flex flex-column gap-3">
@@ -159,7 +153,7 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Name</span>
-                                        <input class="user-edit form-control text text-field profile-info" type="text"
+                                        <input class="form-control text text-field profile-info" type="text"
                                             value="Roberto Firmino" aria-label="readonly input example" readonly>
                                     </div>
                                 </div>
@@ -170,9 +164,8 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">Email</span>
-                                            <input class="user-edit form-control text text-field profile-info"
-                                                type="text" value="roberto@gmail.com"
-                                                aria-label="readonly input example" readonly>
+                                            <input class="form-control text text-field profile-info" type="text"
+                                                value="roberto@gmail.com" aria-label="readonly input example" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -183,9 +176,8 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">NIP</span>
-                                            <input class="user-edit form-control text text-field profile-info"
-                                                type="text" value="1234567890" aria-label="readonly input example"
-                                                readonly>
+                                            <input class="form-control text text-field profile-info" type="text"
+                                                value="1234567890" aria-label="readonly input example" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -197,9 +189,8 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Birth Date</span>
-                                        <input class="user-edit form-control text text-field profile-info"
-                                            id="datepicker" type="text" value="01/01/2001"
-                                            aria-label="readonly input example" readonly>
+                                        <input class="form-control text text-field profile-info" id="datepicker"
+                                            type="text" value="01/01/2001" aria-label="readonly input example" readonly>
                                     </div>
                                 </div>
                                 <div class="d-flex px-3 py-2 gap-4 background rounded-4">
@@ -209,8 +200,7 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">Gender</span>
-                                            <select
-                                                class="form-select user-edit form-control text text-field profile-info"
+                                            <select class="form-select text text-field profile-info"
                                                 aria-label="Default select example" disabled>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
@@ -225,24 +215,23 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">Location</span>
-                                            <input class="user-edit form-control text text-field profile-info"
-                                                type="text" value="Medan, Indonesia" aria-label="readonly input example"
-                                                readonly>
+                                            <input class="form-control text text-field profile-info" type="text"
+                                                value="Medan, Indonesia" aria-label="readonly input example" readonly>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-primary my-2 me-auto p-2 gap-2 d-none" id="save-profile">
-                            <i class="material-icons-round">&#xe161</i>
-                            <span>Simpan</span>
-                        </a>
+
                     </div>
                     <div class="d-flex flex-column gap-3 mt-2">
                         <div class="d-flex">
                             <h4 class="fw-semibold header">
                                 Company Information
                             </h4>
+                            <a class="btn btn-primary ms-auto d-flex p-2" id="edit-profile">
+                                <i class="material-icons-round">&#xe3c9</i>
+                            </a>
                         </div>
                         <div class="d-flex flex-column flex-md-row gap-3 ">
                             <div class="d-flex col flex-column gap-3">
@@ -252,7 +241,7 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Position</span>
-                                        <select class="form-select text text-field profile-info"
+                                        <select class="user-edit form-select text text-field profile-info"
                                             aria-label="Default select example" disabled>
                                             <option value="admin">Admin</option>
                                             <option value="android-developer">Android Developer</option>
@@ -272,13 +261,20 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Salary</span>
-                                        <input class="form-control text text-field profile-info" type="text"
-                                            value="Rp. 10,000,000" aria-label="readonly input example" readonly>
+                                        <div class="input-group d-flex gap-2">
+                                            <span class="input-group-text text text-field profile-info">Rp</span>
+                                            <input class="user-edit form-control text text-field profile-info"
+                                                type="text" value="10,000,000" aria-label="readonly input example"
+                                                readonly>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                        <a href="#" class="btn btn-primary my-2 me-auto p-2 gap-2 d-none" id="save-profile">
+                            <i class="material-icons-round">&#xe161</i>
+                            <span>Simpan</span>
+                        </a>
                     </div>
 
                 </div>
@@ -293,7 +289,7 @@
                     src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
                 <!-- Custom JS -->
-                <script src="../assets/scripts/main.js"></script>
+                <script src="../../assets/scripts/main.js"></script>
 </body>
 
 </html>
