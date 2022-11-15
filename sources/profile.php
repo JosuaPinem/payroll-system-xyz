@@ -91,7 +91,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class=" dropdown-item" href="./admin/admin-dashboard.php">Home</a>
+                            <a class=" dropdown-item" href="../php/profileController.php">Home</a>
                         </li>
                         <li>
                             <a class="dropdown-item active">Profile</a>
@@ -127,7 +127,7 @@
                     <span class="fs-3 fw-bold">Profile</span>
                     <ol class="d-flex my-0 breadcrumb p-lg-2">
                         <li class="breadcrumb-item"><a class="text-decoration-none"
-                                href="./admin/admin-dashboard.php">Home</a>
+                                href="../php/profileController.php">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Profile</li>
                     </ol>
@@ -143,21 +143,21 @@
                         <h2 class="fw-bold header">My Profile</h2>
                     </div>
 
-                    <!-- Profile Picture -->
-                    <div class="d-flex justify-content-center p-3">
-                        <div class="d-flex position-relative">
-                            <img id="profile-img-container"
-                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                class="rounded-circle bg-light col-2 border " alt="Avatar" />
-                            <a class="btn btn-primary rounded-circle position-absolute d-flex p-2 change-image">
-                                <i class="material-icons-round fs-6">&#xe439</i>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <!-- Profile Details -->
                     <form action="" method="POST" enctype="multipart/form-data">
+                        <!-- Profile Picture -->
+                        <div class="d-flex justify-content-center p-3">
+                            <div class="d-flex position-relative">
+                                <img id="profile-img-container"
+                                    src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                                    class="rounded-circle bg-light col-2 border " alt="Avatar" />
+                                <a class="btn btn-primary rounded-circle position-absolute d-flex p-2 change-image">
+                                    <i class="material-icons-round fs-6">&#xe439</i>
+                                </a>
+                            </div>
+
+                        </div>
+                        <!-- Profile Details -->
+
                         <div class="d-flex flex-column gap-3 mt-2">
                             <div class="d-flex">
                                 <h4 class="fw-semibold header">
