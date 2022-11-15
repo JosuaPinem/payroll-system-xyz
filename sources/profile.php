@@ -227,13 +227,20 @@
                                             </div>
                                             <div class="d-flex flex-column">
                                                 <span class="fw-semibold">Gender</span>
-                                                <select
-                                                    class="form-select user-edit form-control text text-field profile-info"
-                                                    name="gender" aria-label="Default select example"
-                                                    value="<?= $query['jenis_kelamin']; ?>" disabled>
-                                                    <option selected><?= $query['jenis_kelamin']?></option>
-                                                    <option value="Male" name="gender">Male</option>
-                                                    <option value="Female" name="gender">Female</option>
+                                                <?php 
+                                                if($query['jenis_kelamin'] == "Male"){
+                                                    $namaGender = "Laki-Laki";
+                                                }else {
+                                                    $namaGender = "Perempuan";
+                                                }
+                                                ?>
+                                                <select name="sex" id="sex"
+                                                    class="form-control user-edit form-control text text-field profile-info">
+                                                    <option value="<?= $query['jenis_kelamin']; ?>">
+                                                        <?= $namaGender; ?>
+                                                    </option>
+                                                    <option value="Male">Laki-Laki</option>
+                                                    <option value="Female">Perempuan</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -325,16 +332,19 @@
         $tanggal = strtotime($_POST['tanggal']);
         $newdate = date('Y-m-d',$tanggal);
         $email = $_POST['email'];
-        $gender = $_POST['gender'];
+        $sex = $_POST['sex'];
         $alamat = $_POST['alamat'];
         $nip = $_POST['nip'];
 
         $id = $_SESSION['kode'];
-        $update = mysqli_query($koneksi, "UPDATE karyawan_tetap SET nama='$nama', nip='$nip' ,tanggal='$newdate', jenis_kelamin='$gender', alamat='$alamat' WHERE kode_karyawan='$id'");
+        $update = mysqli_query($koneksi, "UPDATE karyawan_tetap SET nama='$nama', nip='$nip' ,tanggal='$newdate', jenis_kelamin='$sex', alamat='$alamat' WHERE kode_karyawan='$id'");
         $update .= mysqli_query($koneksi, "UPDATE login SET email='$email' WHERE kode_karyawan='$id'");
 
         if($update){
-            echo "<script>alert('Data berhasil diubah');window.location='profile.php';</script>";
+        echo "<script>
+                alert('Data anda berhasil diubah');
+                window.location='profile.php';
+            </script>";
         }
     }
 ?>
