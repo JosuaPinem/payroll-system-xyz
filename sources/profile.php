@@ -147,7 +147,7 @@
                     <div class="d-flex justify-content-center p-3">
                         <div class="d-flex position-relative">
                             <img id="profile-img-container"
-                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                                src="../sources/user-img/<?php echo $query['foto'] ?>"
                                 class="rounded-circle bg-light col-2 border " alt="Avatar" />
                             <a class="btn btn-primary rounded-circle position-absolute d-flex p-2 change-image">
                                 <i class="material-icons-round fs-6">&#xe439</i>
@@ -230,8 +230,8 @@
                                                 <select
                                                     class="form-select user-edit form-control text text-field profile-info"
                                                     name="gender" aria-label="Default select example"
-                                                    value="<?= $query['jenis_kelamin']; ?>" disabled>
-                                                    <option selected><?= $query['jenis_kelamin']?></option>
+                                                    disabled>
+                                                    <option ><?= $query['jenis_kelamin']?></option>
                                                     <option value="Male" name="gender">Male</option>
                                                     <option value="Female" name="gender">Female</option>
                                                 </select>
