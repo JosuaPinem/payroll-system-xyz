@@ -76,8 +76,7 @@
                     <!-- Toggle Dropdown -->
                     <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img id="profile-img"
-                            src="../user-img/<?php echo $query3['foto'] ?>"
+                        <img id="profile-img" src="../user-img/<?php echo $query3['foto'] ?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex col flex-column align-items-start me-1 ">
                             <span class="fs-6 fw-semibold text"><?= strtoupper($query3['nama']); ?></span>
@@ -149,8 +148,7 @@
                     <!-- Profile Picture -->
                     <div class="d-flex justify-content-center p-3">
                         <div class="d-flex position-relative">
-                            <img id="profile-img-container"
-                                src="../user-img/<?php echo $query['foto'] ?>"
+                            <img id="profile-img-container" src="../user-img/<?php echo $query['foto'] ?>"
                                 class="rounded-circle bg-light col-2 border " alt="Avatar" />
                         </div>
 
@@ -183,7 +181,8 @@
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">Email</span>
                                             <input class="form-control text text-field profile-info" type="text"
-                                                value="<?= $query2['email']; ?>" aria-label="readonly input example" readonly>
+                                                value="<?= $query2['email']; ?>" aria-label="readonly input example"
+                                                readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -195,7 +194,8 @@
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">NIP</span>
                                             <input class="form-control text text-field profile-info" type="text"
-                                                value="<?= $query['nip']; ?>" aria-label="readonly input example" readonly>
+                                                value="<?= $query['nip']; ?>" aria-label="readonly input example"
+                                                readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +208,8 @@
                                     <div class="d-flex flex-column">
                                         <span class="fw-semibold">Birth Date</span>
                                         <input class="form-control text text-field profile-info" id="datepicker"
-                                            type="text" value="<?= $query['tanggal']; ?>" aria-label="readonly input example" readonly>
+                                            type="text" value="<?= $query['tanggal']; ?>"
+                                            aria-label="readonly input example" readonly>
                                     </div>
                                 </div>
                                 <div class="d-flex px-3 py-2 gap-4 background rounded-4">
@@ -233,7 +234,8 @@
                                         <div class="d-flex flex-column">
                                             <span class="fw-semibold">Location</span>
                                             <input class="form-control text text-field profile-info" type="text"
-                                                value="<?= $query['alamat']; ?>" aria-label="readonly input example" readonly>
+                                                value="<?= $query['alamat']; ?>" aria-label="readonly input example"
+                                                readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -277,18 +279,19 @@
                                                     $namaPosisi = "Data Analyst";
                                                 }
                                                 ?>
-                                            <select name="position" class="user-edit form-select text text-field profile-info"
-                                                aria-label="Default select example" disabled>
+                                            <select name="position"
+                                                class="form-control user-edit form-control text text-field profile-info"
+                                                aria-label="Default select example">
                                                 <option value="<?= $query['posisi']; ?>">
-                                                        <?= $namaPosisi; ?>
-                                                    </option>
-                                                <option  value="Admin">Admin</option>
-                                                <option  value="Android Developer">Android Developer</option>
-                                                <option  value="CEO">CEO</option>
-                                                <option  value="Data Analyst">Data Analyst</option>
-                                                <option  value="HRD">HRD</option>
-                                                <option  value="IT Security">IT Security</option>
-                                                <option  value="Web Developer">Web Developer</option>
+                                                    <?= $query['posisi']; ?>
+                                                </option>
+                                                <option value="Admin">Admin</option>
+                                                <option value="Android Developer">Android Developer</option>
+                                                <option value="CEO">CEO</option>
+                                                <option value="Data Analyst">Data Analyst</option>
+                                                <option value="HRD">HRD</option>
+                                                <option value="IT Security">IT Security</option>
+                                                <option value="Web Developer">Web Developer</option>
                                             </select>
                                         </div>
                                     </div>
@@ -302,19 +305,19 @@
                                             <span class="fw-semibold">Salary</span>
                                             <div class="input-group d-flex gap-2">
                                                 <span class="input-group-text text text-field profile-info">Rp</span>
-                                                <input class="user-edit form-control text text-field profile-info" name="gaji"
-                                                    type="text" value="<?= $query['gaji']; ?>" aria-label="readonly input example"
-                                                    readonly>
+                                                <input class="user-edit form-control text text-field profile-info"
+                                                    name="gaji" type="text" value="<?= $query['gaji']; ?>"
+                                                    aria-label="readonly input example" readonly>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        
+
                             <button type="submit" name="simpan" href="#"
-                                    class="btn btn-primary my-2 me-auto p-2 gap-2 d-none" id="save-profile">
-                                    <i class="material-icons-round">&#xe161</i>
-                                    <span>Simpan</span>
+                                class="btn btn-primary my-2 me-auto p-2 gap-2 d-none" id="save-profile">
+                                <i class="material-icons-round">&#xe161</i>
+                                <span>Simpan</span>
                             </button>
                         </form>
                     </div>
@@ -328,7 +331,8 @@
 
                 <!-- Bootstrap Datepicker -->
                 <script
-                    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+                    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">
+                </script>
 
                 <!-- Custom JS -->
                 <script src="../../assets/script/main.js"></script>
@@ -347,4 +351,5 @@
         
     }
 ?>
+
 </html>
