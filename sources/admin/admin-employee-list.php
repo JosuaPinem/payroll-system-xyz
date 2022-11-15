@@ -199,7 +199,7 @@ $user1 = query("SELECT * FROM data_karyawan WHERE kode_karyawan = '$kode'"); //q
                                     <?= $u['posisi']; ?>
                                 </td>
                                 <td class="col d-flex justify-content-center gap-1">
-                                    <a href="" style="text-decoration:none">
+                                    <a href="./admin-employee-edit.php?user=<?=$u['kode_karyawan']?>" style="text-decoration:none">
                                         <button type="button"
                                             class="btn btn-primary d-flex align-items-center p-md-2 p-1" title="print">
                                             <i class="material-icons">&#xe3c9</i>

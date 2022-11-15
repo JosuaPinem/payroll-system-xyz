@@ -143,22 +143,27 @@
                         <h2 class="fw-bold header">My Profile</h2>
                     </div>
 
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    
                         <!-- Profile Picture -->
                         <div class="d-flex justify-content-center p-3">
                             <div class="d-flex position-relative">
                                 <img id="profile-img-container"
-                                    src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                                    src="../sources/user-img/<?php echo $query['foto'] ?>"
                                     class="rounded-circle bg-light col-2 border " alt="Avatar" />
-                                <a class="btn btn-primary rounded-circle position-absolute d-flex p-2 change-image">
-                                    <i class="material-icons-round fs-6">&#xe439</i>
-                                </a>
+                                <form action="" id="a">
+                                    <a href="#" 
+                                    class="btn btn-primary rounded-circle position-absolute d-flex p-2 change-image">
+                                        <i class="material-icons-round fs-6">&#xe439</i>
+                                        <input type="file" name="foto" class="file-input"  id="file" hidden>
+                                    </a>
+                                </form>
+                                
                             </div>
 
                         </div>
                         <!-- Profile Details -->
-
-                        <div class="d-flex flex-column gap-3 mt-2">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            <div class="d-flex flex-column gap-3 mt-2">
                             <div class="d-flex">
                                 <h4 class="fw-semibold header">
                                     Personal Information
@@ -324,6 +329,8 @@
 
                 <!-- Custom JS -->
                 <script src="../assets/script/main.js"></script>
+
+                <script src="../assets/script/editFoto.js"></script>
 </body>
 <?php
 

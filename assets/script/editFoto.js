@@ -3,10 +3,9 @@ fileInput = form.querySelector('.file-input');
 
 form.addEventListener("click", () => {
     fileInput.click();
-    
-})
+});
 
-fileInput.onchange = ({ target }) => {
+fileInput.onchange = ({target}) => {
     let file = target.files[0];
     if (file) {
         let fileName = file.name;
@@ -14,7 +13,7 @@ fileInput.onchange = ({ target }) => {
     }
 }
 
-function uploadFile(name) { 
+function uploadFile(fileName) {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "../../php/postFoto.php");
     let formData = new FormData(form);
