@@ -58,6 +58,7 @@ if(isset($_POST['verifikasi'])){
     if($verifikasiAkun){
         // delete data dari tabel antrian_registrasi
         $deleteData = mysqli_query($koneksi, "DELETE FROM verify WHERE username = '$username'");
+        $deletData .= mysqli_query($koneksi, "DELETE FROM data_karyawan WHERE kode_karyawan = '$kode'");
             echo "<script>
                     alert('Akun telah berhasil diverifikasi, silahkan login')
                 </script>";
