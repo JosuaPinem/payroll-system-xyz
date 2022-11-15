@@ -74,8 +74,7 @@
                     <!-- Toggle Dropdown -->
                     <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img id="profile-img"
-                            src="../sources/user-img/<?php echo $query['foto'] ?>"
+                        <img id="profile-img" src="../sources/user-img/<?php echo $query['foto'] ?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex col flex-column align-items-start me-1 ">
                             <span class="fs-6 fw-semibold text"><?= strtoupper($query['nama']); ?></span>
@@ -118,8 +117,8 @@
             <div class="d-flex my-2 mx-0 mx-lg-4 px-1 gap-1">
                 <div class="p-2 d-flex align-items-center">
                     <div class="d-flex">
-                        <a type="button" href="../php/prof"
-                            class="d-flex rounded-circle p-1 btn btn-primary align-items-center justify-content-center">
+                        <a type="button" href="#" class=" d-flex rounded-circle p-1 btn btn-primary align-items-center
+                            justify-content-center">
                             <i class="material-icons-round">&#xe5c4</i>
                         </a>
                     </div>
@@ -158,104 +157,109 @@
                     </div>
 
                     <!-- Profile Details -->
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <div class="d-flex flex-column gap-3 mt-2">
-                        <div class="d-flex">
-                            <h4 class="fw-semibold header">
-                                Personal Information
-                            </h4>
-                            <a class="btn btn-primary ms-auto d-flex p-2" id="edit-profile">
-                                <i class="material-icons-round">&#xe3c9</i>
-                            </a>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row gap-3 ">
-                            <div class="d-flex flex-column gap-3">
-                                <div class="d-flex px-3 py-2 gap-4 background rounded-4">
-                                    <div class="d-flex align-items-center">
-                                        <i class="material-icons-round fs-1">&#xe85e</i>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <span class="fw-semibold">Name</span>
-                                        <input class="user-edit form-control text text-field profile-info" type="text" name="nama"
-                                            value="<?= $query['nama']; ?>" aria-label="readonly input example" readonly>
-                                    </div>
-                                </div>
-                                <div class="d-flex px-3 py-2 gap-4 background rounded-4">
-                                    <div class="d-flex gap-4">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <div class="d-flex flex-column gap-3 mt-2">
+                            <div class="d-flex">
+                                <h4 class="fw-semibold header">
+                                    Personal Information
+                                </h4>
+                                <a class="btn btn-primary ms-auto d-flex p-2" id="edit-profile">
+                                    <i class="material-icons-round">&#xe3c9</i>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column flex-md-row gap-3 ">
+                                <div class="d-flex flex-column gap-3">
+                                    <div class="d-flex px-3 py-2 gap-4 background rounded-4">
                                         <div class="d-flex align-items-center">
-                                            <i class="material-icons-round fs-1">&#xe0be</i>
+                                            <i class="material-icons-round fs-1">&#xe85e</i>
                                         </div>
                                         <div class="d-flex flex-column">
-                                            <span class="fw-semibold">Email</span>
-                                            <input class="user-edit form-control text text-field profile-info" name="email"
-                                                type="text" value="<?= $query2['email']; ?>"
+                                            <span class="fw-semibold">Name</span>
+                                            <input class="user-edit form-control text text-field profile-info"
+                                                type="text" name="nama" value="<?= $query['nama']; ?>"
                                                 aria-label="readonly input example" readonly>
                                         </div>
                                     </div>
+                                    <div class="d-flex px-3 py-2 gap-4 background rounded-4">
+                                        <div class="d-flex gap-4">
+                                            <div class="d-flex align-items-center">
+                                                <i class="material-icons-round fs-1">&#xe0be</i>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-semibold">Email</span>
+                                                <input class="user-edit form-control text text-field profile-info"
+                                                    name="email" type="text" value="<?= $query2['email']; ?>"
+                                                    aria-label="readonly input example" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex px-3 py-2 gap-4 background rounded-4">
+                                        <div class="d-flex gap-4">
+                                            <div class="d-flex align-items-center">
+                                                <i class="material-icons-round fs-1">&#xf045</i>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-semibold">NIP</span>
+                                                <input class="user-edit form-control text text-field profile-info"
+                                                    name="nip" type="text" value="<?= $query['nip']; ?>"
+                                                    aria-label="readonly input example" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="d-flex px-3 py-2 gap-4 background rounded-4">
-                                    <div class="d-flex gap-4">
+                                <div class="d-flex flex-column gap-3">
+                                    <div class="d-flex px-3 py-2 gap-4 background rounded-4">
                                         <div class="d-flex align-items-center">
-                                            <i class="material-icons-round fs-1">&#xf045</i>
+                                            <i class="material-icons-round fs-1">&#xe878</i>
                                         </div>
                                         <div class="d-flex flex-column">
-                                            <span class="fw-semibold">NIP</span>
-                                            <input class="user-edit form-control text text-field profile-info" name="nip"
-                                                type="text" value="<?= $query['nip']; ?>" aria-label="readonly input example"
+                                            <span class="fw-semibold">Birth Date</span>
+                                            <input class="user-edit form-control text text-field profile-info"
+                                                name="tanggal" id="datepicker" type="text"
+                                                value="<?= $query['tanggal']; ?>" aria-label="readonly input example"
                                                 readonly>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex px-3 py-2 gap-4 background rounded-4">
+                                        <div class="d-flex gap-4">
+                                            <div class="d-flex align-items-center">
+                                                <i class="material-icons-round fs-1">&#xe4eb</i>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-semibold">Gender</span>
+                                                <select
+                                                    class="form-select user-edit form-control text text-field profile-info"
+                                                    name="gender" aria-label="Default select example"
+                                                    value="<?= $query['jenis_kelamin']; ?>" disabled>
+                                                    <option selected><?= $query['jenis_kelamin']?></option>
+                                                    <option value="Male" name="gender">Male</option>
+                                                    <option value="Female" name="gender">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex px-3 py-2 gap-4 background rounded-4">
+                                        <div class="d-flex gap-4">
+                                            <div class="d-flex align-items-center">
+                                                <i class="material-icons-round fs-1">&#xe0c8</i>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-semibold">Location</span>
+                                                <input class="user-edit form-control text text-field profile-info"
+                                                    name="alamat" type="text" value="<?= $query['alamat']; ?>"
+                                                    aria-label="readonly input example" readonly>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex flex-column gap-3">
-                                <div class="d-flex px-3 py-2 gap-4 background rounded-4">
-                                    <div class="d-flex align-items-center">
-                                        <i class="material-icons-round fs-1">&#xe878</i>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <span class="fw-semibold">Birth Date</span>
-                                        <input class="user-edit form-control text text-field profile-info" name="tanggal"
-                                            id="datepicker" type="text" value="<?= $query['tanggal']; ?>"
-                                            aria-label="readonly input example" readonly>
-                                    </div>
-                                </div>
-                                <div class="d-flex px-3 py-2 gap-4 background rounded-4">
-                                    <div class="d-flex gap-4">
-                                        <div class="d-flex align-items-center">
-                                            <i class="material-icons-round fs-1">&#xe4eb</i>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="fw-semibold">Gender</span>
-                                            <select
-                                                class="form-select user-edit form-control text text-field profile-info" name="gender"
-                                                aria-label="Default select example" value="<?= $query['jenis_kelamin']; ?>" disabled>
-                                                <option value="Male" name="gender">Male</option>
-                                                <option value="Female" name="gender">Female</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex px-3 py-2 gap-4 background rounded-4">
-                                    <div class="d-flex gap-4">
-                                        <div class="d-flex align-items-center">
-                                            <i class="material-icons-round fs-1">&#xe0c8</i>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="fw-semibold">Location</span>
-                                            <input class="user-edit form-control text text-field profile-info" name="alamat"
-                                                type="text" value="<?= $query['alamat']; ?>" aria-label="readonly input example"
-                                                readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <button type="submit" name="simpan" href="#"
+                                class="btn btn-primary my-2 me-auto p-2 gap-2 d-none" id="save-profile">
+                                <i class="material-icons-round">&#xe161</i>
+                                <span>Simpan</span>
+                            </button>
                         </div>
-                        <button type="submit" name="simpan" href="#" class="btn btn-primary my-2 me-auto p-2 gap-2 d-none" id="save-profile">
-                            <i class="material-icons-round">&#xe161</i>
-                            <span>Simpan</span>
-                        </button>
-                    </div>
-                </form>    
+                    </form>
                     <div class="d-flex flex-column gap-3 mt-2">
                         <div class="d-flex">
                             <h4 class="fw-semibold header">
@@ -308,7 +312,8 @@
 
                 <!-- Bootstrap Datepicker -->
                 <script
-                    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+                    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">
+                </script>
 
                 <!-- Custom JS -->
                 <script src="../assets/script/main.js"></script>
@@ -333,4 +338,5 @@
         }
     }
 ?>
+
 </html>
