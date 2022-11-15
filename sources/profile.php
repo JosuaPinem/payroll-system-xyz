@@ -117,7 +117,7 @@
             <div class="d-flex my-2 mx-0 mx-lg-4 px-1 gap-1">
                 <div class="p-2 d-flex align-items-center">
                     <div class="d-flex">
-                        <a type="button" href="#" class=" d-flex rounded-circle p-1 btn btn-primary align-items-center
+                        <a type="button" href="../php/profileController.php" class=" d-flex rounded-circle p-1 btn btn-primary align-items-center
                             justify-content-center">
                             <i class="material-icons-round">&#xe5c4</i>
                         </a>
