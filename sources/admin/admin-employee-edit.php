@@ -129,7 +129,7 @@
                     <span class="fs-3 fw-bold">Edit Data</span>
                     <ol class="d-flex my-0 breadcrumb p-lg-2">
                         <li class="breadcrumb-item"><a class="text-decoration-none"
-                                href="admin-employee-list.html">Employee List</a>
+                                href="./admin-employee-list.php">Employee List</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Employee Profile</li>
                     </ol>
@@ -341,14 +341,22 @@
     if(isset($_POST['simpan'])){
         $posisi = @$_POST['position'];
         $gaji = $_POST['gaji'];
-        if($posisi === "admin" || $posisi === "ceo" || $posisi === "hrd"){
+        $kode = $_GET['user'];
+        $role="";
+        if($posisi === "Admin" || $posisi === "CEO" || $posisi === "HRD"){
             $role = "admin";
         }else{
             $role = "karyawan";
         }
         $update = mysqli_query($koneksi, "UPDATE karyawan_tetap SET posisi = '$posisi', gaji = '$gaji' WHERE kode_karyawan = '$kode'");
         $update .= mysqli_query($koneksi, "UPDATE login SET posisi = '$role' WHERE kode_karyawan = '$kode'");
-        
+        if($update){
+            echo "<script>
+                    alert('Data anda berhasil diubah');
+                    window.location='admin-employee-edit.php?user=$kode';
+                </script>";
+                
+            }
     }
 ?>
 

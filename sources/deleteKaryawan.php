@@ -12,7 +12,8 @@ if(!isset($_SESSION['admin'])){
 }
 
 $karyawanDelete = $_GET['user'];
-$delete = mysqli_query($koneksi, "DELETE FROM karyawan_tetap WHERE nama = '$karyawanDelete'");
+$delete = mysqli_query($koneksi, "DELETE FROM karyawan_tetap WHERE kode_karyawan = '$karyawanDelete'");
+$delet .= mysqli_query($koneksi, "DELETE FROM login WHERE kode_karyawan = '$karyawanDelete'");
 if($delete){
     header('refresh:0; admin/admin-employee-list.php');
 }
