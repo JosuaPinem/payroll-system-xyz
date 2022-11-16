@@ -1,6 +1,8 @@
 <!-- @format -->
 <?php 
 session_start();
+require '../../php/functions.php';
+include '../../php/koneksi.php';
 if(!isset($_SESSION['karyawan'])){
     echo "<script>
             alert('Anda belum login, silahkan login terlebih dahulu')
@@ -10,6 +12,22 @@ if(!isset($_SESSION['karyawan'])){
 }
     $_SESSION['posisi'] = "karyawan";
     $_SESSION['halaman'] = "karyawan";
+
+    $username = $_SESSION['user'];
+    $kode = $_SESSION['kode'];
+    // $query untuk mengambil data nama lengkap karyawan dari tabel data_karyawan
+    $query = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
+
+    // $query2 untuk mengambil data posisi karyawan dari tabel login
+    $query2 = query("SELECT * FROM  login WHERE username = '$username'");
+
+    // $query3 untuk mengambil data karyawan yang belum diverifikasi
+    $query3 = query("SELECT * FROM verify ORDER BY id DESC");
+
+    // $query4 untuk mengambil top karyawan
+    $query5 = query("SELECT * FROM top_karyawan");
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +84,7 @@ if(!isset($_SESSION['karyawan'])){
                 </a>
             </li>
             <li>
-                <a href="employee-attendance.html" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                <a href="./employee-attendance.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe614</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
                         <span class="text-sidebar">Attendance</span>
@@ -82,7 +100,7 @@ if(!isset($_SESSION['karyawan'])){
                 </a>
             </li>
             <li class="mt-auto d-none d-md-none d-lg-flex sign-out">
-                <a href="../../index.html" onclick="return confirm('Apakah anda ingin logout')"
+                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')"
                     class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9ba</i>
                     <div class="align-items-center">
@@ -126,11 +144,11 @@ if(!isset($_SESSION['karyawan'])){
                     <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <img id="profile-img"
-                            src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                            src="../user-img/<?php echo $query['foto'] ?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex flex-column align-items-start me-1 ">
-                            <span class="fs-6 fw-semibold text">Mohammed Salah</span>
-                            <span class="fs-6 text opacity-75">Web Developer</span>
+                            <span class="fs-6 fw-semibold text"><?= strtoupper($query['nama']); ?></span>
+                            <span class="fs-6 text opacity-75"><?= strtoupper($query['posisi']); ?></span>
                         </span>
                     </button>
 
@@ -143,10 +161,10 @@ if(!isset($_SESSION['karyawan'])){
                             </a>
                         </li>
                         <li>
-                            <a class=" dropdown-item active" href="#">Home</a>
+                            <a class=" dropdown-item active" href="./employee-dashboard.php">Home</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="../profile.html">Profile</a>
+                            <a class="dropdown-item" href="../profile.php">Profile</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="#">Help</a>
@@ -172,7 +190,7 @@ if(!isset($_SESSION['karyawan'])){
                     <h1 class="fw-bold header">Dashboard</h1>
                     <ol class="breadcrumb p-lg-2">
                         <li class="breadcrumb-item"><a class="text-decoration-none"
-                                href="employee-dashboard.html">Home</a>
+                                href="./employee-dashboard.php">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                     </ol>
@@ -191,16 +209,23 @@ if(!isset($_SESSION['karyawan'])){
                                     <span class="fs-5">Payroll</span>
                                     <i class="material-icons-round card-icon two rounded-2 p-3">&#xef63</i>
                                 </div>
-                                <span class="display-5 fw-bold mb-3">Rp. 10,000,000</span>
+                                <?php
+                                    $gaji = $query['gaji'];
+                                    $gaji = $gaji *1000;
+                                ?>
+                                <span class="display-5 fw-bold mb-3">Rp <?php echo number_format($gaji, 0, '', '.'); ?></span>
                                 <a href="" class="text-decoration-none fs-6">Go to Payroll</a>
                             </div>
 
                             <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
                                 <div class="d-flex justify-content-between">
-                                    <span class="fs-5">Web Developer</span>
+                                    <span class="fs-5"><?= $query['posisi']; ?></span>
                                     <i class="material-icons-round card-icon one rounded-2 p-3">&#xf233</i>
                                 </div>
-                                <span class="display-5 fw-bold mb-3">12</span>
+                                <?php
+                                    $jumlah = mysqli_fetch_array(mysqli_query($koneksi, "SELECT COUNT(1) FROM karyawan_tetap WHERE posisi = '$query[posisi]'"))[0];
+                                ?>
+                                <span class="display-5 fw-bold mb-3"><?php echo $jumlah; ?></span>
                             </div>
                         </div>
                     </div>
@@ -219,7 +244,7 @@ if(!isset($_SESSION['karyawan'])){
                         <h3 class="fw-bold p-3 header d-flex justify-content-center">Profile</h3>
                         <div class="d-flex flex-column align-items-center gap-3">
                             <img id="profile-img-container"
-                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                                src="../user-img/<?php echo $query['foto'] ?>"
                                 class="rounded-circle bg-light border shadow-sm" alt="Avatar" />
                         </div>
                         <div class="d-flex flex-column gap-1 py-3">
@@ -229,7 +254,7 @@ if(!isset($_SESSION['karyawan'])){
                                 </div>
                                 <div class="d-flex col flex-column justify-content-center px-2">
                                     <span class="fs-6 opacity-75">Name</span>
-                                    <span class="fs-6 fw-semibold">Mohammed Salah</span>
+                                    <span class="fs-6 fw-semibold"><?= $query['nama']; ?></span>
                                 </div>
                             </div>
                             <div class="d-flex gap-1 background">
@@ -238,7 +263,7 @@ if(!isset($_SESSION['karyawan'])){
                                 </div>
                                 <div class="d-flex col flex-column justify-content-center px-2">
                                     <span class="fs-6 opacity-75">Position</span>
-                                    <span class="fs-6 fw-semibold">Web Developer</span>
+                                    <span class="fs-6 fw-semibold"><?= $query['posisi']; ?></span>
                                 </div>
                             </div>
                         </div>

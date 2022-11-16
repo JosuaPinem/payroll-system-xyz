@@ -192,8 +192,12 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'"); //
                                 <td class="col d-none d-sm-flex justify-content-center align-items-center text">
                                     <?= $u['jenis_kelamin']; ?>
                                 </td>
+                                <?php 
+                                    $gaji = $u['gaji'];
+                                    $gaji = $gaji*1000;
+                                ?>
                                 <td class="col d-none d-sm-flex justify-content-center align-items-center text">
-                                    Rp.<?=$u['gaji']?>
+                                    Rp. <?php echo number_format($gaji, 0, '', '.'); ?>
                                 </td>
                                 <td class="col d-none d-sm-flex justify-content-center align-items-center text">
                                     <?= $u['posisi']; ?>
