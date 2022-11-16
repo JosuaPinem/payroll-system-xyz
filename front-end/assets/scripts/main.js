@@ -41,9 +41,9 @@ onload = function () {
 $("#edit-profile").on("click", function () {
 	$(".user-edit").removeClass("profile-info").prop("readonly", false).change();
 	$(".form-select").prop("disabled", false).change();
-	$("#save-profile").removeClass("d-none");
-	$("#save-profile").addClass("d-flex");
-	$("#edit-profile").addClass("d-none");
+	$("#save-profile").toggleClass("d-none d-flex");
+	$(".change-image").toggleClass("d-none d-flex");
+	$("#edit-profile").toggleClass("d-flex d-none");
 	/* Datepicker */
 	$("#datepicker").datepicker({
 		editableDateField: false,
@@ -58,8 +58,19 @@ $("#edit-profile").on("click", function () {
 $("#save-profile").on("click", function () {
 	$(".user-edit").addClass("profile-info").prop("readonly", true).change();
 	$(".form-select").prop("disabled", true).change();
-	$("#save-profile").addClass("d-none");
-	$("#save-profile").removeClass("d-flex");
-	$("#edit-profile").removeClass("d-none");
+	$("#save-profile").toggleClass("d-flex d-none");
+	$(".change-image").toggleClass("d-flex d-none");
+	$("#edit-profile").toggleClass("d-none d-flex");
 	$("#datepicker").datepicker("remove");
+});
+
+/* Permission */
+$("#permission").on("click", function () {
+	$(".permission").removeClass("d-none");
+	$(".permission").addClass("d-flex");
+});
+
+$("#present").on("click", function () {
+	$(".permission").addClass("d-none");
+	$(".reason").prop("checked", false).change();
 });

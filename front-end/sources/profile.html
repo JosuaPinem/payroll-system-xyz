@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
@@ -33,7 +35,7 @@
                 <!-- Topbar Logo Display md-xs -->
                 <div class="d-flex align-items-center gap-3">
                     <div class="d-flex">
-                        <img src="../../assets/img/xyz_logo.svg" height="30px" width="30px" alt="">
+                        <img src="../assets/img/xyz_logo.svg" height="30px" width="30px" alt="">
                     </div>
                     <span id="brand-text" class="fs-4 fw-bold d-none d-sm-flex text">XYZ Company</span>
                 </div>
@@ -132,11 +134,37 @@
                             <img id="profile-img-container"
                                 src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
                                 class="rounded-circle bg-light col-2 border " alt="Avatar" />
-                            <a class="btn btn-primary rounded-circle position-absolute d-flex p-2 change-image">
+                            <a class="btn btn-primary rounded-circle position-absolute d-none p-2 change-image"
+                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 <i class="material-icons-round fs-6">&#xe439</i>
                             </a>
-                        </div>
 
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content flex-container">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5 text" id="staticBackdropLabel">Change Image</h1>
+                                            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <input class="form-control text-field text" id="formFile" type="file">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary"
+                                                data-bs-dismiss="modal">Simpan</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Profile Details -->
