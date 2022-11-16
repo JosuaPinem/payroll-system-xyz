@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.3.0-dev+20220601.866861edac
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 04:49 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.5
+-- Waktu pembuatan: 16 Nov 2022 pada 05.02
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_karyawan`
+-- Struktur dari tabel `data_karyawan`
 --
 
 CREATE TABLE `data_karyawan` (
@@ -42,27 +42,19 @@ CREATE TABLE `data_karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `data_karyawan`
+-- Dumping data untuk tabel `data_karyawan`
 --
 
 INSERT INTO `data_karyawan` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `tempat`, `alamat`, `foto`, `posisi`, `jenis_kelamin`, `gaji`) VALUES
-(6, 'ABC123', 'Afiq Alghazali', '55555', '2004-02-03', 'medan', 'medan', 'LOGO FMIPA.png', 'HRD', 'Male', 200),
-(9, 'KRT698', 'josua', '123456789', '2001-01-01', 'Medan', 'Medan', 'LOGO FMIPA.png', 'CEO', 'Male', 100),
-(12, 'XYT221', 'raihan', '55555', '2002-02-02', 'Medan', 'medan', 'LOGO FMIPA.png', 'IT Security', 'Male', 200),
-(15, 'OEF501', 'rendy', '10983453', '1999-03-03', 'Semarang', 'Jakarta', 'LOGO FMIPA.png', 'Android Developer', 'Male', 300),
-(16, 'TQX268', 'novi', '987789006', '1997-05-05', 'Bali', 'Jakarta', 'LOGO FMIPA.png', 'Web Developer', 'Female', 50),
-(27, 'KXU654', 'Grace Oktavia', '12345', '2022-11-29', 'Medan', 'Medan', 'bright.jpg', '', '', 0),
-(28, 'TOW966', 'Sasuke Uchiha', '12345', '2022-11-09', 'Konoha', 'Konoha', 'josua.jpg', 'Data Scientist', 'Male', 100),
-(36, 'CCP222', 'Dita Natasya', '123', '2022-11-29', 'Medan', 'Medan', 'gambar 2 so.jpeg', '', 'Female', 0),
-(37, 'BQF891', 'Naruto Uzumaki', '123', '2022-11-22', 'Medan', 'Medan', 'WhatsApp Image 2022-10-31 at 08.40.59.jpeg', '', 'Female', 0),
-(38, 'GSV263', 'Janson Pasaribu', '123', '2022-11-22', 'Medan', 'Medan', 'logo masyarakat.jpg', '', 'Male', 0),
-(39, 'XOL377', 'Julia Amanda', '123', '2022-11-16', 'Medan', 'Medan', 'hero_image (2).jpg', 'Admin', 'Female', 200),
-(41, 'RKS771', 'Agnes Manurung', '123', '2022-11-16', 'Medan', 'Medan', 'LOGOKEMENKUE.jpg', 'CEO', 'Female', 100);
+(58, 'SRN288', 'Valentina', '112344552234', '2001-10-23', 'Bogor', 'Bogor', 'yura.png', '', 'Female', 0),
+(59, 'MXC145', 'Fino Aldebaran', '2341123568843', '2000-02-01', 'Palangkaraya', 'Palangkaraya', 'josep.png', '', 'Male', 0),
+(60, 'URV047', 'Fitri Anisa', '2231134553221', '1998-06-20', 'Aceh', 'Jakarta', 'silvia.png', '', 'Female', 0),
+(61, 'HUB943', 'Boy Ferdinan', '2211244565622', '2001-12-29', 'Surakarta', 'Solo', 'mark.png', '', 'Male', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `karyawan_tetap`
+-- Struktur dari tabel `karyawan_tetap`
 --
 
 CREATE TABLE `karyawan_tetap` (
@@ -80,22 +72,31 @@ CREATE TABLE `karyawan_tetap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `karyawan_tetap`
+-- Dumping data untuk tabel `karyawan_tetap`
 --
 
 INSERT INTO `karyawan_tetap` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `tempat`, `alamat`, `foto`, `posisi`, `jenis_kelamin`, `gaji`) VALUES
-(6, 'ABC123', 'Afiq Alghazali', '55555', '2004-02-03', 'medan', 'medan', 'LOGO FMIPA.png', 'HRD', 'Male', 200),
-(9, 'KRT698', 'josua', '123456789', '2001-01-01', 'Medan', 'Medan', 'LOGO FMIPA.png', 'CEO', 'Male', 100),
-(12, 'XYT221', 'raihan', '55555', '2002-02-02', 'Medan', 'medan', 'LOGO FMIPA.png', 'IT Security', 'Male', 200),
-(15, 'OEF501', 'rendy', '10983453', '1999-03-03', 'Semarang', 'Jakarta', 'LOGO FMIPA.png', 'Android Developer', 'Male', 300),
-(28, 'TOW966', 'Sasuke Uchiha', '12345', '2022-11-09', 'Konoha', 'Konoha', 'josua.jpg', 'Data Scientist', 'Male', 100),
-(41, 'RKS771', 'Agnes Manurung', '123', '2022-11-16', 'Medan', 'Medan', 'LOGOKEMENKUE.jpg', 'CEO', 'Female', 100),
-(42, 'XOL377', 'Julia Amanda', '123', '2022-11-16', 'Medan', 'Medan', 'hero_image (2).jpg', 'Admin', 'Female', 200);
+(44, 'FSR366', 'Tomi Ginting', '121234111301988', '1988-11-30', 'Bali', 'Bali', 'tomi.png', 'Data Analyst', 'Male', 4200),
+(45, 'WXK009', 'Mark Ferdinan', '888721104042000', '2000-04-04', 'Palembang', 'Palembang', 'mark.png', 'IT Security', 'Male', 4300),
+(46, 'MQA848', 'Yura Goh', '222111210151997', '1997-10-15', 'Sumedang', 'Depok', 'yura.png', 'HRD', 'Female', 5000),
+(47, 'UYB623', 'Raihan Maulana', '444212309201997', '1997-09-20', 'Medan', 'Medan', 'raihan.png', 'CEO', 'Male', 10000),
+(48, 'PGT728', 'Natan Sigalingging', '111445711021999', '1999-11-02', 'Jambi', 'Lampung', 'natan.png', 'Android Developer', 'Male', 4000),
+(49, 'NNG812', 'Fadly', '222197705051992', '1992-05-05', 'Magelang', 'Surabaya', 'fadly.png', 'Web Developer', 'Male', 4500),
+(50, 'VMM827', 'Silvia Sinaga', '667112106171997', '1997-06-17', 'Jogjakarta', 'Jogjakarta', 'silvia.png', 'Admin', 'Female', 4900),
+(51, 'ACV829', 'Wiliam wijaya', '442122312251996', '1996-12-25', 'Bandung', 'Bandung', 'wiliam.png', 'IT Security', 'Male', 5000),
+(52, 'WKQ250', 'Josep Sembiring', '111267911282001', '2001-11-28', 'Berastagi', 'Bekasi', 'josep.png', 'Android Developer', 'Male', 4100),
+(53, 'CBW276', 'Muhammad Agus Syahpu', '332443108271999', '1999-08-27', 'Tangerang', 'Medan', 'agus.png', 'CEO', 'Male', 10000),
+(54, 'DZF691', 'Bright Nine Ginting', '221345109092000', '2000-09-09', 'Medan', 'Medan', 'bright.png', 'CEO', 'Male', 10000),
+(55, 'SYL580', 'Rendy Herianto', '983225704191990', '1990-04-19', 'Bogor', 'Bogor', 'rendy.png', 'IT Security', 'Male', 5000),
+(56, 'MYU889', 'Vira Siburian', '235548401021998', '1998-01-02', 'Tarutung', 'Medan', 'Vira.png', 'Data Analyst', 'Female', 5000),
+(57, 'BZG488', 'Lidya Sularto', '102234505251994', '1994-05-25', 'Jakarta', 'Surabaya', 'lidya.png', 'Android Developer', 'Female', 4000),
+(58, 'MAB545', 'Afiq Alghazali', '111222306212000', '2000-06-21', 'Medan', 'Medan', 'afiq.png', 'CEO', 'Male', 10000),
+(59, 'AYY935', 'Josua Pinem', '111234301011999', '1999-01-01', 'Medan', 'Medan', 'josua.png', 'CEO', 'Male', 10000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Struktur dari tabel `login`
 --
 
 CREATE TABLE `login` (
@@ -108,23 +109,31 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `login`
+-- Dumping data untuk tabel `login`
 --
 
 INSERT INTO `login` (`id`, `kode_karyawan`, `username`, `password`, `posisi`, `email`) VALUES
-(5, 'ABC123', 'afiq', '$2y$10$6UNcx1gDkgDx440/5z98humxFVwxfei4t9cdltAFfa1oycTySNCcK', 'admin', 'afiq@gmail.com'),
-(6, 'KRT698', 'josua', '$2y$10$p9u6tU.1SbNhvqQI5KmvI.rfCZlqmZg2r9ZPfS/QH7rxDQRwR88w6', 'ceo', 'josua@gmail.com'),
-(7, 'XYT221', 'raihan', '$2y$10$O3Vd0cEAtwDOXv/ox6.95OGGed5WXlrPXae0xJ3B2.WYaE/XINrl6', 'karyawan', 'raihan@gmail.com'),
-(8, 'OEF501', 'rendy', '$2y$10$6UNcx1gDkgDx440/5z98humxFVwxfei4t9cdltAFfa1oycTySNCcK', 'karyawan', 'rendy@gmail.com'),
-(9, 'TQX268', 'novi', '$2y$10$Nw307Pq16DclMrezrcWDZeIlgYf60rX8QNOx8iJVcszGTBVp2HlW6', 'karyawan', 'novi123@gmail.com'),
-(14, 'TOW966', 'sasuke', '$2y$10$rAtXxaeiEvCnisGQwbPk4.no9K5gpuvtfca5i4mst7/jqE8i1WMU.', 'karyawan', 'sasuke@gmail.com'),
-(15, 'RKS771', 'agnes', '$2y$10$5aevlecZFK/jLgzmflBAqewYL5L8OwSvxZDplDU63AhhS2xpBEV8G', 'admin', 'agnesmanurung@gmail.'),
-(16, 'XOL377', 'manda', '$2y$10$ilPGJ.iwj0vEZtECwkw4Duzxik9ipk0DoI.ikFwI4AmsLpfyGYG/2', 'admin', 'manda@gmail.com');
+(18, 'FSR366', 'tomi', '$2y$10$vOHQgZzrOgEgYI48UwZw8u3.5lwuUy0prG4bKbzL.X2gy.Jc/Q62K', 'karyawan', 'tomi@gmail.com'),
+(19, 'WXK009', 'mark', '$2y$10$cDfjr.Y4GsNozuDw9vEYh.3eUU/NymWtaxzGjNK.EFdIRb2yUsI3S', 'karyawan', 'mark@gmail.com'),
+(20, 'MQA848', 'yura', '$2y$10$ULiEozj8uuQsA1kgFsBCYefIu2hWGp7SzrJVQimw8XwChy4iTeT4a', 'admin', 'yura@gmail.com'),
+(21, 'UYB623', 'raihan', '$2y$10$.kRkGvVARdmrP5yQkxeEEeCJW.oId6iy2VbEIdQf0Z47d.tvDdEMO', 'admin', 'raihan@gmail.com'),
+(22, 'PGT728', 'natan', '$2y$10$tG5Oi2VQcYCtUrAvpFp2hulGGryWEx.G0WYikGzijAv8zrBcHn8/m', 'karyawan', 'natan@gmail.com'),
+(23, 'NNG812', 'fadly', '$2y$10$5dRQt.EejnsLYHE/.pHAreehobmhd5vQLhsohaig/sQMJisnwKVj2', 'karyawan', 'fadly@gmail.com'),
+(24, 'VMM827', 'silvia', '$2y$10$vzRFmaypIuHyWRlX34NIUerYfGeFgOu/rydG4ls9TDjLk6LivlUq6', 'admin', 'silvia@gmail.com'),
+(25, 'ACV829', 'wiliam', '$2y$10$I7DLD6u8hSgI7NQAZTr9uOIvu9ZN3KsGdyejKLZJavPOXtScsmV7q', 'karyawan', 'wiliam@gmail.com'),
+(26, 'WKQ250', 'josep', '$2y$10$aj54BLjUA72dYTgInpEBn.lazyksIMhS6UeUL/GJ4DaCnYSYWLumS', 'karyawan', 'josep@gmail.com'),
+(27, 'CBW276', 'agus', '$2y$10$dG5YXOpnYK1oNbjKP7YylOd5V7tXOH4xMpg.Qj1MGobzKVUS3lwSK', 'admin', 'agus@gmail.com'),
+(28, 'DZF691', 'bright', '$2y$10$Cth5lfCeUEIuaDFYxnQIeerukx2spRrWSOM8C3r0LClta0yD4z1ce', 'admin', 'bright@gmail.com'),
+(29, 'SYL580', 'rendy', '$2y$10$4W4Xo3LvAilSOuUthPi7DOEfUNI0oexGp2ZH5EeRNdPz4Y0qBE9Gi', 'karyawan', 'rendy@gmail.com'),
+(30, 'MYU889', 'vira', '$2y$10$3PcNcMlMWiJfmFwbfBIgjegG4loQwjxjPn0U38Oiplm6sW85oKNTi', 'karyawan', 'vira@gmail.com'),
+(31, 'BZG488', 'lidya', '$2y$10$Ca7lmJoHnkEps8/Cy11NtOAQifwlnO9vCLRjf5o0vIY8jEg0ngbzK', 'karyawan', 'lidya@gmail.com'),
+(32, 'MAB545', 'afiq', '$2y$10$Q3LgUkbW9K/PQqRKhEGGJulMel4zB9B0yHKk/hZJ9t7afJKGt5Rry', 'admin', 'afiq'),
+(33, 'AYY935', 'josua', '$2y$10$.3fjXfdVxLpa3X9Afvaraeeq9OmvD45sx4.OZpXa4mwUj1cli.LpS', 'admin', 'josua@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `top_karyawan`
+-- Struktur dari tabel `top_karyawan`
 --
 
 CREATE TABLE `top_karyawan` (
@@ -135,7 +144,7 @@ CREATE TABLE `top_karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `top_karyawan`
+-- Dumping data untuk tabel `top_karyawan`
 --
 
 INSERT INTO `top_karyawan` (`kode_karyawan`, `nama`, `posisi`, `foto`) VALUES
@@ -146,7 +155,7 @@ INSERT INTO `top_karyawan` (`kode_karyawan`, `nama`, `posisi`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `verify`
+-- Struktur dari tabel `verify`
 --
 
 CREATE TABLE `verify` (
@@ -158,75 +167,72 @@ CREATE TABLE `verify` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `verify`
+-- Dumping data untuk tabel `verify`
 --
 
 INSERT INTO `verify` (`id`, `kode_karyawan`, `username`, `password`, `email`) VALUES
-(25, 'KXU654', 'grace', '$2y$10$VOTGGs55q//3Wj4pn97zkeSWJUgizoXWmhIC.rsRBbbYlR.kUcOJa', 'grace@gmail.com'),
-(12356, 'CCP222', 'dita', '$2y$10$48USE7LGpvVReFCcYfDXf.Q98JVT6RV/uG3GxFjLVXaOy8CmMFZFi', 'dita@gmail.com'),
-(12357, 'BQF891', 'naruto', '$2y$10$ab2zHMomjkkkPSS9GtEgjeuD3Oo1vVi0WwKM4feZwNahyr24gF036', 'naruto@gmail.com'),
-(12358, 'GSV263', 'janson', '$2y$10$4YoSGuF.MCT1PG3oLzJu/OnEyYPPeT9NfnfJcg00B1sCrVp9TXZYi', 'janson@gmail.com');
+(12379, 'SRN288', 'valentina', '$2y$10$ySshDPsq8pbrsi1ejKbip.1zQlShU33xWC5WA.DMvIYuUpxV7Pk7O', 'valentina@gmail.com'),
+(12380, 'MXC145', 'fino', '$2y$10$hdd9iIdXYbbueMhd9d8evuVJKEFKYOdznZS1mN45oZ6AbszKbuoxa', 'fino@gmail.com'),
+(12381, 'URV047', 'fitri', '$2y$10$i9QKdSyNbBLgygMIxFf0N.LZk8chvG0fmqkj/ay0n6AgXus/NlnZu', 'fitri@gmail.com'),
+(12382, 'HUB943', 'boy', '$2y$10$NIJ39bdu7ao1OH9/yFfKWOsHv8TP1zex1sVWOQgEz5pJbWERYzONy', 'boy');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `data_karyawan`
+-- Indeks untuk tabel `data_karyawan`
 --
 ALTER TABLE `data_karyawan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `karyawan_tetap`
+-- Indeks untuk tabel `karyawan_tetap`
 --
 ALTER TABLE `karyawan_tetap`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `login`
+-- Indeks untuk tabel `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `verify`
+-- Indeks untuk tabel `verify`
 --
 ALTER TABLE `verify`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `data_karyawan`
+-- AUTO_INCREMENT untuk tabel `data_karyawan`
 --
 ALTER TABLE `data_karyawan`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT for table `karyawan_tetap`
+-- AUTO_INCREMENT untuk tabel `karyawan_tetap`
 --
 ALTER TABLE `karyawan_tetap`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT untuk tabel `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `verify`
+-- AUTO_INCREMENT untuk tabel `verify`
 --
 ALTER TABLE `verify`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12362;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12385;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-

@@ -62,7 +62,7 @@ if(isset($_POST['verifikasi'])){
             echo "<script>
                     alert('Akun telah berhasil diverifikasi, silahkan login')
                 </script>";
-                header("refresh:0; ../index.php");
+                header("refresh:0; ../sources/admin/admin-verification.php");
         return false;
     }
 }

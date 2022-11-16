@@ -222,10 +222,17 @@
                                 <a href="admin-employee.php" class="text-decoration-none fs-6">Go to Employee</a>
                             </div>
                             <?php
+                                use Brick\Math\BigInteger;
+                                use Brick\Math\RoundingMode;
                                 $total = 0;
                                 $query6 = mysqli_query($koneksi, "SELECT * FROM karyawan_tetap");
                                 while($gaji = $query6->fetch_array()){
                                     $total += $gaji['gaji'];
+                                }
+                                if($total >= 100000){
+                                    $total = $total / 100000;
+                                }else{
+                                    $total = $total / 1000;
                                 }
                             ?>
                             <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
@@ -233,7 +240,7 @@
                                     <span class="fs-5">Payroll</span>
                                     <i class="material-icons-round card-icon two rounded-2 p-3">&#xef63</i>
                                 </div>
-                                <span class="display-4 fw-bold mb-3">Rp <?php echo $total; ?></span>
+                                <span class="display-4 fw-bold mb-3">Rp <?php echo $total."Jt"; ?></span>
                                 <a href="" class="text-decoration-none fs-6">Go to Payroll</a>
                             </div>
                             <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
