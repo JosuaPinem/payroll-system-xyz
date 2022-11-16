@@ -1,5 +1,16 @@
 <!-- @format -->
-
+<?php 
+session_start();
+if(!isset($_SESSION['karyawan'])){
+    echo "<script>
+            alert('Anda belum login, silahkan login terlebih dahulu')
+          </script>";
+    header('refresh:0; ../../index.php');
+    return false;
+}
+    $_SESSION['posisi'] = "karyawan";
+    $_SESSION['halaman'] = "karyawan";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +26,7 @@
     <!-- Google Material -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../assets/styles/main.css">
+    <link rel="stylesheet" href="../../assets/style/main.css">
     <title>XYZ Company</title>
 </head>
 
@@ -330,10 +341,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Time JS-->
-    <script src="../../assets/scripts/time.js"></script>
+    <script src="../../assets/script/time.js"></script>
 
     <!-- Custom JS -->
-    <script src="../../assets/scripts/main.js"></script>
+    <script src="../../assets/script/main.js"></script>
 </body>
 
 </html>
