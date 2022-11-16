@@ -229,11 +229,8 @@
                                 while($gaji = $query6->fetch_array()){
                                     $total += $gaji['gaji'];
                                 }
-                                if($total >= 100000){
-                                    $total = $total / 100000;
-                                }else{
-                                    $total = $total / 1000;
-                                }
+                                $total = $total / 1000;
+                                
                             ?>
                             <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
                                 <div class="d-flex justify-content-between">
