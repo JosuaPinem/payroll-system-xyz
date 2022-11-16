@@ -146,21 +146,45 @@
                     
                         <!-- Profile Picture -->
                         <div class="d-flex justify-content-center p-3">
-                            <div class="d-flex position-relative">
-                                <img id="profile-img-container"
-                                    src="../sources/user-img/<?php echo $query['foto'] ?>"
-                                    class="rounded-circle bg-light col-2 border " alt="Avatar" />
-                                <form action="" id="a">
-                                    <a href="#" 
-                                    class="btn btn-primary rounded-circle position-absolute d-flex p-2 change-image">
-                                        <i class="material-icons-round fs-6">&#xe439</i>
-                                        <input type="file" name="foto" class="file-input"  id="file" hidden>
-                                    </a>
-                                </form>
-                                
-                            </div>
+                        <div class="d-flex position-relative">
+                            <img id="profile-img-container"
+                                src="./user-img/<?php echo $query['foto'] ?>"
+                                class="rounded-circle bg-light col-2 border " alt="Avatar" />
+                            <a class="btn btn-primary rounded-circle position-absolute d-none p-2 change-image"
+                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <i class="material-icons-round fs-6">&#xe439</i>
+                            </a>
 
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <form action="../php/postFoto.php" method="post" enctype="multipart/form-data">
+                                        <div class="modal-content flex-container">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5 text" id="staticBackdropLabel">Change Image</h1>
+                                                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <input class="form-control text-field text" id="formFile" name="foto" type="file">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" name="simpan" class="btn btn-primary"
+                                                    data-bs-dismiss="modal">Simpan</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
                         <!-- Profile Details -->
                         <form action="" method="POST" enctype="multipart/form-data">
                             <div class="d-flex flex-column gap-3 mt-2">
