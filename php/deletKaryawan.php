@@ -2,7 +2,7 @@
     include 'functions.php';
     include 'koneksi.php';
 
-    $nama = $_GET['kode'];
+    $kode = $_GET['kode'];
     $delete = mysqli_query($koneksi, "DELETE FROM login WHERE kode_karyawan = '$kode'");
     $delete .= mysqli_query($koneksi, "DELETE FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
 

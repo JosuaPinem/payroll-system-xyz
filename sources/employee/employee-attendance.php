@@ -1,6 +1,9 @@
 <!-- @format -->
 <?php 
 session_start();
+
+include '../../php/functions.php';
+include '../../php/koneksi.php';
 if(!isset($_SESSION['karyawan'])){
     echo "<script>
             alert('Anda belum login, silahkan login terlebih dahulu')
@@ -10,6 +13,17 @@ if(!isset($_SESSION['karyawan'])){
 }
     $_SESSION['posisi'] = "karyawan";
     $_SESSION['halaman'] = "karyawan";
+
+    // query untuk mengambil data personal employee yang sedang login
+    $kode = $_SESSION['kode'];
+    $user = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
+
+    // query untuk mengambil data absen employee yang sedang login
+    $absen = query("SELECT * FROM absensi WHERE kode_karyawan = '$kode'");
+
+    // fungsi untuk mendapatkan bulan, agar history absen otomatis update setiap bulan
+    date_default_timezone_set('Asia/Jakarta');
+    $bulan = date('m');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +69,7 @@ if(!isset($_SESSION['karyawan'])){
         <ul id="menu-bar"
             class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
             <li>
-                <a href="employee-dashboard.html" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                <a href="employee-dashboard.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9b0</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
                         <span class="text-sidebar">Dashboard</span>
@@ -71,7 +85,7 @@ if(!isset($_SESSION['karyawan'])){
                 </a>
             </li>
             <li>
-                <a href="#" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                <a href="" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xef63</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
                         <span class="text-sidebar">Payroll</span>
@@ -122,12 +136,15 @@ if(!isset($_SESSION['karyawan'])){
                     <!-- Toggle Dropdown -->
                     <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img id="profile-img"
-                            src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                        <img id="profile-img" src="../user-img/<?=$user['foto']?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex flex-column align-items-start me-1 ">
-                            <span class="fs-6 fw-semibold text">Mohammed Salah</span>
-                            <span class="fs-6 text opacity-75">Web Developer</span>
+                            <span class="fs-6 fw-semibold text">
+                                <?= $user['nama']; ?>
+                            </span>
+                            <span class="fs-6 text opacity-75">
+                                <?= $user['posisi']; ?>
+                            </span>
                         </span>
                     </button>
 
@@ -140,10 +157,10 @@ if(!isset($_SESSION['karyawan'])){
                             </a>
                         </li>
                         <li>
-                            <a class=" dropdown-item active" href="#">Home</a>
+                            <a class=" dropdown-item active" href="employee-dashboard.ph[">Home</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="../profile.html">Profile</a>
+                            <a class="dropdown-item" href="../profile.php">Profile</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="#">Help</a>
@@ -169,7 +186,7 @@ if(!isset($_SESSION['karyawan'])){
                     <h1 class="fw-bold header">Attendance</h1>
                     <ol class="breadcrumb p-lg-2">
                         <li class="breadcrumb-item"><a class="text-decoration-none"
-                                href="employee-dashboard.html">Home</a>
+                                href="employee-dashboard.php">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Attendance</li>
                     </ol>
@@ -186,42 +203,45 @@ if(!isset($_SESSION['karyawan'])){
                         <span class="d-flex p-3">
                             <h2 id="date" class="fw-bold">dayname, dd-month-yyyy</h2>
                         </span>
-                        <div class="d-flex flex-column p-3 gap-4">
-                            <div class="d-flex">
-                                <div class="d-flex col gap-3">
-                                    <input type="radio" class="btn-check" name="options-outlined" id="present"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-success col d-flex justify-content-center fs-5 p-3"
-                                        for="present">Present</label>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="permission"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-primary col fs-5 p-3"
-                                        for="permission">Permission</label>
+                        <form action="../../php/attendanceController.php" method="post" enctype="multipart/form-data">
+                            <div class="d-flex flex-column p-3 gap-4">
+                                <div class="d-flex">
+                                    <div class="d-flex col gap-3">
+                                        <input type="radio" class="btn-check" name="keterangan" id="present"
+                                            value="Present" autocomplete="off">
+                                        <label
+                                            class="btn btn-outline-success col d-flex justify-content-center fs-5 p-3"
+                                            for="present">Present</label>
+                                        <input type="radio" class="btn-check" name="keterangan" id="permission"
+                                            value="permission" autocomplete="off">
+                                        <label class="btn btn-outline-primary col fs-5 p-3"
+                                            for="permission">Permission</label>
+                                    </div>
+                                </div>
+                                <div class="permission col d-none flex-column gap-4">
+                                    <div class="d-flex gap-3">
+                                        <input type="radio" class="btn-check reason" name="keterangan" id="sick"
+                                            value="Sick" autocomplete="off">
+                                        <label class="btn btn-outline-warning col" for="sick">Sick</label>
+                                        <input type="radio" class="btn-check reason" name="keterangan" id="emergency"
+                                            value="Emergency" autocomplete="off">
+                                        <label class="btn btn-outline-danger col" for="emergency">Emergency</label>
+                                        <input type="radio" class="btn-check reason" name="keterangan" value="Other"
+                                            id="other" value="Other" autocomplete="off">
+                                        <label class="btn btn-outline-info col" for="other">Other</label>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <label for="formFile" class="form-label fw-bold">Input statement letter</label>
+                                        <input class="form-control text-field text" type="file" id="formFile">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="permission col d-none flex-column gap-4">
-                                <div class="d-flex gap-3">
-                                    <input type="radio" class="btn-check reason" name="reason-outlined" id="sick"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-warning col" for="sick">Sick</label>
-                                    <input type="radio" class="btn-check reason" name="reason-outlined" id="emergency"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-danger col" for="emergency">Emergency</label>
-                                    <input type="radio" class="btn-check reason" name="reason-outlined" id="other"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-info col" for="other">Other</label>
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <label for="formFile" class="form-label fw-bold">Input statement letter</label>
-                                    <input class="form-control text-field text" type="file" id="formFile">
-                                </div>
+                            <div class="col d-flex p-3">
+                                <button class="btn btn-primary d-flex py-2 rounded mt-auto" type="submit" name="kirim">
+                                    <i class="material-icons-round">&#xe163</i>
+                                </button>
                             </div>
-                        </div>
-                        <div class="col d-flex p-3">
-                            <button class="btn btn-primary d-flex py-2 rounded mt-auto" type="submit">
-                                <i class="material-icons-round">&#xe163</i>
-                            </button>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
@@ -296,7 +316,14 @@ if(!isset($_SESSION['karyawan'])){
                                         Present
                                     </td>
                                     <td class="col d-flex justify-content-center">
-                                        27
+                                        <?php
+                                        $dataPresent = mysqli_query($koneksi, "SELECT * FROM absensi WHERE kode_karyawan = '$kode' AND keterangan = 'Present' AND bulan = '$bulan'");
+                                        $jumlahPresentUser = mysqli_num_rows($dataPresent);
+                                        if($jumlahPresentUser == 0){
+                                            $jumlahPresentUser = "-";
+                                        }
+                                        echo $jumlahPresentUser;
+                                        ?>
                                     </td>
                                 </tr>
                                 <tr class="d-flex align-items-center p-1 text">
@@ -304,17 +331,31 @@ if(!isset($_SESSION['karyawan'])){
                                         Sick
                                     </td>
                                     <td class="col d-flex justify-content-center">
-                                        2
+                                        <?php
+                                        $dataPresent = mysqli_query($koneksi, "SELECT * FROM absensi WHERE kode_karyawan = '$kode' AND keterangan = 'Sick'");
+                                        $jumlahPresentUser = mysqli_num_rows($dataPresent);
+                                        if($jumlahPresentUser == 0){
+                                            $jumlahPresentUser = "-";
+                                        }
+                                        echo $jumlahPresentUser;
+                                        ?>
                                     </td>
                                 </tr>
                             </tbody>
                             <tbody class="d-flex col flex-column gap-2 px-2 overflow-hidden">
                                 <tr class="d-flex align-items-center p-1 text">
                                     <td class="col fw-bold">
-                                        Permission
+                                        Emergency
                                     </td>
                                     <td class="col d-flex justify-content-center">
-                                        1
+                                        <?php
+                                        $dataPresent = mysqli_query($koneksi, "SELECT * FROM absensi WHERE kode_karyawan = '$kode' AND keterangan = 'Emergency'");
+                                        $jumlahPresentUser = mysqli_num_rows($dataPresent);
+                                        if($jumlahPresentUser == 0){
+                                            $jumlahPresentUser = "-";
+                                        }
+                                        echo $jumlahPresentUser;
+                                        ?>
                                     </td>
                                 </tr>
                                 <tr class="d-flex align-items-center p-1 text">
@@ -322,7 +363,14 @@ if(!isset($_SESSION['karyawan'])){
                                         Absent
                                     </td>
                                     <td class="col d-flex justify-content-center">
-                                        1
+                                        <?php
+                                        $dataPresent = mysqli_query($koneksi, "SELECT * FROM absensi WHERE kode_karyawan = '$kode' AND keterangan = 'Other'");
+                                        $jumlahPresentUser = mysqli_num_rows($dataPresent);
+                                        if($jumlahPresentUser == 0){
+                                            $jumlahPresentUser = "-";
+                                        }
+                                        echo $jumlahPresentUser;
+                                        ?>
                                     </td>
                                 </tr>
                             </tbody>

@@ -22,6 +22,7 @@
 <!-- PHP Config -->
 <?php
 
+require '../../php/koneksi.php';
 require '../../php/functions.php';
 session_start();
 if(!isset($_SESSION['admin'])){
@@ -279,24 +280,31 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                                 <thead>
                                     <tr class="d-flex col px-2 py-1 ">
                                         <th class="col-8 col-sm-4 justify-content-center text">Employee Name</th>
-                                        <th class="col-4 d-none d-md-flex justify-content-center text">Period</th>
+                                        <th class="col-4 d-none d-md-flex justify-content-center text">Date</th>
                                         <th class="col d-none d-md-flex justify-content-center text">Reason</th>
                                         <th class="col d-flex justify-content-center text">Action</th>
                                     </tr>
                                 </thead>
+                                <?php 
+                                // untuk mengambil data tanggal current
+                                date_default_timezone_set('Asia/Jakarta');
+                                $date = date('d M Y');
+                                // query untuk mengambil data karyawan yang sudah hadir pada hari ini
+                                $izin = mysqli_query($koneksi, "SELECT * FROM absensi WHERE NOT keterangan = 'Present' AND tanggal = '$date' ");
+                                ?>
                                 <tbody height="160px" class="d-flex flex-column gap-2 px-2 overflow-auto">
+                                    <?php foreach($izin as $i): ?>
                                     <tr class="d-flex align-items-center p-1 rounded-2 shadow-sm background">
                                         <td class="col-8 col-sm-4 d-flex align-items-center gap-3 ">
-                                            <img id="profile-img"
-                                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                                            <img id="profile-img" src="../user-img/<?= $i['foto']?>"
                                                 class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text">Luis Diaz</span>
+                                            <span class="text"><?= $i['nama']; ?></span>
                                         </td>
                                         <td class="col-4 d-none d-md-flex justify-content-center">
-                                            <span class="text">1 Jan 2021 - 3 Jan 2021</span>
+                                            <span class="text"><?= $i['tanggal']?></span>
                                         </td>
                                         <td class="col d-none d-md-flex justify-content-center">
-                                            <span class="text">Sick</span>
+                                            <span class="text"><?= $i['keterangan']?></span>
                                         </td>
                                         <td class="col d-flex justify-content-center gap-1">
                                             <button type="button"
@@ -306,27 +314,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr class="d-flex align-items-center p-1 rounded-2 shadow-sm background">
-                                        <td class="col-8 col-sm-4  d-flex align-items-center gap-3 ">
-                                            <img id="profile-img"
-                                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text">Garnacho</span>
-                                        </td>
-                                        <td class="col-4 d-none d-md-flex justify-content-center">
-                                            <span class="text">2 Jan 2021 - 4 Jan 2021</span>
-                                        </td>
-                                        <td class="col d-none d-md-flex justify-content-center">
-                                            <span class="text">Emergency</span>
-                                        </td>
-                                        <td class="col d-flex justify-content-center gap-1">
-                                            <button type="button"
-                                                class="btn btn-primary d-flex align-items-center p-md-2 p-1"
-                                                title="accept">
-                                                <i class="material-icons">&#xe8ad</i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -336,12 +324,16 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                 <!-- Container Two -->
                 <div class="d-flex col flex-column col p-3">
                     <!-- Employee's Attendance -->
-                    <div class="container col rounded-4 shadow border-0 d-flex flex-column gap-1 p-2">
+                    <div class="container col rounded-4 shadow border-0 d-flex flex-column gap-1 p-2" id="attendance">
                         <h3 class="fw-bold p-3 header">Employee's Attendance</h3>
                         <div class="d-flex align-items-center gap-3 px-2">
-                            <form class="d-flex col align-items-center gap-2" action="">
-                                <input type="email" class="form-control" id="search" placeholder="Search">
-                                <button type="submit" class="btn btn-primary material-icons-round">&#xe8b6</button>
+                            <form class="d-flex align-items-center gap-2" action="" method="post">
+                                <input type="text" class="form-control" id="search" placeholder="Search" name="cari">
+                                <a href="#attendance" style="text-decoration:none;">
+                                    <button type="submit" name="send"
+                                        class="btn btn-primary material-icons-round">&#xe8b6
+                                    </button>
+                                </a>
                             </form>
                         </div>
                         <table class="table table-borderless">
@@ -351,58 +343,67 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                                     <th class="col text">Time</th>
                                 </tr>
                             </thead>
+                            <?php 
+                            // untuk mengambil data tanggal current
+                            date_default_timezone_set('Asia/Jakarta');
+                            $date = date('d M Y');
+                            // query untuk mengambil data karyawan yang sudah hadir pada hari ini
+                            // $absensi = mysqli_query($koneksi, "SELECT * FROM absensi WHERE tanggal = '$date' AND keterangan = 'Present' ");
+
+                            // membuat pagination
+                            $batas = 3;
+                            $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                            $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+                             
+                            $previous = $halaman - 1;
+                            $next = $halaman + 1;
+                                            
+                            $data = mysqli_query($koneksi,"SELECT * FROM absensi WHERE tanggal = '$date' AND keterangan = 'Present' ");
+                            $jumlah_data = mysqli_num_rows($data);
+                            $total_halaman = ceil($jumlah_data / $batas);
+                            if(isset($_POST['send'])){
+                                $keyword = $_POST['cari'];
+                                $user2 = mysqli_query($koneksi, "SELECT * FROM absensi WHERE tanggal = '$date' AND keterangan = 'Present' 
+                                AND nama LIKE '%$keyword%'");
+                            }else {
+                                $user2 = mysqli_query($koneksi,"SELECT * FROM absensi WHERE tanggal = '$date' AND keterangan = 'Present' limit $halaman_awal, $batas");
+                            } 
+                            while($a = mysqli_fetch_assoc($user2)):
+                            ?>
                             <tbody class="d-flex flex-column gap-2 px-2 overflow-hidden">
                                 <tr class="d-flex align-items-center p-1 rounded-2 shadow-sm background">
                                     <td class="col-9 d-flex align-items-center gap-3 ">
-                                        <img id="profile-img"
-                                            src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                                        <img id="profile-img" src="../user-img/<?=$a['foto']?>"
                                             class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                        <span class="text">Cristiano Ronaldo</span>
+                                        <span class="text"><?= $a['nama']; ?></span>
                                     </td>
                                     <td class="col">
-                                        <span class="text">07:00</span>
+                                        <span class="text"><?= $a['jam']; ?></span>
                                     </td>
                                 </tr>
-                                <tr class="d-flex align-items-center p-1 rounded-2 shadow-sm background">
-                                    <td class="col-9 d-flex align-items-center gap-3 ">
-                                        <img id="profile-img"
-                                            src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                            class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                        <span class="text">David De Gea</span>
-                                    </td>
-                                    <td class="col">
-                                        <span class="text">08:00</span>
-                                    </td>
-                                </tr>
-                                <tr class="d-flex align-items-center p-1 rounded-2 shadow-sm background">
-                                    <td class="col-9 d-flex align-items-center gap-3 ">
-                                        <img id="profile-img"
-                                            src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                            class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                        <span class="text">Harry Maguire</span>
-                                    </td>
-                                    <td class="col">
-                                        <span class="text">11:00</span>
-                                    </td>
-                                </tr>
+                                <?php endwhile; ?>
                             </tbody>
                         </table>
+                        <!-- Pagination -->
                         <nav aria-label="..." class="d-flex justify-content-center mt-auto">
                             <ul class="pagination">
-                                <li class="page-item disabled">
-                                    <a class="page-link d-flex"><i class="material-icons-round">&#xe408</i></a>
+                                <li class="page-item">
+                                    <a class="page-link d-flex"
+                                        <?php if($halaman > 1){ echo "href='?halaman=$previous#attendance'"; } ?>><i
+                                            class="material-icons-round">&#xe408</i></a>
                                 </li>
+                                <?php 
+                                for($x=1;$x<=$total_halaman;$x++):
+                                ?>
                                 <li class="page-item active" aria-current="page">
-                                    <a class="page-link" href="#">1</a>
+                                    <a class="page-link"
+                                        href="?halaman=<?php echo $x ?>#attendance"><?php echo $x; ?></a>
                                 </li>
+                                <?php endfor; ?>
                                 <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link d-flex" href="#"><i class="material-icons-round">&#xe409</i></a>
+                                    <a class="page-link d-flex"
+                                        <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'#attendance"; } ?>><i
+                                            class="material-icons-round">&#xe409</i></a>
                                 </li>
                             </ul>
                         </nav>
