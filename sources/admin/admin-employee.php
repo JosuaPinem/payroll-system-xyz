@@ -307,11 +307,13 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                                             <span class="text"><?= $i['keterangan']?></span>
                                         </td>
                                         <td class="col d-flex justify-content-center gap-1">
-                                            <button type="button"
-                                                class="btn btn-primary d-flex align-items-center p-md-2 p-1"
-                                                title="accept">
-                                                <i class="material-icons">&#xe8ad</i>
-                                            </button>
+                                            <a href="../cetakSurat.php?surat=<?= $i['surat']?>" target="_blank">
+                                                <button type="button"
+                                                    class="btn btn-primary d-flex align-items-center p-md-2 p-1"
+                                                    title="accept">
+                                                    <i class="material-icons">&#xe8ad</i>
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
@@ -351,7 +353,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                             // $absensi = mysqli_query($koneksi, "SELECT * FROM absensi WHERE tanggal = '$date' AND keterangan = 'Present' ");
 
                             // membuat pagination
-                            $batas = 3;
+                            $batas = 5;
                             $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
                             $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
                              

@@ -157,7 +157,7 @@ if(!isset($_SESSION['karyawan'])){
                             </a>
                         </li>
                         <li>
-                            <a class=" dropdown-item active" href="employee-dashboard.ph[">Home</a>
+                            <a class=" dropdown-item active" href="employee-dashboard.php">Home</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="../profile.php">Profile</a>
@@ -232,15 +232,28 @@ if(!isset($_SESSION['karyawan'])){
                                     </div>
                                     <div class="d-flex flex-column">
                                         <label for="formFile" class="form-label fw-bold">Input statement letter</label>
-                                        <input class="form-control text-field text" type="file" id="formFile">
+                                        <input class="form-control text-field text" type="file" id="formFile"
+                                            name="surat">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col d-flex p-3">
-                                <button class="btn btn-primary d-flex py-2 rounded mt-auto" type="submit" name="kirim">
+                            <div class="col d-flex p-3 gap-3">
+                                <button class="btn btn-primary d-flex py-2 rounded mt-auto" type="submit" name="kirim"
+                                    title="Kirim Absensi">
                                     <i class="material-icons-round">&#xe163</i>
                                 </button>
+                                <!-- <a href="../surat-izin/template_surat.docx" download style="text-decoration: none;">
+                                    <button class="btn btn-primary d-flex py-2 rounded mt-auto"
+                                        title="Download Template Surat">
+                                        <i class="material-icons-round">&#xe8ad</i>
+                                    </button>
+                                </a> -->
+                                <a href="../surat-izin/template_surat.pdf" download="Template Surat"
+                                    title="Download Template Surar" class="d-flex py-2 rounded mt-auto bg-primary p-3">
+                                    <i class="material-icons-round text-white">&#xe8ad</i>
+                                </a>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -360,7 +373,7 @@ if(!isset($_SESSION['karyawan'])){
                                 </tr>
                                 <tr class="d-flex align-items-center p-1 text">
                                     <td class="col fw-bold">
-                                        Absent
+                                        Other
                                     </td>
                                     <td class="col d-flex justify-content-center">
                                         <?php
