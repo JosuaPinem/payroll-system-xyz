@@ -7,6 +7,7 @@ if(isset($_POST['verifikasi'])){
     $email = mysqli_real_escape_string($koneksi, trim(strtolower(htmlspecialchars($_POST['email']))));
     $jabatan = mysqli_real_escape_string($koneksi, trim(htmlspecialchars($_POST['jabatan'])));
     $gaji = mysqli_real_escape_string($koneksi, trim(strtolower(htmlspecialchars($_POST['gaji']))));
+    $gaji = $gaji/1000;
 
     // cek apakah ada kolom yang kosong
     if($username == " " || $email == " " || $jabatan == " " || $gaji == " "){
@@ -55,6 +56,7 @@ if(isset($_POST['verifikasi'])){
                                                VALUES 
                                                (null, '$kode', '$nama', '$nip', '$tanggal', '$tempat', '$alamat', '$foto', '$jabatan', '$gender', '$gaji')");
                                                
+    $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO top WHERE kode_karyawan = '$kode, jumlah_hadir = '0', nama = '$nama'");
     if($verifikasiAkun){
         // delete data dari tabel antrian_registrasi
         $deleteData = mysqli_query($koneksi, "DELETE FROM verify WHERE username = '$username'");

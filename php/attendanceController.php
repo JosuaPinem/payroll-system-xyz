@@ -130,6 +130,12 @@ if(isset($_POST['kirim'])){
     // insert data menuju database
     $absen = mysqli_query($koneksi, "INSERT INTO absensi VALUES(NULL, '$kode', '$nama', '$date', '$bulan', '$jam', '$keterangan', '$foto', '$surat')");
 
+    if($keterangan === "Present"){
+        $ambil = query("SELECT * FROM top jumlah_hadir WHERE kode_karyawan = '$kode'");
+        $total =  $ambil['jumlah_hadir'];
+        $total = $total + 1;
+        $absen .= mysqli_query($koneksi, "UPDATE top SET jumlah_hadir='$total' WHERE kode_karyawan='$kode'");
+    }
     if($absen){
         echo "<script>
                 alert('Anda telah melakukan absensi')

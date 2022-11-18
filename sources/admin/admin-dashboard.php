@@ -23,9 +23,6 @@
     // $query3 untuk mengambil data karyawan yang belum diverifikasi
     $query3 = query("SELECT * FROM verify ORDER BY id DESC");
 
-    // $query4 untuk mengambil top karyawan
-    $query5 = query("SELECT * FROM top_karyawan");
-
 
 ?>
 
@@ -264,26 +261,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php 
+                                    <?php
+                                        $data = mysqli_query($koneksi,"SELECT kode_karyawan, jumlah_hadir, nama FROM top ORDER BY jumlah_hadir DESC LIMIT 3");
+                                        while($tampil = mysqli_fetch_array($data)) {
+                                            $id = $tampil['kode_karyawan'];
+                                            $get = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$id'");
+                                    ?>
                                 
-                                    $i = 1;
-                                    $top = $query5;
-                                    foreach($top as $karyawan):
-                                
-                                ?>
                                     <tr class="d-flex col px-2 py-1">
                                         <td class="col-6 d-flex align-items-center gap-3 ">
                                             <img id="profile-img"
-                                                src="<?php echo "../../assets/user-img/".$karyawan['foto'] ?>"
+                                                src="../user-img/<?= $get['foto']; ?>"
                                                 class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text"><?= $karyawan['nama']; ?></span>
+                                            <span class="text"><?= $tampil['nama'] ?></span>
                                         </td>
                                         <td class="col-6 d-flex align-items-center">
-                                            <span class="text"><?= $karyawan['posisi']; ?></span>
+                                            <span class="text"><?= $get['posisi']; ?></span>
                                         </td>
                                     </tr>
-                                    <?php endforeach; ?>
+                                    <?php } ?>
                                 </tbody>
+                                
                             </table>
                             <a href="admin-employee.php" class="text-decoration-none fs-6 p-3 mt-auto">Go to
                                 Employee</a>

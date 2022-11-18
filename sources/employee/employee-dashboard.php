@@ -24,9 +24,6 @@ if(!isset($_SESSION['karyawan'])){
     // $query3 untuk mengambil data karyawan yang belum diverifikasi
     $query3 = query("SELECT * FROM verify ORDER BY id DESC");
 
-    // $query4 untuk mengambil top karyawan
-    $query5 = query("SELECT * FROM top_karyawan");
-
 
 ?>
 <!DOCTYPE html>

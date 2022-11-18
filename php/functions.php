@@ -24,6 +24,8 @@ function query ($query){
     }
 }
 
+
+
 // function untuk session
 // function session_function($target)
 // {
