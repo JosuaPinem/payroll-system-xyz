@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.3.0-dev+20220601.866861edac
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2022 at 07:25 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.5
+-- Waktu pembuatan: 18 Nov 2022 pada 05.53
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `absensi`
+-- Struktur dari tabel `absensi`
 --
 
 CREATE TABLE `absensi` (
@@ -40,7 +40,7 @@ CREATE TABLE `absensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `absensi`
+-- Dumping data untuk tabel `absensi`
 --
 
 INSERT INTO `absensi` (`id`, `kode_karyawan`, `nama`, `tanggal`, `bulan`, `jam`, `keterangan`, `foto`, `surat`) VALUES
@@ -50,12 +50,13 @@ INSERT INTO `absensi` (`id`, `kode_karyawan`, `nama`, `tanggal`, `bulan`, `jam`,
 (41, 'WXK009', 'Mark Ferdinan', '18 Nov 2022', '11', '01:06', 'Emergency', 'mark.png', 'WXK009_18 Nov 2022_analisis-regresi.pdf'),
 (42, 'ACV829', 'Wiliam wijaya', '18 Nov 2022', '11', '01:08', 'Other', 'wiliam.png', 'ACV829_18 Nov 2022_MAKALAH SO_KLP MAGUIRE_FIREWALL.pdf'),
 (45, 'PGT728', 'Natan Sigalingging', '18 Nov 2022', '11', '01:19', 'Sick', 'natan.png', '__34-65-1-SM-1.pdf'),
-(46, 'SYL580', 'Rendy Herianto', '18 Nov 2022', '11', '01:22', 'Present', 'rendy.png', '');
+(46, 'SYL580', 'Rendy Herianto', '17 Nov 2022', '11', '01:22', 'Present', 'rendy.png', ''),
+(55, 'SYL580', 'Rendy Herianto', '18 Nov 2022', '11', '11:01', 'Present', 'rendy.png', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_karyawan`
+-- Struktur dari tabel `data_karyawan`
 --
 
 CREATE TABLE `data_karyawan` (
@@ -73,7 +74,7 @@ CREATE TABLE `data_karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `data_karyawan`
+-- Dumping data untuk tabel `data_karyawan`
 --
 
 INSERT INTO `data_karyawan` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `tempat`, `alamat`, `foto`, `posisi`, `jenis_kelamin`, `gaji`) VALUES
@@ -85,7 +86,7 @@ INSERT INTO `data_karyawan` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `karyawan_tetap`
+-- Struktur dari tabel `karyawan_tetap`
 --
 
 CREATE TABLE `karyawan_tetap` (
@@ -103,7 +104,7 @@ CREATE TABLE `karyawan_tetap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `karyawan_tetap`
+-- Dumping data untuk tabel `karyawan_tetap`
 --
 
 INSERT INTO `karyawan_tetap` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `tempat`, `alamat`, `foto`, `posisi`, `jenis_kelamin`, `gaji`) VALUES
@@ -126,7 +127,7 @@ INSERT INTO `karyawan_tetap` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Struktur dari tabel `login`
 --
 
 CREATE TABLE `login` (
@@ -139,7 +140,7 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `login`
+-- Dumping data untuk tabel `login`
 --
 
 INSERT INTO `login` (`id`, `kode_karyawan`, `username`, `password`, `posisi`, `email`) VALUES
@@ -162,29 +163,35 @@ INSERT INTO `login` (`id`, `kode_karyawan`, `username`, `password`, `posisi`, `e
 -- --------------------------------------------------------
 
 --
--- Table structure for table `top_karyawan`
+-- Struktur dari tabel `top`
 --
 
-CREATE TABLE `top_karyawan` (
-  `kode_karyawan` varchar(8) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `posisi` varchar(20) NOT NULL,
-  `foto` varchar(100) NOT NULL
+CREATE TABLE `top` (
+  `id` int(11) NOT NULL,
+  `kode_karyawan` varchar(10) NOT NULL,
+  `jumlah_hadir` varchar(200) NOT NULL,
+  `nama` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `top_karyawan`
+-- Dumping data untuk tabel `top`
 --
 
-INSERT INTO `top_karyawan` (`kode_karyawan`, `nama`, `posisi`, `foto`) VALUES
-('ABC123', 'Afiq Alghazali', 'hrd', 'LOGO FMIPA.png'),
-('KRT698', 'Josua', 'ceo', 'LOGO FMIPA.png'),
-('XYT221', 'raihan', 'senior developer', 'LOGO FMIPA.png');
+INSERT INTO `top` (`id`, `kode_karyawan`, `jumlah_hadir`, `nama`) VALUES
+(1, 'FSR366', '1', 'Tomi Ginting'),
+(2, 'WXK009', '1', 'Mark Ferdinan'),
+(3, 'PGT728', '1', 'Natan Sigalingging'),
+(4, 'NNG812', '1', 'Fadly'),
+(5, 'ACV829', '1', 'Wiliam Wijaya'),
+(6, 'WKQ250', '1', 'Josep Sembiring'),
+(7, 'SYL580', '2', 'Rendy Herianto'),
+(8, 'MYU889', '1', 'Vira Siburian'),
+(9, 'BZG488', '5', 'Lidya Sularto');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `verify`
+-- Struktur dari tabel `verify`
 --
 
 CREATE TABLE `verify` (
@@ -196,7 +203,7 @@ CREATE TABLE `verify` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `verify`
+-- Dumping data untuk tabel `verify`
 --
 
 INSERT INTO `verify` (`id`, `kode_karyawan`, `username`, `password`, `email`) VALUES
@@ -210,65 +217,77 @@ INSERT INTO `verify` (`id`, `kode_karyawan`, `username`, `password`, `email`) VA
 --
 
 --
--- Indexes for table `absensi`
+-- Indeks untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `data_karyawan`
+-- Indeks untuk tabel `data_karyawan`
 --
 ALTER TABLE `data_karyawan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `karyawan_tetap`
+-- Indeks untuk tabel `karyawan_tetap`
 --
 ALTER TABLE `karyawan_tetap`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `login`
+-- Indeks untuk tabel `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `verify`
+-- Indeks untuk tabel `top`
+--
+ALTER TABLE `top`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `verify`
 --
 ALTER TABLE `verify`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `absensi`
+-- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
--- AUTO_INCREMENT for table `data_karyawan`
+-- AUTO_INCREMENT untuk tabel `data_karyawan`
 --
 ALTER TABLE `data_karyawan`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
--- AUTO_INCREMENT for table `karyawan_tetap`
+-- AUTO_INCREMENT untuk tabel `karyawan_tetap`
 --
 ALTER TABLE `karyawan_tetap`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT untuk tabel `login`
 --
 ALTER TABLE `login`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT for table `verify`
+-- AUTO_INCREMENT untuk tabel `top`
+--
+ALTER TABLE `top`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT untuk tabel `verify`
 --
 ALTER TABLE `verify`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12386;
@@ -277,6 +296,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
