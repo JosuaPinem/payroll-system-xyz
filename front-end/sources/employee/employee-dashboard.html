@@ -14,6 +14,10 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <!-- Google Material -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round" rel="stylesheet">
+    <!-- Full Calendar -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../../assets/styles/main.css">
     <title>XYZ Company</title>
 </head>
@@ -51,23 +55,15 @@
                 </a>
             </li>
             <li>
-                <a href="admin-employee.html" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
-                    <i class="material-icons-round fs-2 menu-icon">&#xea67</i>
+                <a href="employee-attendance.html" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                    <i class="material-icons-round fs-2 menu-icon">&#xe614</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
-                        <span class="text-sidebar">Employee</span>
+                        <span class="text-sidebar">Attendance</span>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="admin-verification.html" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
-                    <i class="material-icons-round fs-2 menu-icon">&#xe6b1</i>
-                    <div class="align-items-center d-none d-md-none d-lg-flex">
-                        <span class="text-sidebar">Verification</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="admin-payroll.html" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                <a href="employee-payroll.html" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xef63</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
                         <span class="text-sidebar">Payroll</span>
@@ -122,8 +118,8 @@
                             src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex flex-column align-items-start me-1 ">
-                            <span class="fs-6 fw-semibold text">Roberto Firmino</span>
-                            <span class="fs-6 text opacity-75">CEO</span>
+                            <span class="fs-6 fw-semibold text">Mohammed Salah</span>
+                            <span class="fs-6 text opacity-75">Web Developer</span>
                         </span>
                     </button>
 
@@ -131,8 +127,8 @@
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                         <li>
                             <a class="dropdown-item d-flex d-lg-none flex-column">
-                                <span class="fs-5">Roberto Firmino</span>
-                                <span class="fs-5 fw-bold text-danger">CEO</span>
+                                <span class="fs-5">Mohammed Salah</span>
+                                <span class="fs-5 fw-bold text-danger">Web Developer</span>
                             </a>
                         </li>
                         <li>
@@ -164,7 +160,8 @@
                 <div class="d-flex flex-column flex-lg-row col justify-content-between px-1 px-lg-2">
                     <h1 class="fw-bold header">Dashboard</h1>
                     <ol class="breadcrumb p-lg-2">
-                        <li class="breadcrumb-item"><a class="text-decoration-none" href="admin-dashboard.html">Home</a>
+                        <li class="breadcrumb-item"><a class="text-decoration-none"
+                                href="employee-dashboard.html">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                     </ol>
@@ -172,141 +169,42 @@
             </div>
 
             <!-- Content Body -->
-            <div class="d-flex col flex-column flex-xxl-row mx-1 mx-lg-4 gap-3">
+            <div class="d-flex col flex-column flex-xl-row mx-1 mx-lg-4 gap-4 mb-4">
                 <!-- Container One -->
-                <div class="col-xxl-9 d-flex flex-column p-2 gap-4">
+                <div class="d-flex col col-xl-9 flex-column gap-4">
                     <!-- Row One -->
-                    <div class="d-flex row gap-4">
-                        <!-- Info -->
-                        <div class="d-flex col flex-column flex-md-row gap-4">
-                            <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
-                                <div class="d-flex justify-content-between">
-                                    <span class="fs-5">Employee</span>
-                                    <i class="material-icons-round card-icon one rounded-2 p-3">&#xf233</i>
-                                </div>
-                                <span class="display-4 fw-bold mb-3">100</span>
-                                <a href="admin-employee.html" class="text-decoration-none fs-6">Go to Employee</a>
-                            </div>
-
+                    <div class="d-flex gap-4 flex-column">
+                        <div class="d-flex gap-4 flex-column flex-xxl-row">
                             <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
                                 <div class="d-flex justify-content-between">
                                     <span class="fs-5">Payroll</span>
                                     <i class="material-icons-round card-icon two rounded-2 p-3">&#xef63</i>
                                 </div>
-                                <span class="display-4 fw-bold mb-3">$ 200K</span>
+                                <span class="display-5 fw-bold mb-3">Rp 10.000.000</span>
                                 <a href="" class="text-decoration-none fs-6">Go to Payroll</a>
                             </div>
 
                             <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
                                 <div class="d-flex justify-content-between">
-                                    <span class="fs-5">Revenue</span>
-                                    <i class="material-icons-round card-icon three rounded-2 p-3">&#xe8e5</i>
+                                    <span class="fs-5">Web Developer</span>
+                                    <i class="material-icons-round card-icon one rounded-2 p-3">&#xf233</i>
                                 </div>
-                                <span class="display-4 fw-bold mb-3">$ 2.5M</span>
-                                <a href="" class="text-decoration-none fs-6">Go to Revenue</a>
+                                <span class="display-5 fw-bold mb-3">12</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Row Two -->
-                    <div class="d-flex row p-2 gap-4 flex-column flex-xxl-row">
-                        <!-- Top Employee -->
-                        <div class="container col rounded-4 shadow border-0 d-flex flex-column p-2">
-                            <h3 class="fw-bold p-3 header">Top Employee</h3>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr class="d-flex col px-2 py-1">
-                                        <th class="col-6 text">Employee Name</th>
-                                        <th class="col-6 text">Position</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="d-flex col px-2 py-1">
-                                        <td class="col-6 d-flex align-items-center gap-3 ">
-                                            <img id="profile-img"
-                                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text">Roberto Firmino</span>
-                                        </td>
-                                        <td class="col-6 d-flex align-items-center">
-                                            <span class="text">HRD</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="d-flex col px-2 py-1">
-                                        <td class="col-6 d-flex align-items-center gap-3 ">
-                                            <img id="profile-img"
-                                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text">Van Djik</span>
-                                        </td>
-                                        <td class="col-6 d-flex align-items-center">
-                                            <span class="text">Senior Engineer</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="d-flex col px-2 py-1 ">
-                                        <td class="col-6 d-flex align-items-center gap-3 ">
-                                            <img id="profile-img"
-                                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text">Allison</span>
-                                        </td>
-                                        <td class="col-6 d-flex align-items-center">
-                                            <span class="text">Junior Developer</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <a href="admin-employee.html" class="text-decoration-none fs-6 p-3 mt-auto">Go to
-                                Employee</a>
-                        </div>
-
-                        <!-- Verification -->
-                        <div class="container col col-xxl-5 rounded-4 shadow border-0 d-flex flex-column p-2">
-                            <h3 class="fw-bold p-3 header">Verification</h3>
-                            <table class="table table-borderless">
-                                <tbody height="250px" h class="d-flex flex-column gap-2 px-2 overflow-auto">
-                                    <tr class="d-flex align-items-center p-2 rounded-2 shadow-sm background">
-                                        <td class="col d-flex align-items-center gap-3 ">
-                                            <img id="profile-img"
-                                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text">Diego Jota</span>
-                                        </td>
-                                        <td class="col-4 d-flex justify-content-center gap-1">
-                                            <button type="button" href="#"
-                                                class="btn btn-warning d-flex align-items-center p-md-2 p-1"
-                                                title="accept">
-                                                <span>Requested</span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="d-flex align-items-center p-2 rounded-2 shadow-sm background">
-                                        <td class="col d-flex align-items-center gap-3 ">
-                                            <img id="profile-img"
-                                                src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text">Bruno Fernandes</span>
-                                        </td>
-                                        <td class="col-4 d-flex justify-content-center gap-1">
-                                            <button type="button" href="#"
-                                                class="btn btn-warning d-flex align-items-center p-md-2 p-1"
-                                                title="accept">
-                                                <span>Requested</span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <a href="admin-verification.html" class="text-decoration-none fs-6 p-3 mt-auto">Go to
-                                Verification</a>
+                    <div class="flex-container col rounded-4 shadow border-0 d-flex flex-column p-3">
+                        <div id="calendar">
                         </div>
                     </div>
                 </div>
 
                 <!-- Container Two -->
-                <div class="d-flex row flex-column col pt-2 pb-3 px-3 gap-4">
+                <div class="d-flex col">
                     <!-- Profile -->
-                    <div class="container col rounded-4 shadow border-0 d-flex flex-column p-3 gap-5">
+                    <div class="flex-container col rounded-4 shadow border-0 d-flex flex-column p-3 gap-5">
                         <h3 class="fw-bold p-3 header d-flex justify-content-center">Profile</h3>
                         <div class="d-flex flex-column align-items-center gap-3">
                             <img id="profile-img-container"
@@ -320,7 +218,7 @@
                                 </div>
                                 <div class="d-flex col flex-column justify-content-center px-2">
                                     <span class="fs-6 opacity-75">Name</span>
-                                    <span class="fs-6 fw-semibold">Roberto Firmino</span>
+                                    <span class="fs-6 fw-semibold">Mohammed Salah</span>
                                 </div>
                             </div>
                             <div class="d-flex gap-1 background">
@@ -329,7 +227,7 @@
                                 </div>
                                 <div class="d-flex col flex-column justify-content-center px-2">
                                     <span class="fs-6 opacity-75">Position</span>
-                                    <span class="fs-6 fw-semibold">CEO</span>
+                                    <span class="fs-6 fw-semibold">Web Developer</span>
                                 </div>
                             </div>
                         </div>
@@ -338,14 +236,17 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
 
     <!-- Bootstrap JS -->
-    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js">
+    </script>
 
     <!-- JQuery Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Full Calendar -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="../../assets/scripts/calendar.js"></script>
 
     <script src="../../assets/scripts/main.js"></script>
 </body>

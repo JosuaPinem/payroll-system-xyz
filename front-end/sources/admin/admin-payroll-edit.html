@@ -91,61 +91,73 @@
             <div class="d-flex my-2 mx-0 mx-lg-4 px-1 gap-1">
                 <div class="p-2 d-flex align-items-center">
                     <div class="">
-                        <a type="button" href="admin-verification.html"
+                        <a type="button" href="admin-payroll.html"
                             class="d-flex rounded-circle p-1 btn btn-primary align-items-center justify-content-center">
                             <i class="material-icons-round">&#xe5c4</i>
                         </a>
                     </div>
                 </div>
                 <div class="d-flex flex-column flex-lg-row col align-items-lg-center justify-content-between p-1">
-                    <span class="fs-3 fw-bold">Confirm Verification</span>
+                    <span class="fs-3 fw-bold">Edit Payroll</span>
                     <ol class="breadcrumb my-0 p-lg-2">
                         <li class="breadcrumb-item"><a class="text-decoration-none" href="admin-dashboard.html">Home</a>
                         </li>
                         <li class="breadcrumb-item"><a class="text-decoration-none"
-                                href="admin-verification.html">Verification</a></li>
+                                href="admin-payroll.html">Payroll</a></li>
                     </ol>
                 </div>
             </div>
 
             <!-- Content Body -->
             <div class="d-flex row mx-1 mx-lg-4 gap-4">
-                <!-- Register Form -->
+                <!-- Payroll Form -->
                 <div>
                     <form action="../php/form_aksi.php" method="post"
-                        class="form container rounded-3 d-flex flex-column col col-sm-8 col-md-7 col-lg-6 col-xxl-5 p-5 gap-3 text-center"
+                        class="form container rounded-3 d-flex flex-column col col-sm-8 col-md-7 col-lg-6 col-xxl-5 p-5 gap-5 text-center"
                         enctype="multipart/form-data">
-                        <h2 class="fw-bold fs-1">Register Form</h2>
-                        <div class="form-floating">
-                            <input type="text" readonly class="form-control text text-field" name="nama" value="roberto"
-                                title="nama">
-                            <label class="text">Username</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="text" readonly class="form-control text text-field focus-none" name="email"
-                                value="roberto@gmail.com" title="email">
-                            <label>Email</label>
-                        </div>
-                        <div class="form-floating">
-                            <select class="form-select text text-field" id="floatingSelect" aria-label="Jabatan">
-                                <option selected>Pilih Jabatan</option>
-                                <option value="1">Admin</option>
-                                <option value="2">Android Developer</option>
-                                <option value="3">CEO</option>
-                                <option value="4">Data Analyst</option>
-                                <option value="5">HRD</option>
-                                <option value="6">IT Security</option>
-                                <option value="7">Web Developer</option>
-                            </select>
-                            <label for="floatingSelect">Jabatan</label>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text text text-field" id="basic-addon1">Rp</span>
-                            <input type="text" class="form-control text text-field" placeholder="Gaji"
-                                aria-label="Username" aria-describedby="basic-addon1">
+                        <h2 class="fw-bold fs-1">Payroll Form</h2>
+                        <div class="d-flex flex-column gap-3">
+                            <div>
+                                <label class="form-label d-flex">Nama Karyawan</label>
+                                <input class="form-control text text-field" type="text" value="Mohammed Salah"
+                                    aria-label="readonly input example" readonly>
+                            </div>
+                            <div>
+                                <label class="form-label d-flex">Posisi</label>
+                                <input class="form-control text text-field" type="text" value="Web Developer"
+                                    aria-label="readonly input example" readonly>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <label class="form-label d-flex">Gaji Pokok</label>
+                                <div class="input-group">
+                                    <span class="input-group-text text text-field">Rp</span>
+                                    <input type="text" class="salary form-control text text-field" aria-label="Salary"
+                                        placeholder="1.000.000" readonly>
+                                    <button type="button" id="edit-salary"
+                                        class="btn btn-primary d-flex align-items-center p-md-2 p-1" title="edit">
+                                        <i class="material-icons-round">&#xe3c9</i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <label class="form-label d-flex">Bonus</label>
+                                <div class="input-group">
+                                    <span class="input-group-text text text-field">Rp</span>
+                                    <input type="text" class="form-control text-success text-field" aria-label="Bonus"
+                                        placeholder="1.000.000">
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <label class="form-label d-flex">Pajak</label>
+                                <div class="input-group">
+                                    <span class="input-group-text text text-field">Rp</span>
+                                    <input type="text" class="form-control text-danger text-field" aria-label="Tax"
+                                        placeholder="1.000.000">
+                                </div>
+                            </div>
                         </div>
                         <div class="d-flex">
-                            <input type="submit" value="Verifikasi" class="btn btn-primary px-4 py-2 mb-3">
+                            <input type="submit" value="Simpan" class="btn btn-primary px-4 py-2 mb-3">
                         </div>
                     </form>
                 </div>
