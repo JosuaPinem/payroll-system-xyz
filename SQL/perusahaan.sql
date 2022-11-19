@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Nov 2022 pada 05.53
+-- Waktu pembuatan: 19 Nov 2022 pada 03.44
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 8.1.10
 
@@ -56,13 +56,50 @@ INSERT INTO `absensi` (`id`, `kode_karyawan`, `nama`, `tanggal`, `bulan`, `jam`,
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `daftar_gaji`
+--
+
+CREATE TABLE `daftar_gaji` (
+  `id` int(11) NOT NULL,
+  `kode_karyawan` varchar(10) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `invoice` varchar(12) NOT NULL,
+  `gaji_pokok` varchar(50) NOT NULL,
+  `bonus` varchar(50) NOT NULL,
+  `pajak` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `daftar_gaji`
+--
+
+INSERT INTO `daftar_gaji` (`id`, `kode_karyawan`, `nama`, `invoice`, `gaji_pokok`, `bonus`, `pajak`) VALUES
+(1, 'FSR366', 'Tomi Gint', '', '4200', '', ''),
+(2, 'WXK009', 'Mark Ferdinan', '', '4300', '', ''),
+(3, 'MQA848', 'Yura Goh', '', '5000', '', ''),
+(4, 'UYB623', 'Raihan Maulana', '', '10000', '', ''),
+(5, 'PGT728', 'Natan Sigalingging', '', '4000', '', ''),
+(6, 'NNG812', 'Fadly', '', '4500', '', ''),
+(7, 'ACV829', 'Wiliam Wijaya', '', '5000', '', ''),
+(8, 'WKQ250', 'Josep Sembiring', '', '4100', '', ''),
+(9, 'CBW276', 'Muhammad Agus', '', '10000', '', ''),
+(10, 'DZF691', 'Bright Nine Ginting', '', '10000', '', ''),
+(11, 'SYL580', 'Rendy Herianto', '', '5000', '', ''),
+(12, 'MYU889', 'Vira Siburian', '', '5000', '', ''),
+(13, 'BZG488', 'Lidya Sularto', '', '4000', '', ''),
+(14, 'MAB545', 'Afiq ALghazali', '', '10000', '', ''),
+(15, 'AYY935', 'Josua Pinem', '', '10000', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `data_karyawan`
 --
 
 CREATE TABLE `data_karyawan` (
   `id` int(20) NOT NULL,
   `kode_karyawan` varchar(7) NOT NULL,
-  `nama` varchar(20) NOT NULL,
+  `nama` varchar(50) NOT NULL,
   `nip` varchar(20) NOT NULL,
   `tanggal` date NOT NULL,
   `tempat` varchar(20) NOT NULL,
@@ -92,7 +129,7 @@ INSERT INTO `data_karyawan` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `t
 CREATE TABLE `karyawan_tetap` (
   `id` int(20) NOT NULL,
   `kode_karyawan` varchar(7) NOT NULL,
-  `nama` varchar(20) NOT NULL,
+  `nama` varchar(50) NOT NULL,
   `nip` varchar(20) NOT NULL,
   `tanggal` date NOT NULL,
   `tempat` varchar(20) NOT NULL,
@@ -163,6 +200,25 @@ INSERT INTO `login` (`id`, `kode_karyawan`, `username`, `password`, `posisi`, `e
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `riwayat_gaji`
+--
+
+CREATE TABLE `riwayat_gaji` (
+  `id` int(11) NOT NULL,
+  `kode_karyawan` varchar(10) NOT NULL,
+  `invoice` varchar(12) NOT NULL,
+  `tanggal` varchar(30) NOT NULL,
+  `bulan` varchar(10) NOT NULL,
+  `total_gaji` varchar(50) NOT NULL,
+  `gaji_pokok` varchar(50) NOT NULL,
+  `bonus` varchar(50) NOT NULL,
+  `pajak` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `top`
 --
 
@@ -223,6 +279,12 @@ ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `daftar_gaji`
+--
+ALTER TABLE `daftar_gaji`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `data_karyawan`
 --
 ALTER TABLE `data_karyawan`
@@ -238,6 +300,12 @@ ALTER TABLE `karyawan_tetap`
 -- Indeks untuk tabel `login`
 --
 ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `riwayat_gaji`
+--
+ALTER TABLE `riwayat_gaji`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -263,6 +331,12 @@ ALTER TABLE `absensi`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
+-- AUTO_INCREMENT untuk tabel `daftar_gaji`
+--
+ALTER TABLE `daftar_gaji`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT untuk tabel `data_karyawan`
 --
 ALTER TABLE `data_karyawan`
@@ -279,6 +353,12 @@ ALTER TABLE `karyawan_tetap`
 --
 ALTER TABLE `login`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT untuk tabel `riwayat_gaji`
+--
+ALTER TABLE `riwayat_gaji`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `top`
