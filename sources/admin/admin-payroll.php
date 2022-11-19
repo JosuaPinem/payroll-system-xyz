@@ -274,7 +274,7 @@
                         <?php
                             $daftar = $query2;
                             foreach($daftar as $antrian):
-                                $pajak = ($antrian['gaji_pokok'] * 1000) * 0.5;
+                                $pajak = ($antrian['gaji_pokok'] * 1000) * 0.05;
                                 $kode = $antrian['kode_karyawan'];
                                 $gaji = $antrian['gaji_pokok'] * 1000;
                                 $get = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'"));
