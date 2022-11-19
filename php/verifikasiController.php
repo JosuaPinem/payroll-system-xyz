@@ -57,6 +57,8 @@ if(isset($_POST['verifikasi'])){
                                                (null, '$kode', '$nama', '$nip', '$tanggal', '$tempat', '$alamat', '$foto', '$jabatan', '$gender', '$gaji')");
                                                
     $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO top WHERE kode_karyawan = '$kode, jumlah_hadir = '0', nama = '$nama'");
+    $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO top VALUES (null, '$kode', '0','$nama', )");
+    $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO daftar_gaji VALUES (null, '$kode', '$nama', '', '$gaji', '', '')");
     if($verifikasiAkun){
         // delete data dari tabel antrian_registrasi
         $deleteData = mysqli_query($koneksi, "DELETE FROM verify WHERE username = '$username'");

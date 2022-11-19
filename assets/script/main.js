@@ -74,3 +74,8 @@ $("#present").on("click", function () {
 	$(".permission").addClass("d-none");
 	$(".reason").prop("checked", false).change();
 });
+
+/* Edit Salary */
+$("#edit-salary").on("click", function () {
+	$(".salary").prop("readonly", false).change();
+});

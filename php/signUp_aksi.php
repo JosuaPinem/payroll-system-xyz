@@ -18,14 +18,14 @@
     $text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $panj = 3;
     $txtl = strlen($text)-1;
-    $result = '';
+    $result1 = '';
     for($i=1; $i<=$panj; $i++){
     $result1 .= $text[rand(0, $txtl)];
     }
     $text = '1234567890';
     $panj = 3;
     $txtl = strlen($text)-1;
-    $result = '';
+    $result2 = '';
     for($i=1; $i<=$panj; $i++){
     $result2 .= $text[rand(0, $txtl)];
     }

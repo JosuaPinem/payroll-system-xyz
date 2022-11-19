@@ -372,6 +372,7 @@
         $update .= mysqli_query($koneksi, "UPDATE login SET email='$email' WHERE kode_karyawan='$id'");
         $update .= mysqli_query($koneksi, "UPDATE absensi SET nama='$nama' WHERE kode_karyawan='$id'");
         $update .= mysqli_query($koneksi, "UPDATE top SET nama='$nama' WHERE kode_karyawan='$id'");
+        $update .= mysqli_query($koneksi, "UPDATE daftar_gaji SET nama='$nama' WHERE kode_karyawan='$id'");
 
         if($update){
         echo "<script>
