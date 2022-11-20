@@ -87,7 +87,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                 </a>
             </li>
             <li>
-                <a href="#" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                <a href="admin-payroll.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xef63</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
                         <span class="text-sidebar">Payroll</span>

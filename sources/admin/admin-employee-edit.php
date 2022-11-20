@@ -339,10 +339,11 @@
 </body>
 <?php
     if(isset($_POST['simpan'])){
-        $posisi = @$_POST['position'];
+        $posisi = $_POST['position'];
         $gaji = $_POST['gaji'];
         $kode = $_GET['user'];
         $gaji = $gaji / 1000;
+        $pajak = $gaji * 0.05;
         $role="";
         if($posisi === "Admin" || $posisi === "CEO" || $posisi === "HRD"){
             $role = "admin";
@@ -351,7 +352,7 @@
         }
         $update = mysqli_query($koneksi, "UPDATE karyawan_tetap SET posisi = '$posisi', gaji = '$gaji' WHERE kode_karyawan = '$kode'");
         $update .= mysqli_query($koneksi, "UPDATE login SET posisi = '$role' WHERE kode_karyawan = '$kode'");
-        $update .= mysqli_query($koneksi, "UPDATE daftar_gaji SET gaji_pokok='$gaji' WHERE kode_karyawan = '$kode'");
+        $update .= mysqli_query($koneksi, "UPDATE daftar_gaji SET gaji_pokok='$gaji', pajak = '$pajak' WHERE kode_karyawan = '$kode'");
         if($update){
             echo "<script>
                     alert('Data anda berhasil diubah');

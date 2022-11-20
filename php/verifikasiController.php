@@ -52,13 +52,38 @@ if(isset($_POST['verifikasi'])){
     $foto = $data['foto'];
     $gender = $data['jenis_kelamin'];
 
+    // php config untuk mendapatkan invoice id
+    $text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $panj = 4;
+    $txtl = strlen($text) - 1;
+    $result1 = '';
+    for ($i = 1; $i <= $panj; $i++) {
+        $result1 .= $text[rand(0, $txtl)];
+    }
+    $text = '1234567890';
+    $panj = 6;
+    $txtl = strlen($text) - 1;
+    $result2 = '';
+    for ($i = 1; $i <= $panj; $i++) {
+        $result2 .= $text[rand(0, $txtl)];
+    }
+    $invoice = "$result1$result2";
+
     $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO karyawan_tetap
                                                VALUES 
                                                (null, '$kode', '$nama', '$nip', '$tanggal', '$tempat', '$alamat', '$foto', '$jabatan', '$gender', '$gaji')");
                                                
-    $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO top WHERE kode_karyawan = '$kode, jumlah_hadir = '0', nama = '$nama'");
-    $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO top VALUES (null, '$kode', '0','$nama', )");
-    $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO daftar_gaji VALUES (null, '$kode', '$nama', '', '$gaji', '', '')");
+    // $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO top WHERE kode_karyawan = '$kode', jumlah_hadir = '', nama = '$nama'");
+    // $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO top VALUES (null, '$kode', '0','$nama', )");
+    // jika akun yang di verifikasi adalah karyawan, masukkan ke tabel top
+    if($role == "karyawan"){
+        $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO top VALUES (null, '$kode', '', '$nama')");
+    }
+    // variabel untuk pajak
+    $pajak = $gaji * 0.05;
+    $gajiBersih = $gaji - $pajak;
+    $bulanTagihan = date('F');
+    $verifikasiAkun .= mysqli_query($koneksi, "INSERT INTO daftar_gaji VALUES (null, '$kode', '$nama', '$invoice', '$bulanTagihan', '', '$gaji', '', '$pajak', '$gajiBersih')");
     if($verifikasiAkun){
         // delete data dari tabel antrian_registrasi
         $deleteData = mysqli_query($koneksi, "DELETE FROM verify WHERE username = '$username'");

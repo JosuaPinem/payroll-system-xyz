@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- php config -->
+<?php
+include '../../php/functions.php';
+include '../../php/koneksi.php';
+
+session_start();
+if(!isset($_SESSION['admin'])){
+echo "<script>
+alert('Anda belum login, silahkan login terlebih dahulu!')
+</script>";
+header('refresh:0; ../../index.php');
+return false;
+}
+// lakukan query untuk mendapatkan data personal user yang login
+$kode = $_SESSION['kode'];
+$akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
+
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +30,7 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <!-- Google Material -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/styles/main.css">
+    <link rel="stylesheet" href="../../assets/style/main.css">
 </head>
 
 <body class="d-flex">
@@ -47,12 +66,11 @@
                     <!-- Toggle Dropdown -->
                     <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img id="profile-img"
-                            src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
+                        <img id="profile-img" src="../user-img/<?= $akun['foto']?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex col flex-column align-items-start me-1 ">
-                            <span class="fs-6 fw-semibold text">Roberto Firmino</span>
-                            <span class="fs-6 text opacity-75">CEO</span>
+                            <span class="fs-6 fw-semibold text"><?= $akun['nama']?></span>
+                            <span class="fs-6 text opacity-75"><?= $akun['posisi']?></span>
                         </span>
                     </button>
 
@@ -65,10 +83,10 @@
                             </a>
                         </li>
                         <li>
-                            <a class=" dropdown-item" href="admin-dashboard.html">Home</a>
+                            <a class=" dropdown-item" href="admin-dashboard.php">Home</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="../profile.html">Profile</a>
+                            <a class="dropdown-item" href="../profile.php">Profile</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="#">Help</a>
@@ -91,7 +109,7 @@
             <div class="d-flex my-2 mx-0 mx-lg-4 px-1 gap-1">
                 <div class="p-2 d-flex align-items-center">
                     <div class="">
-                        <a type="button" href="admin-payroll.html"
+                        <a type="button" href="admin-payroll.php"
                             class="d-flex rounded-circle p-1 btn btn-primary align-items-center justify-content-center">
                             <i class="material-icons-round">&#xe5c4</i>
                         </a>
@@ -100,10 +118,10 @@
                 <div class="d-flex flex-column flex-lg-row col align-items-lg-center justify-content-between p-1">
                     <span class="fs-3 fw-bold">Edit Payroll</span>
                     <ol class="breadcrumb my-0 p-lg-2">
-                        <li class="breadcrumb-item"><a class="text-decoration-none" href="admin-dashboard.html">Home</a>
+                        <li class="breadcrumb-item"><a class="text-decoration-none" href="admin-dashboard.php">Home</a>
                         </li>
-                        <li class="breadcrumb-item"><a class="text-decoration-none"
-                                href="admin-payroll.html">Payroll</a></li>
+                        <li class="breadcrumb-item"><a class="text-decoration-none" href="admin-payroll.php">Payroll</a>
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -112,27 +130,37 @@
             <div class="d-flex row mx-1 mx-lg-4 gap-4">
                 <!-- Payroll Form -->
                 <div>
-                    <form action="../php/form_aksi.php" method="post"
+                    <!-- php config untuk mendapatkan data gaji karyawan yang sedang di edit -->
+                    <?php
+                    $kodeURL = $_GET['kode'];
+                    $query = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kodeURL'");
+                    $query2 = query("SELECT * FROM daftar_gaji WHERE kode_karyawan = '$kodeURL'");
+                    ?>
+                    <form action="" method="post"
                         class="form container rounded-3 d-flex flex-column col col-sm-8 col-md-7 col-lg-6 col-xxl-5 p-5 gap-5 text-center"
                         enctype="multipart/form-data">
                         <h2 class="fw-bold fs-1">Payroll Form</h2>
                         <div class="d-flex flex-column gap-3">
                             <div>
                                 <label class="form-label d-flex">Nama Karyawan</label>
-                                <input class="form-control text text-field" type="text" value="Mohammed Salah"
-                                    aria-label="readonly input example" readonly>
+                                <input class="form-control text text-field" type="text"
+                                    aria-label="readonly input example" value="<?=$query['nama']?>" readonly>
                             </div>
                             <div>
-                                <label class="form-label d-flex">Posisi</label>
-                                <input class="form-control text text-field" type="text" value="Web Developer"
-                                    aria-label="readonly input example" readonly>
+                                <label class="form-label d-flex">Nama Karyawan</label>
+                                <input class="form-control text text-field" type="text"
+                                    aria-label="readonly input example" value="<?=$query['posisi']?>" readonly>
                             </div>
                             <div class="d-flex flex-column">
                                 <label class="form-label d-flex">Gaji Pokok</label>
                                 <div class="input-group">
                                     <span class="input-group-text text text-field">Rp</span>
-                                    <input type="text" class="salary form-control text text-field" aria-label="Salary"
-                                        placeholder="1.000.000" readonly>
+                                    <!-- php config untuk mendapatkan variabel gaji -->
+                                    <?php
+                                    $gaji = $query2['gaji_pokok'] * 1000;
+                                    ?>
+                                    <input type="text" name="gaji" class="salary form-control text text-field"
+                                        aria-label="Salary" value=<?= $gaji ?> readonly>
                                     <button type="button" id="edit-salary"
                                         class="btn btn-primary d-flex align-items-center p-md-2 p-1" title="edit">
                                         <i class="material-icons-round">&#xe3c9</i>
@@ -143,21 +171,29 @@
                                 <label class="form-label d-flex">Bonus</label>
                                 <div class="input-group">
                                     <span class="input-group-text text text-field">Rp</span>
-                                    <input type="text" class="form-control text-success text-field" aria-label="Bonus"
-                                        placeholder="1.000.000">
+                                    <!-- php config untuk mendapatkan variabel bonus -->
+                                    <?php $bonus = $query2['bonus'] * 1000; ?>
+                                    <input type="text" name="bonus" class="salary form-control text-success text-field"
+                                        aria-label="Bonus" value=<?= $bonus ?>>
                                 </div>
                             </div>
                             <div class="d-flex flex-column">
                                 <label class="form-label d-flex">Pajak</label>
                                 <div class="input-group">
                                     <span class="input-group-text text text-field">Rp</span>
-                                    <input type="text" class="form-control text-danger text-field" aria-label="Tax"
-                                        placeholder="1.000.000">
+                                    <!-- php config untuk mendapatkan variabel pajak -->
+                                    <?php
+                                    $pajak = $query2['pajak']*1000;   
+                                    ?>
+                                    <input type="text" name="pajak" class="form-control text-danger text-field"
+                                        aria-label="Tax" value="<?= number_format($pajak,0,".",",")."/month";?>"
+                                        readonly>
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex">
-                            <input type="submit" value="Simpan" class="btn btn-primary px-4 py-2 mb-3">
+                            <input type="submit" value="Simpan" name="updateGaji"
+                                class="btn btn-primary px-4 py-2 mb-3">
                         </div>
                     </form>
                 </div>
@@ -171,7 +207,33 @@
     <!-- JQuery Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="../../assets/scripts/main.js"></script>
+    <script src="../../assets/script/main.js"></script>
 </body>
 
 </html>
+
+<!-- php config untuk update gaji -->
+<?php
+    if(isset($_POST['updateGaji'])){
+        if(!isset($_POST['gaji'])){
+        $gaji = $query2['gaji_pokok'];
+        }else {
+        $gaji = $_POST['gaji'] / 1000;
+    }
+    if(!isset($_POST['bonus'])){
+        $bonus = $query['bonus'];
+    }else {
+        $bonus = $_POST['bonus']/1000;
+    }
+    $pajak = ($gaji * 0.05);
+    $gajiBersih = $gaji - $pajak + $bonus;
+    // update data
+    $updateGaji = mysqli_query($koneksi, "UPDATE daftar_gaji SET gaji_pokok = '$gaji', bonus = '$bonus', pajak = '$pajak', gaji_bersih = '$gajiBersih' WHERE kode_karyawan = '$kodeURL'");
+    $updateGaji .= mysqli_query($koneksi, "UPDATE karyawan_tetap SET gaji = '$gaji' WHERE kode_karyawan = '$kodeURL'");
+    if($updateGaji){
+        echo "<script>
+                alert('Data gaji sudah diperbarui');window.location='admin-payroll.php';
+              </script>";
+    }
+}
+?>

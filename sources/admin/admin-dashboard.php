@@ -267,11 +267,10 @@
                                             $id = $tampil['kode_karyawan'];
                                             $get = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$id'");
                                     ?>
-                                
+
                                     <tr class="d-flex col px-2 py-1">
                                         <td class="col-6 d-flex align-items-center gap-3 ">
-                                            <img id="profile-img"
-                                                src="../user-img/<?= $get['foto']; ?>"
+                                            <img id="profile-img" src="../user-img/<?= $get['foto']; ?>"
                                                 class="rounded-circle bg-light shadow-sm" alt="Avatar" />
                                             <span class="text"><?= $tampil['nama'] ?></span>
                                         </td>
@@ -281,7 +280,7 @@
                                     </tr>
                                     <?php } ?>
                                 </tbody>
-                                
+
                             </table>
                             <a href="admin-employee.php" class="text-decoration-none fs-6 p-3 mt-auto">Go to
                                 Employee</a>

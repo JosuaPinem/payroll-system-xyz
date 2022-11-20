@@ -78,7 +78,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'"); //
                         <img id="profile-img" src="../user-img/<?=$user1['foto']?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex col flex-column align-items-start me-1 ">
-                        <span class="fs-6 fw-semibold text"><?= strtoupper($user1['nama']); ?></span>
+                            <span class="fs-6 fw-semibold text"><?= strtoupper($user1['nama']); ?></span>
                             <span class="fs-6 text opacity-75"><?=strtoupper($user1['posisi']);?></span>
                         </span>
                     </button>
@@ -174,7 +174,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'"); //
 
                             if(isset($_POST['send'])){
                                 $keyword = $_POST['cari'];
-                                $user2 = mysqli_query($koneksi, "SELECT * FROM karyawan_tetap 
+                                $user2 = mysqli_query($koneksi, "SELECT * FROM daftar_gaji 
                                 WHERE nama LIKE '%$keyword%'
                                 OR jenis_kelamin LIKE '%$keyword%'
                                 OR posisi LIKE '%$keyword%'");
@@ -203,13 +203,15 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'"); //
                                     <?= $u['posisi']; ?>
                                 </td>
                                 <td class="col d-flex justify-content-center gap-1">
-                                    <a href="./admin-employee-edit.php?user=<?=$u['kode_karyawan']?>" style="text-decoration:none">
+                                    <a href="./admin-employee-edit.php?user=<?=$u['kode_karyawan']?>"
+                                        style="text-decoration:none">
                                         <button type="button"
                                             class="btn btn-primary d-flex align-items-center p-md-2 p-1" title="print">
                                             <i class="material-icons">&#xe3c9</i>
                                         </button>
                                     </a>
-                                    <a href="../deleteKaryawan.php?user=<?=$u['kode_karyawan']?>" style="text-decoration: none;"
+                                    <a href="../deleteKaryawan.php?user=<?=$u['kode_karyawan']?>"
+                                        style="text-decoration: none;"
                                         onclick="return confirm('Apakah anda ingin menghapus data <?=$u['nama']?>')">
                                         <button type="button"
                                             class="btn btn-danger d-flex align-items-center p-md-2 p-1" title="print">
