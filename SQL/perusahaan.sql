@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2022 at 06:16 AM
+-- Generation Time: Nov 21, 2022 at 04:22 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -79,23 +79,23 @@ CREATE TABLE `daftar_gaji` (
 --
 
 INSERT INTO `daftar_gaji` (`id`, `kode_karyawan`, `nama`, `invoice`, `bulan`, `date_lengkap`, `gaji_pokok`, `bonus`, `pajak`, `gaji_bersih`) VALUES
-(47, 'FSR366', 'Tomi Ginting', 'RABW620465', 'November\r\n', '', 3000, 300, 150, 3150),
-(48, 'WXK009', 'Mark Ferdinan', 'ASPS327386', 'November\r\n', '', 4000, 0, 200, 3800),
-(49, 'MQA848', 'Yura Goh', 'RGQK328950', 'November\r\n', '', 5000, 0, 250, 4750),
-(50, 'UYB623', 'Raihan Maulana', 'XPAG246240', 'November\r\n', '', 9000, 0, 450, 8550),
-(51, 'PGT728', 'Natan Sigalingging', 'BSPL691185', 'November\r\n', '', 4800, 0, 240, 4560),
-(52, 'NNG812', 'Fadly', 'JRAP614963', 'November\r\n', '', 4500, 0, 225, 4275),
-(53, 'ACV829', 'Wiliam wijaya', 'WCCI543584', 'November\r\n', '', 4800, 0, 240, 4560),
-(54, 'WKQ250', 'Josep Sembiring', 'MSXH561938', 'November\r\n', '', 4000, 500, 200, 4300),
-(55, 'CBW275', 'Muhammad Agus Syahpu', 'GLVM408258', 'November\r\n', '', 9300, 0, 465, 8835),
-(56, 'DZF691', 'Bright Nine Ginting', 'DVQG210260', 'November\r\n', '', 9300, 1000, 465, 9835),
-(57, 'SYL580', 'Rendy Herianto', 'UHNI881764', 'November\r\n', '', 4800, 0, 240, 4560),
-(58, 'MYU889', 'Vira Siburian', 'ZUPN132279', 'November\r\n', '', 4800, 0, 240, 4560),
-(59, 'BZG488', 'Lidya Sularto', 'WUAV960847', 'November\r\n', '', 3900, 0, 195, 3705),
-(60, 'MAB545', 'Afiq Alghazali', 'SGVE402890', 'November\r\n', '', 9300, 0, 465, 8835),
-(61, 'AYY935', 'Josua Pinem', 'IFHQ202744', 'November\r\n', '', 9300, 0, 465, 8835),
-(77, 'URV047', 'Fitri Anisa', 'RHQG899830', 'November', '', 3000, 0, 150, 2850),
-(78, 'FEP068', 'Agnes Manurung', 'IFEG600506', 'November', '', 2000, 0, 100, 1900);
+(47, 'FSR366', 'Tomi Ginting', 'RABW620465', 'November\r\n', '', 3000, 1400, 150, 4250),
+(48, 'WXK009', 'Mark Ferdinan', 'ASPS327386', 'November\r\n', '', 4000, 1050, 200, 4850),
+(49, 'MQA848', 'Yura Goh', 'RGQK328950', 'November\r\n', '', 5000, 1100, 250, 5850),
+(50, 'UYB623', 'Raihan Maulana', 'XPAG246240', 'November\r\n', '', 9000, 1100, 450, 9650),
+(51, 'PGT728', 'Natan Sigalingging', 'BSPL691185', 'November\r\n', '', 4800, 1100, 240, 5660),
+(52, 'NNG812', 'Fadly', 'JRAP614963', 'November\r\n', '', 4500, 1100, 225, 5375),
+(53, 'ACV829', 'Wiliam wijaya', 'WCCI543584', 'November\r\n', '', 4800, 1100, 240, 5660),
+(54, 'WKQ250', 'Josep Sembiring', 'MSXH561938', 'November\r\n', '', 4000, 1600, 200, 5400),
+(55, 'CBW275', 'Muhammad Agus Syahpu', 'GLVM408258', 'November\r\n', '', 9300, 1100, 465, 9935),
+(56, 'DZF691', 'Bright Nine Ginting', 'DVQG210260', 'November\r\n', '', 9300, 2100, 465, 10935),
+(57, 'SYL580', 'Rendy Herianto', 'UHNI881764', 'November\r\n', '', 4800, 1100, 240, 5660),
+(58, 'MYU889', 'Vira Siburian', 'ZUPN132279', 'November\r\n', '', 4800, 1100, 240, 5660),
+(59, 'BZG488', 'Lidya Sularto', 'WUAV960847', 'November\r\n', '', 3900, 1100, 195, 4805),
+(60, 'MAB545', 'Afiq Alghazali', 'SGVE402890', 'November\r\n', '', 9300, 1100, 465, 9935),
+(61, 'AYY935', 'Josua Pinem', 'IFHQ202744', 'November\r\n', '', 9300, 1100, 465, 9935),
+(77, 'URV047', 'Fitri Anisa', 'RHQG899830', 'November', '', 3000, 1100, 150, 3950),
+(78, 'FEP068', 'Agnes Manurung', 'IFEG600506', 'November', '', 2000, 1100, 100, 3000);
 
 -- --------------------------------------------------------
 
@@ -234,23 +234,23 @@ CREATE TABLE `riwayat_gaji` (
 --
 
 INSERT INTO `riwayat_gaji` (`id`, `kode_karyawan`, `invoice`, `tanggal_bayar`, `bulan_tagihan`, `total_gaji`, `gaji_pokok`, `bonus`, `pajak`, `status_pembayaran`) VALUES
-(453, 'FSR366', 'RABW620465', '20 Nov 2022', 'November\r\n', '3150', '3000', '300', '150', 'Paid'),
-(454, 'WXK009', 'ASPS327386', '20 Nov 2022', 'November\r\n', '3800', '4000', '0', '200', 'Paid'),
-(455, 'MQA848', 'RGQK328950', '20 Nov 2022', 'November\r\n', '4750', '5000', '0', '250', 'Paid'),
-(456, 'UYB623', 'XPAG246240', '20 Nov 2022', 'November\r\n', '8550', '9000', '0', '450', 'Paid'),
-(457, 'PGT728', 'BSPL691185', '20 Nov 2022', 'November\r\n', '4560', '4800', '0', '240', 'Paid'),
-(458, 'NNG812', 'JRAP614963', '20 Nov 2022', 'November\r\n', '4275', '4500', '0', '225', 'Paid'),
-(459, 'ACV829', 'WCCI543584', '20 Nov 2022', 'November\r\n', '4560', '4800', '0', '240', 'Paid'),
-(460, 'WKQ250', 'MSXH561938', '20 Nov 2022', 'November\r\n', '4300', '4000', '500', '200', 'Paid'),
-(461, 'CBW275', 'GLVM408258', '20 Nov 2022', 'November\r\n', '8835', '9300', '0', '465', 'Paid'),
-(462, 'DZF691', 'DVQG210260', '20 Nov 2022', 'November\r\n', '9835', '9300', '1000', '465', 'Paid'),
-(463, 'SYL580', 'UHNI881764', '20 Nov 2022', 'November\r\n', '4560', '4800', '0', '240', 'Paid'),
-(464, 'MYU889', 'ZUPN132279', '20 Nov 2022', 'November\r\n', '4560', '4800', '0', '240', 'Paid'),
-(465, 'BZG488', 'WUAV960847', '20 Nov 2022', 'November\r\n', '3705', '3900', '0', '195', 'Paid'),
-(466, 'MAB545', 'SGVE402890', '20 Nov 2022', 'November\r\n', '8835', '9300', '0', '465', 'Paid'),
-(467, 'AYY935', 'IFHQ202744', '20 Nov 2022', 'November\r\n', '8835', '9300', '0', '465', 'Paid'),
-(468, 'URV047', 'RHQG899830', '20 Nov 2022', 'November', '2850', '3000', '0', '150', 'Paid'),
-(469, 'FEP068', 'IFEG600506', '20 Nov 2022', 'November', '1900', '2000', '0', '100', 'Paid');
+(502, 'FSR366', 'RABW620465', '21 Nov 2022', 'November\r\n', '3250', '3000', '400', '150', 'Paid'),
+(503, 'WXK009', 'ASPS327386', '21 Nov 2022', 'November\r\n', '3850', '4000', '50', '200', 'Paid'),
+(504, 'MQA848', 'RGQK328950', '21 Nov 2022', 'November\r\n', '4850', '5000', '100', '250', 'Paid'),
+(505, 'UYB623', 'XPAG246240', '21 Nov 2022', 'November\r\n', '8650', '9000', '100', '450', 'Paid'),
+(506, 'PGT728', 'BSPL691185', '21 Nov 2022', 'November\r\n', '4660', '4800', '100', '240', 'Paid'),
+(507, 'NNG812', 'JRAP614963', '21 Nov 2022', 'November\r\n', '4375', '4500', '100', '225', 'Paid'),
+(508, 'ACV829', 'WCCI543584', '21 Nov 2022', 'November\r\n', '4660', '4800', '100', '240', 'Paid'),
+(509, 'WKQ250', 'MSXH561938', '21 Nov 2022', 'November\r\n', '4400', '4000', '600', '200', 'Paid'),
+(510, 'CBW275', 'GLVM408258', '21 Nov 2022', 'November\r\n', '8935', '9300', '100', '465', 'Paid'),
+(511, 'DZF691', 'DVQG210260', '21 Nov 2022', 'November\r\n', '9935', '9300', '1100', '465', 'Paid'),
+(512, 'SYL580', 'UHNI881764', '21 Nov 2022', 'November\r\n', '4660', '4800', '100', '240', 'Paid'),
+(513, 'MYU889', 'ZUPN132279', '21 Nov 2022', 'November\r\n', '4660', '4800', '100', '240', 'Paid'),
+(514, 'BZG488', 'WUAV960847', '21 Nov 2022', 'November\r\n', '3805', '3900', '100', '195', 'Paid'),
+(515, 'MAB545', 'SGVE402890', '21 Nov 2022', 'November\r\n', '8935', '9300', '100', '465', 'Paid'),
+(516, 'AYY935', 'IFHQ202744', '21 Nov 2022', 'November\r\n', '8935', '9300', '100', '465', 'Paid'),
+(517, 'URV047', 'RHQG899830', '21 Nov 2022', 'November', '2950', '3000', '100', '150', 'Paid'),
+(518, 'FEP068', 'IFEG600506', '21 Nov 2022', 'November', '2000', '2000', '100', '100', 'Paid');
 
 -- --------------------------------------------------------
 
@@ -369,7 +369,7 @@ ALTER TABLE `absensi`
 -- AUTO_INCREMENT for table `daftar_gaji`
 --
 ALTER TABLE `daftar_gaji`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343305;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343306;
 
 --
 -- AUTO_INCREMENT for table `data_karyawan`
@@ -393,7 +393,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `riwayat_gaji`
 --
 ALTER TABLE `riwayat_gaji`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=484;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=519;
 
 --
 -- AUTO_INCREMENT for table `top`
