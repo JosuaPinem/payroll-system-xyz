@@ -232,39 +232,24 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="d-flex col px-2 py-1">
-                                            <td class="col d-flex align-items-center gap-3 ">
-                                                <img id="profile-img"
-                                                    src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                                    class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                                <span class="text">Roberto Firmino</span>
-                                            </td>
-                                            <td class="col d-flex align-items-center">
-                                                <span class="text">HRD</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="d-flex col px-2 py-1">
-                                            <td class="col d-flex align-items-center gap-3 ">
-                                                <img id="profile-img"
-                                                    src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                                    class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                                <span class="text">Van Djik</span>
-                                            </td>
-                                            <td class="col d-flex align-items-center">
-                                                <span class="text">Senior Engineer</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="d-flex col px-2 py-1 ">
-                                            <td class="col d-flex align-items-center gap-3 ">
-                                                <img id="profile-img"
-                                                    src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
-                                                    class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                                <span class="text">Allison</span>
-                                            </td>
-                                            <td class="col d-flex align-items-center">
-                                                <span class="text">Junior Developer</span>
-                                            </td>
-                                        </tr>
+                                    <?php
+                                        $data = mysqli_query($koneksi,"SELECT kode_karyawan, jumlah_hadir, nama FROM top ORDER BY jumlah_hadir DESC LIMIT 3");
+                                        while($tampil = mysqli_fetch_array($data)) {
+                                            $id = $tampil['kode_karyawan'];
+                                            $get = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$id'");
+                                    ?>
+
+                                    <tr class="d-flex col px-2 py-1">
+                                        <td class="col-6 d-flex align-items-center gap-3 ">
+                                            <img id="profile-img" src="../user-img/<?= $get['foto']; ?>"
+                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
+                                            <span class="text"><?= $tampil['nama'] ?></span>
+                                        </td>
+                                        <td class="col-6 d-flex align-items-center">
+                                            <span class="text"><?= $get['posisi']; ?></span>
+                                        </td>
+                                    </tr>
+                                    <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

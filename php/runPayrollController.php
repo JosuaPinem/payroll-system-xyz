@@ -32,6 +32,7 @@ $invoice = "$result1$result2";
     // untuk mendapatkan variabel tanggal pembayaran dan status pembayaran
     $runPayroll .= mysqli_query($koneksi, "UPDATE riwayat_gaji SET tanggal_bayar = '$tanggalBayar'");
     $runPayroll .= mysqli_query($koneksi, "UPDATE riwayat_gaji SET status_pembayaran = 'Paid'");
+    $runPayroll .= mysqli_query($koneksi, "UPDATE daftar_gaji SET bonus = '0'");
     if($runPayroll){
     echo "<script>
     alert('Gaji seluruh karyawan sudah dibayar');window.location='../sources/admin/admin-payroll.php';
@@ -55,13 +56,13 @@ if (isset($_POST['tambahBonus'])) {
     $total = mysqli_num_rows($query);
     for ($i = 0; $i < $total; $i++) {
         $gajiPokok = $rows[$i]['gaji_pokok'];
-        $pajak = $rows[$i]['pajak'];
+        $pajak = $rows[$i]['gaji_pokok'] * 0.05;
         $namaUser = $rows[$i]['nama'];
         $daftarBonus = $rows[$i]['bonus'];
         $jumlahBonus = $_POST['jumlahBonus'] / 1000;
         $totalBonus = $daftarBonus + $jumlahBonus;
         $gajiBersih = $gajiPokok - $pajak + $totalBonus;
-        $updateBonus = mysqli_query($koneksi, "UPDATE daftar_gaji SET bonus = $totalBonus, gaji_bersih = $gajiBersih WHERE nama = '$namaUser'");
+        $updateBonus = mysqli_query($koneksi, "UPDATE daftar_gaji SET bonus = $totalBonus, gaji_bersih = $gajiBersih, pajak='$pajak' WHERE nama = '$namaUser'");
     }
     if ($updateBonus) {
         echo "<script>

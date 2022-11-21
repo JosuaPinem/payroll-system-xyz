@@ -72,7 +72,7 @@ if(!isset($_SESSION['karyawan'])){
         <ul id="menu-bar"
             class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
             <li>
-                <a href="employee-dashboard.html" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                <a href="./employee-dashboard.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9b0</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
                         <span class="text-sidebar">Dashboard</span>
@@ -80,7 +80,7 @@ if(!isset($_SESSION['karyawan'])){
                 </a>
             </li>
             <li>
-                <a href="employee-attendance.html" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                <a href="./employee-attendance.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe614</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
                         <span class="text-sidebar">Attendance</span>
@@ -88,7 +88,7 @@ if(!isset($_SESSION['karyawan'])){
                 </a>
             </li>
             <li class="active">
-                <a href="#" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
+                <a href="./employee-payroll.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xef63</i>
                     <div class="align-items-center d-none d-md-none d-lg-flex">
                         <span class="text-sidebar">Payroll</span>
@@ -140,11 +140,11 @@ if(!isset($_SESSION['karyawan'])){
                     <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <img id="profile-img"
-                            src="../user-img/<?php echo $query['foto'] ?>"
+                            src="../user-img/<?php echo $user['foto'] ?>"
                             class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex flex-column align-items-start me-1 ">
-                            <span class="fs-6 fw-semibold text"><?= strtoupper($query['nama']); ?></span>
-                            <span class="fs-6 text opacity-75"><?= strtoupper($query['posisi']); ?></span>
+                            <span class="fs-6 fw-semibold text"><?= strtoupper($user['nama']); ?></span>
+                            <span class="fs-6 text opacity-75"><?= strtoupper($user['posisi']); ?></span>
                         </span>
                     </button>
 
@@ -218,16 +218,20 @@ if(!isset($_SESSION['karyawan'])){
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                                $query = query("SELECT * FROM riwayat_gaji WHERE kode_karyawan = '$kode'");
+                                foreach ($query as $row) :
+                            ?>
                             <tr class="d-flex col p-1">
                                 <td class="col d-none d-md-flex p-1 align-items-center justify-content-center">
-                                    <span class="text">RHN89123457</span>
+                                    <span class="text"><?= $row['invoice'];?></span>
                                 </td>
                                 <td
                                     class="col col-lg col-md-3 d-none d-md-flex gap-2 p-1 align-items-center justify-content-center">
-                                    <span class="text">16 November 2022</span>
+                                    <span class="text"><?= $row['tanggal_bayar'];?></span>
                                 </td>
                                 <td class="col d-flex p-1 align-items-center justify-content-center">
-                                    <span class="text">Rp 10.400.000</span>
+                                    <span class="text"><?= number_format($row['total_gaji']* 1000,0,".",",");?></span>
                                 </td>
                                 <td class="col d-none d-sm-flex p-1 align-items-center justify-content-center">
                                     <span class="bg-success text-white px-4 py-1 rounded-1">Paid</span>
@@ -252,16 +256,16 @@ if(!isset($_SESSION['karyawan'])){
                                                         <div class="d-flex flex-column col gap-2">
                                                             <div class="d-flex px-2">
                                                                 <span class="text fw-bold col-4 py-1">Invoice ID</span>
-                                                                <span class="text col py-1">RHN89123457</span>
+                                                                <span class="text col py-1"><?= $row['invoice'];?></span>
                                                             </div>
                                                             <div class="d-flex px-2">
                                                                 <span class="text fw-bold col-4 py-1">Date</span>
-                                                                <span class="text col py-1">16 November 2022</span>
+                                                                <span class="text col py-1"><?= $row['tanggal_bayar'];?></span>
                                                             </div>
                                                             <div class="d-flex px-2">
                                                                 <span class="text fw-bold col-4 py-1">Status</span>
                                                                 <span
-                                                                    class="bg-success text-white px-4 py-1 rounded-1">Paid</span>
+                                                                    class="bg-success text-white px-4 py-1 rounded-1"><?= $row['status_pembayaran'];?></span>
                                                             </div>
                                                             <div
                                                                 class="d-flex flex-column mt-3 border border-2 border-primary border-opacity-50 rounded">
@@ -281,21 +285,21 @@ if(!isset($_SESSION['karyawan'])){
                                                                             Pokok</span>
                                                                         <span
                                                                             class="text-success col py-1 text-end fw-semibold numb">Rp
-                                                                            10.000.000</span>
+                                                                            <?= number_format($row['gaji_pokok']* 1000,0,".",",");?></span>
                                                                     </div>
                                                                     <div class="d-flex px-2">
                                                                         <span
                                                                             class="text col py-1 opacity-75">Bonus</span>
                                                                         <span
                                                                             class="text-success col py-1 text-end fw-semibold numb">Rp
-                                                                            1.500.000</span>
+                                                                            <?= number_format($row['bonus']* 1000,0,".",",");?></span>
                                                                     </div>
                                                                     <div class="d-flex px-2">
                                                                         <span
                                                                             class="text col py-1 opacity-75">Pajak</span>
                                                                         <span
                                                                             class="text-danger col py-1 text-end fw-semibold numb">Rp
-                                                                            1.100.000</span>
+                                                                            <?= number_format($row['pajak']* 1000,0,".",",");?></span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="d-flex background rounded-bottom fs-6 p-2">
@@ -303,7 +307,7 @@ if(!isset($_SESSION['karyawan'])){
                                                                         pendapatan</span>
                                                                     <span
                                                                         class="text col py-1 px-2 text-end fw-semibold numb">Rp
-                                                                        10.400.000</span>
+                                                                        <?= number_format($row['total_gaji']* 1000,0,".",",");?></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -318,27 +322,42 @@ if(!isset($_SESSION['karyawan'])){
                                     </div>
                                 </td>
                             </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
 
                 <!-- Pagination -->
+                <?php 
+                            $batas = 10;
+                            $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                            $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+                             
+                            $previous = $halaman - 1;
+                            $next = $halaman + 1;
+                                            
+                            $data = mysqli_query($koneksi,"SELECT * FROM karyawan_tetap, daftar_gaji WHERE karyawan_tetap.kode_karyawan = daftar_gaji.kode_karyawan");
+                            $jumlah_data = mysqli_num_rows($data);
+                            $total_halaman = ceil($jumlah_data / $batas);
+                ?>
                 <nav aria-label="..." class="d-flex justify-content-center mt-auto">
                     <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link d-flex"><i class="material-icons-round">&#xe408</i></a>
+                        <li class="page-item">
+                            <a class="page-link d-flex"
+                                <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>><i
+                                    class="material-icons-round">&#xe408</i></a>
                         </li>
+                        <?php 
+                        for($x=1;$x<=$total_halaman;$x++):
+                        ?>
                         <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="#">1</a>
+                            <a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a>
                         </li>
+                        <?php endfor; ?>
                         <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link d-flex" href="#"><i class="material-icons-round">&#xe409</i></a>
+                            <a class="page-link d-flex"
+                                <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>><i
+                                    class="material-icons-round">&#xe409</i></a>
                         </li>
                     </ul>
                 </nav>

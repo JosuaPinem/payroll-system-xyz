@@ -346,7 +346,8 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
                                         <span class="text-danger">- Rp. <?= number_format($pajak,0,".",",");?></span>
                                     </td>
                                     <?php
-                                $gaji = ($u['gaji_pokok'] - $u['pajak'] + $u['bonus']) * 1000;
+                                    $pajak = $u['gaji_pokok']*0.05;
+                                $gaji = ($u['gaji_pokok'] - $pajak + $u['bonus']) * 1000;
                                 ?>
                                     <td class="col d-none d-sm-flex p-1 align-items-center justify-content-center text">
                                         <span class="text-success">Rp. <?= number_format($gaji,0,".",",");?></span>
