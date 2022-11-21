@@ -79,3 +79,14 @@ $("#present").on("click", function () {
 $("#edit-salary").on("click", function () {
 	$(".salary").prop("readonly", false).change();
 });
+
+
+
+$.ajax({
+	type: "GET",
+	data: "",
+	url: "../../php/detail.php",
+	success: function (result) {
+		console.log(result);
+	}
+})

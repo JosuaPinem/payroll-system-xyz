@@ -249,7 +249,7 @@ if(!isset($_SESSION['karyawan'])){
                                                         Details
                                                     </h1>
                                                     <button type="button" class="btn-close bg-light"
-                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        data-bs-dismiss="moda" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="d-flex p-2 gap-2">

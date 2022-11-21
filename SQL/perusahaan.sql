@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.3.0-dev+20220601.866861edac
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2022 at 04:22 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.5
+-- Waktu pembuatan: 21 Nov 2022 pada 15.52
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `absensi`
+-- Struktur dari tabel `absensi`
 --
 
 CREATE TABLE `absensi` (
@@ -40,7 +40,7 @@ CREATE TABLE `absensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `absensi`
+-- Dumping data untuk tabel `absensi`
 --
 
 INSERT INTO `absensi` (`id`, `kode_karyawan`, `nama`, `tanggal`, `bulan`, `jam`, `keterangan`, `foto`, `surat`) VALUES
@@ -53,12 +53,13 @@ INSERT INTO `absensi` (`id`, `kode_karyawan`, `nama`, `tanggal`, `bulan`, `jam`,
 (46, 'SYL580', 'Rendy Herianto', '17 Nov 2022', '11', '01:22', 'Present', 'rendy.png', ''),
 (55, 'SYL580', 'Rendy Herianto', '18 Nov 2022', '11', '11:01', 'Present', 'rendy.png', ''),
 (56, 'URV047', 'Fitri Anisa', '20 Nov 2022', '11', '10:12', 'Present', 'silvia.png', ''),
-(58, 'WKQ250', 'Josep Sembiring', '20 Nov 2022', '11', '10:28', 'Present', 'josep.png', '');
+(58, 'WKQ250', 'Josep Sembiring', '20 Nov 2022', '11', '10:28', 'Present', 'josep.png', ''),
+(59, 'FSR366', 'Tomi Ginting', '21 Nov 2022', '11', '12:48', 'Present', 'tomi.png', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `daftar_gaji`
+-- Struktur dari tabel `daftar_gaji`
 --
 
 CREATE TABLE `daftar_gaji` (
@@ -75,32 +76,32 @@ CREATE TABLE `daftar_gaji` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `daftar_gaji`
+-- Dumping data untuk tabel `daftar_gaji`
 --
 
 INSERT INTO `daftar_gaji` (`id`, `kode_karyawan`, `nama`, `invoice`, `bulan`, `date_lengkap`, `gaji_pokok`, `bonus`, `pajak`, `gaji_bersih`) VALUES
-(47, 'FSR366', 'Tomi Ginting', 'RABW620465', 'November\r\n', '', 3000, 1400, 150, 4250),
-(48, 'WXK009', 'Mark Ferdinan', 'ASPS327386', 'November\r\n', '', 4000, 1050, 200, 4850),
-(49, 'MQA848', 'Yura Goh', 'RGQK328950', 'November\r\n', '', 5000, 1100, 250, 5850),
-(50, 'UYB623', 'Raihan Maulana', 'XPAG246240', 'November\r\n', '', 9000, 1100, 450, 9650),
-(51, 'PGT728', 'Natan Sigalingging', 'BSPL691185', 'November\r\n', '', 4800, 1100, 240, 5660),
-(52, 'NNG812', 'Fadly', 'JRAP614963', 'November\r\n', '', 4500, 1100, 225, 5375),
-(53, 'ACV829', 'Wiliam wijaya', 'WCCI543584', 'November\r\n', '', 4800, 1100, 240, 5660),
-(54, 'WKQ250', 'Josep Sembiring', 'MSXH561938', 'November\r\n', '', 4000, 1600, 200, 5400),
-(55, 'CBW275', 'Muhammad Agus Syahpu', 'GLVM408258', 'November\r\n', '', 9300, 1100, 465, 9935),
-(56, 'DZF691', 'Bright Nine Ginting', 'DVQG210260', 'November\r\n', '', 9300, 2100, 465, 10935),
-(57, 'SYL580', 'Rendy Herianto', 'UHNI881764', 'November\r\n', '', 4800, 1100, 240, 5660),
-(58, 'MYU889', 'Vira Siburian', 'ZUPN132279', 'November\r\n', '', 4800, 1100, 240, 5660),
-(59, 'BZG488', 'Lidya Sularto', 'WUAV960847', 'November\r\n', '', 3900, 1100, 195, 4805),
-(60, 'MAB545', 'Afiq Alghazali', 'SGVE402890', 'November\r\n', '', 9300, 1100, 465, 9935),
-(61, 'AYY935', 'Josua Pinem', 'IFHQ202744', 'November\r\n', '', 9300, 1100, 465, 9935),
-(77, 'URV047', 'Fitri Anisa', 'RHQG899830', 'November', '', 3000, 1100, 150, 3950),
-(78, 'FEP068', 'Agnes Manurung', 'IFEG600506', 'November', '', 2000, 1100, 100, 3000);
+(47, 'FSR366', 'Tomi Ginting', 'RABW620465', 'November\r\n', '', 3000, 0, 150, 3350),
+(48, 'WXK009', 'Mark Ferdinan', 'ASPS327386', 'November\r\n', '', 4000, 0, 200, 4300),
+(49, 'MQA848', 'Yura Goh', 'RGQK328950', 'November\r\n', '', 5000, 0, 250, 5250),
+(50, 'UYB623', 'Raihan Maulana', 'XPAG246240', 'November\r\n', '', 9000, 0, 450, 9050),
+(51, 'PGT728', 'Natan Sigalingging', 'BSPL691185', 'November\r\n', '', 4800, 0, 240, 5060),
+(52, 'NNG812', 'Fadly', 'JRAP614963', 'November\r\n', '', 4500, 0, 225, 4775),
+(53, 'ACV829', 'Wiliam wijaya', 'WCCI543584', 'November\r\n', '', 4800, 0, 240, 5060),
+(54, 'WKQ250', 'Josep Sembiring', 'MSXH561938', 'November\r\n', '', 4000, 0, 200, 4300),
+(55, 'CBW275', 'Muhammad Agus Syahpu', 'GLVM408258', 'November\r\n', '', 9300, 0, 465, 9335),
+(56, 'DZF691', 'Bright Nine Ginting', 'DVQG210260', 'November\r\n', '', 9300, 0, 465, 9335),
+(57, 'SYL580', 'Rendy Herianto', 'UHNI881764', 'November\r\n', '', 4800, 0, 240, 5060),
+(58, 'MYU889', 'Vira Siburian', 'ZUPN132279', 'November\r\n', '', 4800, 0, 240, 5060),
+(59, 'BZG488', 'Lidya Sularto', 'WUAV960847', 'November\r\n', '', 3900, 0, 195, 4205),
+(60, 'MAB545', 'Afiq Alghazali', 'SGVE402890', 'November\r\n', '', 9300, 0, 465, 9335),
+(61, 'AYY935', 'Josua Pinem', 'IFHQ202744', 'November\r\n', '', 9300, 0, 465, 9335),
+(77, 'URV047', 'Fitri Anisa', 'RHQG899830', 'November', '', 3000, 0, 150, 3350),
+(78, 'FEP068', 'Agnes Manurung', 'IFEG600506', 'November', '', 2000, 0, 100, 2400);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_karyawan`
+-- Struktur dari tabel `data_karyawan`
 --
 
 CREATE TABLE `data_karyawan` (
@@ -118,7 +119,7 @@ CREATE TABLE `data_karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `data_karyawan`
+-- Dumping data untuk tabel `data_karyawan`
 --
 
 INSERT INTO `data_karyawan` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `tempat`, `alamat`, `foto`, `posisi`, `jenis_kelamin`, `gaji`) VALUES
@@ -128,7 +129,7 @@ INSERT INTO `data_karyawan` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `karyawan_tetap`
+-- Struktur dari tabel `karyawan_tetap`
 --
 
 CREATE TABLE `karyawan_tetap` (
@@ -146,7 +147,7 @@ CREATE TABLE `karyawan_tetap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `karyawan_tetap`
+-- Dumping data untuk tabel `karyawan_tetap`
 --
 
 INSERT INTO `karyawan_tetap` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `tempat`, `alamat`, `foto`, `posisi`, `jenis_kelamin`, `gaji`) VALUES
@@ -171,7 +172,7 @@ INSERT INTO `karyawan_tetap` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Struktur dari tabel `login`
 --
 
 CREATE TABLE `login` (
@@ -184,7 +185,7 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `login`
+-- Dumping data untuk tabel `login`
 --
 
 INSERT INTO `login` (`id`, `kode_karyawan`, `username`, `password`, `posisi`, `email`) VALUES
@@ -213,7 +214,7 @@ INSERT INTO `login` (`id`, `kode_karyawan`, `username`, `password`, `posisi`, `e
 -- --------------------------------------------------------
 
 --
--- Table structure for table `riwayat_gaji`
+-- Struktur dari tabel `riwayat_gaji`
 --
 
 CREATE TABLE `riwayat_gaji` (
@@ -230,7 +231,7 @@ CREATE TABLE `riwayat_gaji` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `riwayat_gaji`
+-- Dumping data untuk tabel `riwayat_gaji`
 --
 
 INSERT INTO `riwayat_gaji` (`id`, `kode_karyawan`, `invoice`, `tanggal_bayar`, `bulan_tagihan`, `total_gaji`, `gaji_pokok`, `bonus`, `pajak`, `status_pembayaran`) VALUES
@@ -250,12 +251,63 @@ INSERT INTO `riwayat_gaji` (`id`, `kode_karyawan`, `invoice`, `tanggal_bayar`, `
 (515, 'MAB545', 'SGVE402890', '21 Nov 2022', 'November\r\n', '8935', '9300', '100', '465', 'Paid'),
 (516, 'AYY935', 'IFHQ202744', '21 Nov 2022', 'November\r\n', '8935', '9300', '100', '465', 'Paid'),
 (517, 'URV047', 'RHQG899830', '21 Nov 2022', 'November', '2950', '3000', '100', '150', 'Paid'),
-(518, 'FEP068', 'IFEG600506', '21 Nov 2022', 'November', '2000', '2000', '100', '100', 'Paid');
+(518, 'FEP068', 'IFEG600506', '21 Nov 2022', 'November', '2000', '2000', '100', '100', 'Paid'),
+(519, 'FSR366', 'RABW620465', '21 Nov 2022', 'November\r\n', '4450', '3000', '1600', '150', 'Paid'),
+(520, 'WXK009', 'ASPS327386', '21 Nov 2022', 'November\r\n', '5050', '4000', '1250', '200', 'Paid'),
+(521, 'MQA848', 'RGQK328950', '21 Nov 2022', 'November\r\n', '6050', '5000', '1300', '250', 'Paid'),
+(522, 'UYB623', 'XPAG246240', '21 Nov 2022', 'November\r\n', '9850', '9000', '1300', '450', 'Paid'),
+(523, 'PGT728', 'BSPL691185', '21 Nov 2022', 'November\r\n', '5860', '4800', '1300', '240', 'Paid'),
+(524, 'NNG812', 'JRAP614963', '21 Nov 2022', 'November\r\n', '5575', '4500', '1300', '225', 'Paid'),
+(525, 'ACV829', 'WCCI543584', '21 Nov 2022', 'November\r\n', '5860', '4800', '1300', '240', 'Paid'),
+(526, 'WKQ250', 'MSXH561938', '21 Nov 2022', 'November\r\n', '5600', '4000', '1800', '200', 'Paid'),
+(527, 'CBW275', 'GLVM408258', '21 Nov 2022', 'November\r\n', '10135', '9300', '1300', '465', 'Paid'),
+(528, 'DZF691', 'DVQG210260', '21 Nov 2022', 'November\r\n', '11135', '9300', '2300', '465', 'Paid'),
+(529, 'SYL580', 'UHNI881764', '21 Nov 2022', 'November\r\n', '5860', '4800', '1300', '240', 'Paid'),
+(530, 'MYU889', 'ZUPN132279', '21 Nov 2022', 'November\r\n', '5860', '4800', '1300', '240', 'Paid'),
+(531, 'BZG488', 'WUAV960847', '21 Nov 2022', 'November\r\n', '5005', '3900', '1300', '195', 'Paid'),
+(532, 'MAB545', 'SGVE402890', '21 Nov 2022', 'November\r\n', '10135', '9300', '1300', '465', 'Paid'),
+(533, 'AYY935', 'IFHQ202744', '21 Nov 2022', 'November\r\n', '10135', '9300', '1300', '465', 'Paid'),
+(534, 'URV047', 'RHQG899830', '21 Nov 2022', 'November', '4150', '3000', '1300', '150', 'Paid'),
+(535, 'FEP068', 'IFEG600506', '21 Nov 2022', 'November', '3200', '2000', '1300', '100', 'Paid'),
+(550, 'FSR366', 'RABW620465', '21 Nov 2022', 'November\r\n', '3150', '3000', '300', '150', 'Paid'),
+(551, 'WXK009', 'ASPS327386', '21 Nov 2022', 'November\r\n', '4100', '4000', '300', '200', 'Paid'),
+(552, 'MQA848', 'RGQK328950', '21 Nov 2022', 'November\r\n', '5050', '5000', '300', '250', 'Paid'),
+(553, 'UYB623', 'XPAG246240', '21 Nov 2022', 'November\r\n', '8850', '9000', '300', '450', 'Paid'),
+(554, 'PGT728', 'BSPL691185', '21 Nov 2022', 'November\r\n', '4860', '4800', '300', '240', 'Paid'),
+(555, 'NNG812', 'JRAP614963', '21 Nov 2022', 'November\r\n', '4575', '4500', '300', '225', 'Paid'),
+(556, 'ACV829', 'WCCI543584', '21 Nov 2022', 'November\r\n', '4860', '4800', '300', '240', 'Paid'),
+(557, 'WKQ250', 'MSXH561938', '21 Nov 2022', 'November\r\n', '4100', '4000', '300', '200', 'Paid'),
+(558, 'CBW275', 'GLVM408258', '21 Nov 2022', 'November\r\n', '9135', '9300', '300', '465', 'Paid'),
+(559, 'DZF691', 'DVQG210260', '21 Nov 2022', 'November\r\n', '9135', '9300', '300', '465', 'Paid'),
+(560, 'SYL580', 'UHNI881764', '21 Nov 2022', 'November\r\n', '4860', '4800', '300', '240', 'Paid'),
+(561, 'MYU889', 'ZUPN132279', '21 Nov 2022', 'November\r\n', '4860', '4800', '300', '240', 'Paid'),
+(562, 'BZG488', 'WUAV960847', '21 Nov 2022', 'November\r\n', '4005', '3900', '300', '195', 'Paid'),
+(563, 'MAB545', 'SGVE402890', '21 Nov 2022', 'November\r\n', '9135', '9300', '300', '465', 'Paid'),
+(564, 'AYY935', 'IFHQ202744', '21 Nov 2022', 'November\r\n', '9135', '9300', '300', '465', 'Paid'),
+(565, 'URV047', 'RHQG899830', '21 Nov 2022', 'November', '3150', '3000', '300', '150', 'Paid'),
+(566, 'FEP068', 'IFEG600506', '21 Nov 2022', 'November', '2200', '2000', '300', '100', 'Paid'),
+(581, 'FSR366', 'RABW620465', '21 Nov 2022', 'November\r\n', '3350', '3000', '500', '150', 'Paid'),
+(582, 'WXK009', 'ASPS327386', '21 Nov 2022', 'November\r\n', '4300', '4000', '500', '200', 'Paid'),
+(583, 'MQA848', 'RGQK328950', '21 Nov 2022', 'November\r\n', '5250', '5000', '500', '250', 'Paid'),
+(584, 'UYB623', 'XPAG246240', '21 Nov 2022', 'November\r\n', '9050', '9000', '500', '450', 'Paid'),
+(585, 'PGT728', 'BSPL691185', '21 Nov 2022', 'November\r\n', '5060', '4800', '500', '240', 'Paid'),
+(586, 'NNG812', 'JRAP614963', '21 Nov 2022', 'November\r\n', '4775', '4500', '500', '225', 'Paid'),
+(587, 'ACV829', 'WCCI543584', '21 Nov 2022', 'November\r\n', '5060', '4800', '500', '240', 'Paid'),
+(588, 'WKQ250', 'MSXH561938', '21 Nov 2022', 'November\r\n', '4300', '4000', '500', '200', 'Paid'),
+(589, 'CBW275', 'GLVM408258', '21 Nov 2022', 'November\r\n', '9335', '9300', '500', '465', 'Paid'),
+(590, 'DZF691', 'DVQG210260', '21 Nov 2022', 'November\r\n', '9335', '9300', '500', '465', 'Paid'),
+(591, 'SYL580', 'UHNI881764', '21 Nov 2022', 'November\r\n', '5060', '4800', '500', '240', 'Paid'),
+(592, 'MYU889', 'ZUPN132279', '21 Nov 2022', 'November\r\n', '5060', '4800', '500', '240', 'Paid'),
+(593, 'BZG488', 'WUAV960847', '21 Nov 2022', 'November\r\n', '4205', '3900', '500', '195', 'Paid'),
+(594, 'MAB545', 'SGVE402890', '21 Nov 2022', 'November\r\n', '9335', '9300', '500', '465', 'Paid'),
+(595, 'AYY935', 'IFHQ202744', '21 Nov 2022', 'November\r\n', '9335', '9300', '500', '465', 'Paid'),
+(596, 'URV047', 'RHQG899830', '21 Nov 2022', 'November', '3350', '3000', '500', '150', 'Paid'),
+(597, 'FEP068', 'IFEG600506', '21 Nov 2022', 'November', '2400', '2000', '500', '100', 'Paid');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `top`
+-- Struktur dari tabel `top`
 --
 
 CREATE TABLE `top` (
@@ -266,11 +318,11 @@ CREATE TABLE `top` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `top`
+-- Dumping data untuk tabel `top`
 --
 
 INSERT INTO `top` (`id`, `kode_karyawan`, `jumlah_hadir`, `nama`) VALUES
-(1, 'FSR366', '1', 'Tomi Ginting'),
+(1, 'FSR366', '2', 'Tomi Ginting'),
 (2, 'WXK009', '1', 'Mark Ferdinan'),
 (3, 'PGT728', '1', 'Natan Sigalingging'),
 (4, 'NNG812', '1', 'Fadly'),
@@ -284,7 +336,7 @@ INSERT INTO `top` (`id`, `kode_karyawan`, `jumlah_hadir`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `verify`
+-- Struktur dari tabel `verify`
 --
 
 CREATE TABLE `verify` (
@@ -296,7 +348,7 @@ CREATE TABLE `verify` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `verify`
+-- Dumping data untuk tabel `verify`
 --
 
 INSERT INTO `verify` (`id`, `kode_karyawan`, `username`, `password`, `email`) VALUES
@@ -308,101 +360,101 @@ INSERT INTO `verify` (`id`, `kode_karyawan`, `username`, `password`, `email`) VA
 --
 
 --
--- Indexes for table `absensi`
+-- Indeks untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `daftar_gaji`
+-- Indeks untuk tabel `daftar_gaji`
 --
 ALTER TABLE `daftar_gaji`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `data_karyawan`
+-- Indeks untuk tabel `data_karyawan`
 --
 ALTER TABLE `data_karyawan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `karyawan_tetap`
+-- Indeks untuk tabel `karyawan_tetap`
 --
 ALTER TABLE `karyawan_tetap`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `login`
+-- Indeks untuk tabel `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `riwayat_gaji`
+-- Indeks untuk tabel `riwayat_gaji`
 --
 ALTER TABLE `riwayat_gaji`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `top`
+-- Indeks untuk tabel `top`
 --
 ALTER TABLE `top`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `verify`
+-- Indeks untuk tabel `verify`
 --
 ALTER TABLE `verify`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `absensi`
+-- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
--- AUTO_INCREMENT for table `daftar_gaji`
+-- AUTO_INCREMENT untuk tabel `daftar_gaji`
 --
 ALTER TABLE `daftar_gaji`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343306;
 
 --
--- AUTO_INCREMENT for table `data_karyawan`
+-- AUTO_INCREMENT untuk tabel `data_karyawan`
 --
 ALTER TABLE `data_karyawan`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
--- AUTO_INCREMENT for table `karyawan_tetap`
+-- AUTO_INCREMENT untuk tabel `karyawan_tetap`
 --
 ALTER TABLE `karyawan_tetap`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT untuk tabel `login`
 --
 ALTER TABLE `login`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT for table `riwayat_gaji`
+-- AUTO_INCREMENT untuk tabel `riwayat_gaji`
 --
 ALTER TABLE `riwayat_gaji`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=519;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=598;
 
 --
--- AUTO_INCREMENT for table `top`
+-- AUTO_INCREMENT untuk tabel `top`
 --
 ALTER TABLE `top`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `verify`
+-- AUTO_INCREMENT untuk tabel `verify`
 --
 ALTER TABLE `verify`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12387;
@@ -411,6 +463,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
