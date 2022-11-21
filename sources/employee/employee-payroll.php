@@ -220,7 +220,7 @@ if(!isset($_SESSION['karyawan'])){
                         <tbody>
                             <?php
                                 $query = query("SELECT * FROM riwayat_gaji WHERE kode_karyawan = '$kode'");
-                                foreach ($query as $row) :
+                                foreach ($query as $row) : 
                             ?>
                             <tr class="d-flex col p-1">
                                 <td class="col d-none d-md-flex p-1 align-items-center justify-content-center">
