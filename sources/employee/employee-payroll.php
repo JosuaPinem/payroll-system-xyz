@@ -237,10 +237,10 @@ if(!isset($_SESSION['karyawan'])){
                                     <span class="bg-success text-white px-4 py-1 rounded-1">Paid</span>
                                 </td>
                                 <td class="col d-flex p-1 align-items-center justify-content-center gap-1">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop">Details</button>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="detail"
+                                        data-bs-target="#modalViewData<?= $row['id'];?>" data-id="<?= $row['id']; ?>">Details</button>
                                     <!-- Modal Details -->
-                                    <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1"
+                                    <div class="modal fade" id="modalViewData<?= $row['id'];?>" data-id="<?= $row['id']; ?>" data-bs-keyboard="false" tabindex="-1"
                                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content flex-container">
@@ -249,9 +249,9 @@ if(!isset($_SESSION['karyawan'])){
                                                         Details
                                                     </h1>
                                                     <button type="button" class="btn-close bg-light"
-                                                        data-bs-dismiss="moda" aria-label="Close"></button>
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body" id="detail_gaji">
                                                     <div class="d-flex p-2 gap-2">
                                                         <div class="d-flex flex-column col gap-2">
                                                             <div class="d-flex px-2">
@@ -366,6 +366,20 @@ if(!isset($_SESSION['karyawan'])){
     </div>
     </div>
     </div>
+    
+    <script>
+        $(function(){
+            $(document).on('click', '#detail', function(e){
+                e.preventDefault();
+                $("#staticBackdrop").modal('show');
+                $.post('detail.php', {id:$(this).attr('data-id')},
+                    function(html){
+                        $(".modal-body"). html(html);
+                    });
+            });
+        });
+    </script>
+
 
     <!-- Bootstrap JS -->
     <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
