@@ -223,6 +223,7 @@ if(!isset($_SESSION['karyawan'])){
                                     $jumlah = mysqli_fetch_array(mysqli_query($koneksi, "SELECT COUNT(1) FROM karyawan_tetap WHERE posisi = '$query[posisi]'"))[0];
                                 ?>
                                 <span class="display-5 fw-bold mb-3"><?php echo $jumlah; ?></span>
+                                <span class="fs-6">People In Company</span>
                             </div>
                         </div>
                     </div>
