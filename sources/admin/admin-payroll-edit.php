@@ -7,12 +7,12 @@ include '../../php/functions.php';
 include '../../php/koneksi.php';
 
 session_start();
-if(!isset($_SESSION['admin'])){
-echo "<script>
+if (!isset($_SESSION['admin'])) {
+    echo "<script>
 alert('Anda belum login, silahkan login terlebih dahulu!')
 </script>";
-header('refresh:0; ../../index.php');
-return false;
+    header('refresh:0; ../../index.php');
+    return false;
 }
 // lakukan query untuk mendapatkan data personal user yang login
 $kode = $_SESSION['kode'];
@@ -24,16 +24,17 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verification</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <!-- Google Material -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/style/main.css">
+    <title>Verification</title>
 </head>
 
-<body class="d-flex">
+<body class="d-none">
     <!-- Content -->
     <div class="content col d-flex flex-column gap-3 mb-2">
         <!-- Topbar -->
@@ -55,8 +56,7 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
                 <div class="dark-mode d-flex align-items-center">
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xe518</label>
                     <div class="d-flex form-check form-switch justify-content-center" for="dark-mode">
-                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark"
-                            id="dark-mode">
+                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark" id="dark-mode">
                     </div>
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xef5e</label>
                 </div>
@@ -64,13 +64,11 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
                 <!-- Dropdown -->
                 <div class="dropdown d-flex">
                     <!-- Toggle Dropdown -->
-                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img id="profile-img" src="../user-img/<?= $akun['foto']?>"
-                            class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
+                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="profile-img" src="../user-img/<?= $akun['foto'] ?>" class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex col flex-column align-items-start me-1 ">
-                            <span class="fs-6 fw-semibold text"><?= $akun['nama']?></span>
-                            <span class="fs-6 text opacity-75"><?= $akun['posisi']?></span>
+                            <span class="fs-6 fw-semibold text"><?= $akun['nama'] ?></span>
+                            <span class="fs-6 text opacity-75"><?= $akun['posisi'] ?></span>
                         </span>
                     </button>
 
@@ -95,8 +93,7 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
                             <hr class="dropdown-divider d-block d-lg-none">
                         </li>
                         <li>
-                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php"
-                                onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
+                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
                         </li>
                     </ul>
                 </div>
@@ -109,8 +106,7 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
             <div class="d-flex my-2 mx-0 mx-lg-4 px-1 gap-1">
                 <div class="p-2 d-flex align-items-center">
                     <div class="">
-                        <a type="button" href="admin-payroll.php"
-                            class="d-flex rounded-circle p-1 btn btn-primary align-items-center justify-content-center">
+                        <a type="button" href="admin-payroll.php" class="d-flex rounded-circle p-1 btn btn-primary align-items-center justify-content-center">
                             <i class="material-icons-round">&#xe5c4</i>
                         </a>
                     </div>
@@ -136,20 +132,16 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
                     $query = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kodeURL'");
                     $query2 = query("SELECT * FROM daftar_gaji WHERE kode_karyawan = '$kodeURL'");
                     ?>
-                    <form action="" method="post"
-                        class="form container rounded-3 d-flex flex-column col col-sm-8 col-md-7 col-lg-6 col-xxl-5 p-5 gap-5 text-center"
-                        enctype="multipart/form-data">
+                    <form action="" method="post" class="form container rounded-3 d-flex flex-column col col-sm-8 col-md-7 col-lg-6 col-xxl-5 p-5 gap-5 text-center" enctype="multipart/form-data">
                         <h2 class="fw-bold fs-1">Payroll Form</h2>
                         <div class="d-flex flex-column gap-3">
                             <div>
                                 <label class="form-label d-flex">Nama Karyawan</label>
-                                <input class="form-control text text-field" type="text"
-                                    aria-label="readonly input example" value="<?=$query['nama']?>" readonly>
+                                <input class="form-control text text-field" type="text" aria-label="readonly input example" value="<?= $query['nama'] ?>" readonly>
                             </div>
                             <div>
                                 <label class="form-label d-flex">Nama Karyawan</label>
-                                <input class="form-control text text-field" type="text"
-                                    aria-label="readonly input example" value="<?=$query['posisi']?>" readonly>
+                                <input class="form-control text text-field" type="text" aria-label="readonly input example" value="<?= $query['posisi'] ?>" readonly>
                             </div>
                             <div class="d-flex flex-column">
                                 <label class="form-label d-flex">Gaji Pokok</label>
@@ -159,10 +151,8 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
                                     <?php
                                     $gaji = $query2['gaji_pokok'] * 1000;
                                     ?>
-                                    <input type="text" name="gaji" class="salary form-control text text-field"
-                                        aria-label="Salary" value=<?= $gaji ?> readonly>
-                                    <button type="button" id="edit-salary"
-                                        class="btn btn-primary d-flex align-items-center p-md-2 p-1" title="edit">
+                                    <input type="text" name="gaji" class="salary form-control text text-field" aria-label="Salary" value=<?= $gaji ?> readonly>
+                                    <button type="button" id="edit-salary" class="btn btn-primary d-flex align-items-center p-md-2 p-1" title="edit">
                                         <i class="material-icons-round">&#xe3c9</i>
                                     </button>
                                 </div>
@@ -173,8 +163,7 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
                                     <span class="input-group-text text text-field">Rp</span>
                                     <!-- php config untuk mendapatkan variabel bonus -->
                                     <?php $bonus = $query2['bonus'] * 1000; ?>
-                                    <input type="text" name="bonus" class="salary form-control text-success text-field"
-                                        aria-label="Bonus" value=<?= $bonus ?>>
+                                    <input type="text" name="bonus" class="salary form-control text-success text-field" aria-label="Bonus" value=<?= $bonus ?>>
                                 </div>
                             </div>
                             <div class="d-flex flex-column">
@@ -183,17 +172,14 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
                                     <span class="input-group-text text text-field">Rp</span>
                                     <!-- php config untuk mendapatkan variabel pajak -->
                                     <?php
-                                    $pajak = $query2['pajak']*1000;   
+                                    $pajak = $query2['pajak'] * 1000;
                                     ?>
-                                    <input type="text" name="pajak" class="form-control text-danger text-field"
-                                        aria-label="Tax" value="<?= number_format($pajak,0,".",",")."/month";?>"
-                                        readonly>
+                                    <input type="text" name="pajak" class="form-control text-danger text-field" aria-label="Tax" value="<?= number_format($pajak, 0, ".", "."); ?>" readonly>
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex">
-                            <input type="submit" value="Simpan" name="updateGaji"
-                                class="btn btn-primary px-4 py-2 mb-3">
+                            <input type="submit" value="Simpan" name="updateGaji" class="btn btn-primary px-4 py-2 mb-3">
                         </div>
                     </form>
                 </div>
@@ -214,23 +200,23 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
 
 <!-- php config untuk update gaji -->
 <?php
-    if(isset($_POST['updateGaji'])){
-        if(!isset($_POST['gaji'])){
+if (isset($_POST['updateGaji'])) {
+    if (!isset($_POST['gaji'])) {
         $gaji = $query2['gaji_pokok'];
-        }else {
+    } else {
         $gaji = $_POST['gaji'] / 1000;
     }
-    if(!isset($_POST['bonus'])){
+    if (!isset($_POST['bonus'])) {
         $bonus = $query['bonus'];
-    }else {
-        $bonus = $_POST['bonus']/1000;
+    } else {
+        $bonus = $_POST['bonus'] / 1000;
     }
     $pajak = ($gaji * 0.05);
     $gajiBersih = $gaji - $pajak + $bonus;
     // update data
     $updateGaji = mysqli_query($koneksi, "UPDATE daftar_gaji SET gaji_pokok = '$gaji', bonus = '$bonus', pajak = '$pajak', gaji_bersih = '$gajiBersih' WHERE kode_karyawan = '$kodeURL'");
     $updateGaji .= mysqli_query($koneksi, "UPDATE karyawan_tetap SET gaji = '$gaji' WHERE kode_karyawan = '$kodeURL'");
-    if($updateGaji){
+    if ($updateGaji) {
         echo "<script>
                 alert('Data gaji sudah diperbarui');window.location='admin-payroll.php';
               </script>";

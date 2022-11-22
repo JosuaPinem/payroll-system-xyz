@@ -10,11 +10,9 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <!-- Google Material -->
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/style/main.css">
     <title>XYZ Company</title>
 </head>
@@ -25,7 +23,7 @@
 require '../../php/koneksi.php';
 require '../../php/functions.php';
 session_start();
-if(!isset($_SESSION['admin'])){
+if (!isset($_SESSION['admin'])) {
     echo "<script>
             alert('Anda belum login, silahkan login terlebih dahulu!')
           </script>";
@@ -41,7 +39,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
 ?>
 
 
-<body class="d-flex">
+<body class="d-none">
     <!-- Sidebar -->
     <nav class="sidebar d-flex flex-lg-column col-auto shadow" id="sidebar-nav">
         <!-- Sidebar Hedaer -->
@@ -53,15 +51,13 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
             <span id="brand-text" class="fs-4 fw-bold">XYZ Company</span>
 
             <!-- Button Toggle Maximize Sidebar -->
-            <button
-                class="btn btn-primary toggle p-1 text-white rounded-circle d-none d-md-none d-lg-flex position-absolute">
+            <button class="btn btn-primary toggle p-1 text-white rounded-circle d-none d-md-none d-lg-flex position-absolute">
                 <i class="material-icons-round fs-5 rounded-circle toggle-icon">&#xe5cc</i>
             </button>
         </div>
 
         <!-- Sidebar Body -->
-        <ul id="menu-bar"
-            class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
+        <ul id="menu-bar" class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
             <li>
                 <a href="admin-dashboard.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9b0</i>
@@ -95,8 +91,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                 </a>
             </li>
             <li class="mt-auto d-none d-md-none d-lg-flex sign-out">
-                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')"
-                    class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
+                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')" class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9ba</i>
                     <div class="align-items-center">
                         <span class="text-sidebar">Sign Out</span>
@@ -127,8 +122,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                 <div class="dark-mode d-flex align-items-center">
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xe518</label>
                     <div class="d-flex form-check form-switch justify-content-center" for="dark-mode">
-                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark"
-                            id="dark-mode">
+                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark" id="dark-mode">
                     </div>
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xef5e</label>
                 </div>
@@ -136,13 +130,11 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                 <!-- Dropdown -->
                 <div class="dropdown d-flex">
                     <!-- Toggle Dropdown -->
-                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img id="profile-img" src="../user-img/<?= $user1['foto']?>"
-                            class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
+                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="profile-img" src="../user-img/<?= $user1['foto'] ?>" class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex col flex-column align-items-start me-1 ">
                             <span class="fs-6 fw-semibold text"><?= strtoupper($user1['nama']); ?></span>
-                            <span class="fs-6 text opacity-75"><?=strtoupper($user1['posisi']);?></span>
+                            <span class="fs-6 text opacity-75"><?= strtoupper($user1['posisi']); ?></span>
                         </span>
                     </button>
 
@@ -168,8 +160,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                             <hr class="dropdown-divider d-block d-lg-none">
                         </li>
                         <li>
-                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php"
-                                onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
+                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
                         </li>
                     </ul>
                 </div>
@@ -216,8 +207,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                                         <span class="fs-6 fw-bold">5</span>
                                     </div>
                                 </div>
-                                <a href="admin-employee-list.php"
-                                    class="text-decoration-none btn btn-primary fs-6 p-2 mt-auto">Employee
+                                <a href="admin-employee-list.php" class="text-decoration-none btn btn-primary fs-6 p-2 mt-auto">Employee
                                     List</a>
                             </div>
 
@@ -232,24 +222,23 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
-                                        $data = mysqli_query($koneksi,"SELECT kode_karyawan, jumlah_hadir, nama FROM top ORDER BY jumlah_hadir DESC LIMIT 3");
-                                        while($tampil = mysqli_fetch_array($data)) {
+                                        <?php
+                                        $data = mysqli_query($koneksi, "SELECT kode_karyawan, jumlah_hadir, nama FROM top ORDER BY jumlah_hadir DESC LIMIT 3");
+                                        while ($tampil = mysqli_fetch_array($data)) {
                                             $id = $tampil['kode_karyawan'];
                                             $get = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$id'");
-                                    ?>
+                                        ?>
 
-                                    <tr class="d-flex col px-2 py-1">
-                                        <td class="col-6 d-flex align-items-center gap-3 ">
-                                            <img id="profile-img" src="../user-img/<?= $get['foto']; ?>"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text"><?= $tampil['nama'] ?></span>
-                                        </td>
-                                        <td class="col-6 d-flex align-items-center">
-                                            <span class="text"><?= $get['posisi']; ?></span>
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
+                                            <tr class="d-flex col px-2 py-1">
+                                                <td class="col-6 d-flex align-items-center gap-3 ">
+                                                    <img id="profile-img" src="../user-img/<?= $get['foto']; ?>" class="rounded-circle bg-light shadow-sm" alt="Avatar" />
+                                                    <span class="text"><?= $tampil['nama'] ?></span>
+                                                </td>
+                                                <td class="col-6 d-flex align-items-center">
+                                                    <span class="text"><?= $get['posisi']; ?></span>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -270,7 +259,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                                         <th class="col d-flex justify-content-center text">Action</th>
                                     </tr>
                                 </thead>
-                                <?php 
+                                <?php
                                 // untuk mengambil data tanggal current
                                 date_default_timezone_set('Asia/Jakarta');
                                 $date = date('d M Y');
@@ -278,29 +267,26 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                                 $izin = mysqli_query($koneksi, "SELECT * FROM absensi WHERE NOT keterangan = 'Present' AND tanggal = '$date' ");
                                 ?>
                                 <tbody height="160px" class="d-flex flex-column gap-2 px-2 overflow-auto">
-                                    <?php foreach($izin as $i): ?>
-                                    <tr class="d-flex align-items-center p-1 rounded-2 shadow-sm background">
-                                        <td class="col-8 col-sm-4 d-flex align-items-center gap-3 ">
-                                            <img id="profile-img" src="../user-img/<?= $i['foto']?>"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text"><?= $i['nama']; ?></span>
-                                        </td>
-                                        <td class="col-4 d-none d-md-flex justify-content-center">
-                                            <span class="text"><?= $i['tanggal']?></span>
-                                        </td>
-                                        <td class="col d-none d-md-flex justify-content-center">
-                                            <span class="text"><?= $i['keterangan']?></span>
-                                        </td>
-                                        <td class="col d-flex justify-content-center gap-1">
-                                            <a href="../cetakSurat.php?surat=<?= $i['surat']?>" target="_blank">
-                                                <button type="button"
-                                                    class="btn btn-primary d-flex align-items-center p-md-2 p-1"
-                                                    title="accept">
-                                                    <i class="material-icons">&#xe8ad</i>
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    <?php foreach ($izin as $i) : ?>
+                                        <tr class="d-flex align-items-center p-1 rounded-2 shadow-sm background">
+                                            <td class="col-8 col-sm-4 d-flex align-items-center gap-3 ">
+                                                <img id="profile-img" src="../user-img/<?= $i['foto'] ?>" class="rounded-circle bg-light shadow-sm" alt="Avatar" />
+                                                <span class="text"><?= $i['nama']; ?></span>
+                                            </td>
+                                            <td class="col-4 d-none d-md-flex justify-content-center">
+                                                <span class="text"><?= $i['tanggal'] ?></span>
+                                            </td>
+                                            <td class="col d-none d-md-flex justify-content-center">
+                                                <span class="text"><?= $i['keterangan'] ?></span>
+                                            </td>
+                                            <td class="col d-flex justify-content-center gap-1">
+                                                <a href="../cetakSurat.php?surat=<?= $i['surat'] ?>" target="_blank">
+                                                    <button type="button" class="btn btn-primary d-flex align-items-center p-md-2 p-1" title="accept">
+                                                        <i class="material-icons">&#xe8ad</i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
@@ -315,10 +301,9 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                         <h3 class="fw-bold p-3 header">Employee's Attendance</h3>
                         <div class="d-flex align-items-center gap-3 px-2">
                             <form class="d-flex align-items-center gap-2" action="" method="post">
-                                <input type="text" class="form-control" id="search" placeholder="Search" name="cari">
+                                <input type="text" class="form-control text-field" id="search" placeholder="Search" name="cari">
                                 <a href="#attendance" style="text-decoration:none;">
-                                    <button type="submit" name="send"
-                                        class="btn btn-primary material-icons-round">&#xe8b6
+                                    <button type="submit" name="send" class="btn btn-primary material-icons-round">&#xe8b6
                                     </button>
                                 </a>
                             </form>
@@ -330,7 +315,7 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                                     <th class="col text">Time</th>
                                 </tr>
                             </thead>
-                            <?php 
+                            <?php
                             // untuk mengambil data tanggal current
                             date_default_timezone_set('Asia/Jakarta');
                             $date = date('d M Y');
@@ -339,58 +324,56 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
 
                             // membuat pagination
                             $batas = 5;
-                            $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
-                            $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
-                             
+                            $halaman = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
+                            $halaman_awal = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;
+
                             $previous = $halaman - 1;
                             $next = $halaman + 1;
-                                            
-                            $data = mysqli_query($koneksi,"SELECT * FROM absensi WHERE tanggal = '$date' AND keterangan = 'Present' ");
+
+                            $data = mysqli_query($koneksi, "SELECT * FROM absensi WHERE tanggal = '$date' AND keterangan = 'Present' ");
                             $jumlah_data = mysqli_num_rows($data);
                             $total_halaman = ceil($jumlah_data / $batas);
-                            if(isset($_POST['send'])){
+                            if (isset($_POST['send'])) {
                                 $keyword = $_POST['cari'];
                                 $user2 = mysqli_query($koneksi, "SELECT * FROM absensi WHERE tanggal = '$date' AND keterangan = 'Present' 
                                 AND nama LIKE '%$keyword%'");
-                            }else {
-                                $user2 = mysqli_query($koneksi,"SELECT * FROM absensi WHERE tanggal = '$date' AND keterangan = 'Present' limit $halaman_awal, $batas");
-                            } 
-                            while($a = mysqli_fetch_assoc($user2)):
+                            } else {
+                                $user2 = mysqli_query($koneksi, "SELECT * FROM absensi WHERE tanggal = '$date' AND keterangan = 'Present' limit $halaman_awal, $batas");
+                            }
+                            while ($a = mysqli_fetch_assoc($user2)) :
                             ?>
-                            <tbody class="d-flex flex-column gap-2 px-2 overflow-hidden">
-                                <tr class="d-flex align-items-center p-1 rounded-2 shadow-sm background">
-                                    <td class="col-9 d-flex align-items-center gap-3 ">
-                                        <img id="profile-img" src="../user-img/<?=$a['foto']?>"
-                                            class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                        <span class="text"><?= $a['nama']; ?></span>
-                                    </td>
-                                    <td class="col">
-                                        <span class="text"><?= $a['jam']; ?></span>
-                                    </td>
-                                </tr>
+                                <tbody class="d-flex flex-column gap-2 px-2 overflow-hidden">
+                                    <tr class="d-flex align-items-center p-1 rounded-2 shadow-sm background">
+                                        <td class="col-9 d-flex align-items-center gap-3 ">
+                                            <img id="profile-img" src="../user-img/<?= $a['foto'] ?>" class="rounded-circle bg-light shadow-sm" alt="Avatar" />
+                                            <span class="text"><?= $a['nama']; ?></span>
+                                        </td>
+                                        <td class="col">
+                                            <span class="text"><?= $a['jam']; ?></span>
+                                        </td>
+                                    </tr>
                                 <?php endwhile; ?>
-                            </tbody>
+                                </tbody>
                         </table>
                         <!-- Pagination -->
                         <nav aria-label="..." class="d-flex justify-content-center mt-auto">
                             <ul class="pagination">
                                 <li class="page-item">
-                                    <a class="page-link d-flex"
-                                        <?php if($halaman > 1){ echo "href='?halaman=$previous#attendance'"; } ?>><i
-                                            class="material-icons-round">&#xe408</i></a>
+                                    <a class="page-link d-flex" <?php if ($halaman > 1) {
+                                                                    echo "href='?halaman=$previous#attendance'";
+                                                                } ?>><i class="material-icons-round">&#xe408</i></a>
                                 </li>
-                                <?php 
-                                for($x=1;$x<=$total_halaman;$x++):
+                                <?php
+                                for ($x = 1; $x <= $total_halaman; $x++) :
                                 ?>
-                                <li class="page-item active" aria-current="page">
-                                    <a class="page-link"
-                                        href="?halaman=<?php echo $x ?>#attendance"><?php echo $x; ?></a>
-                                </li>
+                                    <li class="page-item active" aria-current="page">
+                                        <a class="page-link" href="?halaman=<?php echo $x ?>#attendance"><?php echo $x; ?></a>
+                                    </li>
                                 <?php endfor; ?>
                                 <li class="page-item">
-                                    <a class="page-link d-flex"
-                                        <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'#attendance"; } ?>><i
-                                            class="material-icons-round">&#xe409</i></a>
+                                    <a class="page-link d-flex" <?php if ($halaman < $total_halaman) {
+                                                                    echo "href='?halaman=$next'#attendance";
+                                                                } ?>><i class="material-icons-round">&#xe409</i></a>
                                 </li>
                             </ul>
                         </nav>

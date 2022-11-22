@@ -1,27 +1,27 @@
-<?php 
-        session_start();
-        require '../../php/functions.php';
-        include '../../php/koneksi.php';
-        if(!isset($_SESSION['admin'])){
-            echo "<script>
+<?php
+session_start();
+require '../../php/functions.php';
+include '../../php/koneksi.php';
+if (!isset($_SESSION['admin'])) {
+    echo "<script>
                     alert('Anda belum login, silahkan login terlebih dahulu!')
                 </script>";
-            header('refresh:0; ../../index.php');
-            return false;
-        }
-        $_SESSION['halaman'] = "admin";
-    // lakukan query untuk mengambil data dari tabel data_karyawan mengambil foto dan nama lengkap
-    $username = $_SESSION['user'];
-    $kode = $_SESSION['kode'];  
-    $_SESSION['posisi'] = "admin";
-    // $query untuk mengambil data nama lengkap karyawan dari tabel data_karyawan
-    $query = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
+    header('refresh:0; ../../index.php');
+    return false;
+}
+$_SESSION['halaman'] = "admin";
+// lakukan query untuk mengambil data dari tabel data_karyawan mengambil foto dan nama lengkap
+$username = $_SESSION['user'];
+$kode = $_SESSION['kode'];
+$_SESSION['posisi'] = "admin";
+// $query untuk mengambil data nama lengkap karyawan dari tabel data_karyawan
+$query = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
 
-    // $query2 untuk mengambil data posisi karyawan dari tabel login
-    $query2 = query("SELECT * FROM  login WHERE username = '$username'");
+// $query2 untuk mengambil data posisi karyawan dari tabel login
+$query2 = query("SELECT * FROM  login WHERE username = '$username'");
 
-    // $query3 untuk mengambil data karyawan yang belum diverifikasi
-    $query3 = query("SELECT * FROM verify ORDER BY id DESC");
+// $query3 untuk mengambil data karyawan yang belum diverifikasi
+$query3 = query("SELECT * FROM verify ORDER BY id DESC");
 
 
 ?>
@@ -37,11 +37,9 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <!-- Google Material -->
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/style/main.css">
     <title>XYZ Company</title>
 </head>
@@ -49,7 +47,7 @@
 <!-- PHP Config -->
 
 
-<body class="d-flex">
+<body class="d-none">
     <!-- Sidebar -->
     <nav class="sidebar d-flex flex-lg-column col-auto shadow" id="sidebar-nav">
         <!-- Sidebar Hedaer -->
@@ -61,15 +59,13 @@
             <span id="brand-text" class="fs-4 fw-bold">XYZ Company</span>
 
             <!-- Button Toggle Maximize Sidebar -->
-            <button
-                class="btn btn-primary toggle p-1 text-white rounded-circle d-none d-md-none d-lg-flex position-absolute">
+            <button class="btn btn-primary toggle p-1 text-white rounded-circle d-none d-md-none d-lg-flex position-absolute">
                 <i class="material-icons-round fs-5 rounded-circle toggle-icon">&#xe5cc</i>
             </button>
         </div>
 
         <!-- Sidebar Body -->
-        <ul id="menu-bar"
-            class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
+        <ul id="menu-bar" class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
             <li class="active">
                 <a href="#" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9b0</i>
@@ -103,8 +99,7 @@
                 </a>
             </li>
             <li class="mt-auto d-none d-md-none d-lg-flex sign-out">
-                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')"
-                    class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
+                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')" class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9ba</i>
                     <div class="align-items-center">
                         <span class="text-sidebar">Sign Out</span>
@@ -135,8 +130,7 @@
                 <div class="dark-mode d-flex align-items-center">
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xe518</label>
                     <div class="d-flex form-check form-switch justify-content-center" for="dark-mode">
-                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark"
-                            id="dark-mode">
+                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark" id="dark-mode">
                     </div>
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xef5e</label>
                 </div>
@@ -144,10 +138,8 @@
                 <!-- Dropdown -->
                 <div class="dropdown d-flex">
                     <!-- Toggle Dropdown -->
-                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img id="profile-img" src="../user-img/<?php echo $query['foto'] ?>"
-                            class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
+                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="profile-img" src="../user-img/<?php echo $query['foto'] ?>" class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex flex-column align-items-start me-1 ">
                             <span class="fs-6 fw-semibold text"><?= strtoupper($query['nama']); ?></span>
                             <span class="fs-6 text opacity-75"><?= strtoupper($query['posisi']); ?></span>
@@ -175,8 +167,7 @@
                             <hr class="dropdown-divider d-block d-lg-none">
                         </li>
                         <li>
-                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php"
-                                onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
+                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
                         </li>
                     </ul>
                 </div>
@@ -211,7 +202,7 @@
                                     <span class="fs-5">Employee</span>
                                     <i class="material-icons-round card-icon one rounded-2 p-3">&#xf233</i>
                                 </div>
-                                <?php 
+                                <?php
                                 $query4 = mysqli_query($koneksi, "SELECT * FROM login");
                                 $jumlahAkun = mysqli_num_rows($query4);
                                 ?>
@@ -219,31 +210,25 @@
                                 <a href="admin-employee.php" class="text-decoration-none fs-6">Go to Employee</a>
                             </div>
                             <?php
-                                use Brick\Math\BigInteger;
-                                use Brick\Math\RoundingMode;
-                                $total = 0;
-                                $query6 = mysqli_query($koneksi, "SELECT * FROM karyawan_tetap");
-                                while($gaji = $query6->fetch_array()){
-                                    $total += $gaji['gaji'];
-                                }
-                                $total = $total / 1000;
-                                
+
+                            use Brick\Math\BigInteger;
+                            use Brick\Math\RoundingMode;
+
+                            $total = 0;
+                            $query6 = mysqli_query($koneksi, "SELECT * FROM karyawan_tetap");
+                            while ($gaji = $query6->fetch_array()) {
+                                $total += $gaji['gaji'];
+                            }
+                            $total = $total / 1000;
+
                             ?>
                             <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
                                 <div class="d-flex justify-content-between">
                                     <span class="fs-5">Payroll</span>
                                     <i class="material-icons-round card-icon two rounded-2 p-3">&#xef63</i>
                                 </div>
-                                <span class="display-4 fw-bold mb-3">Rp <?php echo $total." Jt"; ?></span>
-                                <a href="" class="text-decoration-none fs-6">Go to Payroll</a>
-                            </div>
-                            <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
-                                <div class="d-flex justify-content-between">
-                                    <span class="fs-5">Revenue</span>
-                                    <i class="material-icons-round card-icon three rounded-2 p-3">&#xe8e5</i>
-                                </div>
-                                <span class="display-4 fw-bold mb-3">$ 2.5M</span>
-                                <a href="" class="text-decoration-none fs-6">Go to Revenue</a>
+                                <span class="display-4 fw-bold mb-3">Rp <?php echo $total . " Jt"; ?></span>
+                                <a href="admin-payroll.php" class="text-decoration-none fs-6">Go to Payroll</a>
                             </div>
                         </div>
                     </div>
@@ -262,22 +247,21 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $data = mysqli_query($koneksi,"SELECT kode_karyawan, jumlah_hadir, nama FROM top ORDER BY jumlah_hadir DESC LIMIT 3");
-                                        while($tampil = mysqli_fetch_array($data)) {
-                                            $id = $tampil['kode_karyawan'];
-                                            $get = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$id'");
+                                    $data = mysqli_query($koneksi, "SELECT kode_karyawan, jumlah_hadir, nama FROM top ORDER BY jumlah_hadir DESC LIMIT 3");
+                                    while ($tampil = mysqli_fetch_array($data)) {
+                                        $id = $tampil['kode_karyawan'];
+                                        $get = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$id'");
                                     ?>
 
-                                    <tr class="d-flex col px-2 py-1">
-                                        <td class="col-6 d-flex align-items-center gap-3 ">
-                                            <img id="profile-img" src="../user-img/<?= $get['foto']; ?>"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text"><?= $tampil['nama'] ?></span>
-                                        </td>
-                                        <td class="col-6 d-flex align-items-center">
-                                            <span class="text"><?= $get['posisi']; ?></span>
-                                        </td>
-                                    </tr>
+                                        <tr class="d-flex col px-2 py-1">
+                                            <td class="col-6 d-flex align-items-center gap-3 ">
+                                                <img id="profile-img" src="../user-img/<?= $get['foto']; ?>" class="rounded-circle bg-light shadow-sm" alt="Avatar" />
+                                                <span class="text"><?= $tampil['nama'] ?></span>
+                                            </td>
+                                            <td class="col-6 d-flex align-items-center">
+                                                <span class="text"><?= $get['posisi']; ?></span>
+                                            </td>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
 
@@ -292,33 +276,30 @@
                             <table class="table table-borderless">
 
                                 <tbody height="250px" h class="d-flex flex-column gap-2 px-2 overflow-auto">
-                                    <?php 
+                                    <?php
                                     $i = 1;
                                     $antrianVerifikasi = $query3;
-                                    foreach($antrianVerifikasi as $antrian):
+                                    foreach ($antrianVerifikasi as $antrian) :
 
-                                ?>
-                                    <?php
-                                                require '../../php/koneksi.php';
-                                                $getkode = $antrian['kode_karyawan'];
-                                                $konek = mysqli_query($koneksi, "SELECT * FROM data_karyawan WHERE kode_karyawan = '$getkode'");
-                                                $cek = mysqli_fetch_assoc($konek);
-                                ?>
-                                    <tr class="d-flex align-items-center p-2 rounded-2 shadow-sm background">
-                                        <td class="col d-flex align-items-center gap-3 ">
-                                            <img id="profile-img" src="../user-img/<?php echo $cek['foto'] ?>"
-                                                class="rounded-circle bg-light shadow-sm" alt="Avatar" />
-                                            <span class="text"><?= $antrian['username']; ?></span>
-                                        </td>
-                                        <td class="col-4 d-flex justify-content-center gap-1">
-                                            <button type="button" href="#"
-                                                class="btn btn-warning d-flex align-items-center p-md-2 p-1"
-                                                title="accept">
-                                                <span>Requested</span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <!-- <tr class="d-flex align-items-center p-2 rounded-2 shadow-sm background">
+                                    ?>
+                                        <?php
+                                        require '../../php/koneksi.php';
+                                        $getkode = $antrian['kode_karyawan'];
+                                        $konek = mysqli_query($koneksi, "SELECT * FROM data_karyawan WHERE kode_karyawan = '$getkode'");
+                                        $cek = mysqli_fetch_assoc($konek);
+                                        ?>
+                                        <tr class="d-flex align-items-center p-2 rounded-2 shadow-sm background">
+                                            <td class="col d-flex align-items-center gap-3 ">
+                                                <img id="profile-img" src="../user-img/<?php echo $cek['foto'] ?>" class="rounded-circle bg-light shadow-sm" alt="Avatar" />
+                                                <span class="text"><?= $antrian['username']; ?></span>
+                                            </td>
+                                            <td class="col-4 d-flex justify-content-center gap-1">
+                                                <span href="#" class="text-success fw-semibold border border-2 border-success rounded-3 d-flex align-items-center p-md-2 p-1" title="accept">
+                                                    <span>Requested</span>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <!-- <tr class="d-flex align-items-center p-2 rounded-2 shadow-sm background">
                                         <td class="col d-flex align-items-center gap-3 ">
                                             <img id="profile-img"
                                                 src="https://cdn.discordapp.com/attachments/1020601540257521674/1037712201202552882/person_filled_FILL0_wght400_GRAD0_opsz48.png"
@@ -349,8 +330,7 @@
                     <div class="container col rounded-4 shadow border-0 d-flex flex-column p-3 gap-5">
                         <h3 class="fw-bold p-3 header d-flex justify-content-center">Profile</h3>
                         <div class="d-flex flex-column align-items-center gap-3">
-                            <img id="profile-img-container" src="../user-img/<?php echo $query['foto'] ?>"
-                                class="rounded-circle bg-light border shadow-sm" alt="Avatar" />
+                            <img id="profile-img-container" src="../user-img/<?php echo $query['foto'] ?>" class="rounded-circle bg-light border shadow-sm" alt="Avatar" />
                         </div>
                         <div class="d-flex flex-column gap-1 py-3">
                             <div class="d-flex gap-1 background">

@@ -1,28 +1,28 @@
 <!-- @format -->
-<?php 
+<?php
 session_start();
 require '../../php/functions.php';
 include '../../php/koneksi.php';
-if(!isset($_SESSION['karyawan'])){
+if (!isset($_SESSION['karyawan'])) {
     echo "<script>
             alert('Anda belum login, silahkan login terlebih dahulu')
           </script>";
     header('refresh:0; ../../index.php');
     return false;
 }
-    $_SESSION['posisi'] = "karyawan";
-    $_SESSION['halaman'] = "karyawan";
+$_SESSION['posisi'] = "karyawan";
+$_SESSION['halaman'] = "karyawan";
 
-    $username = $_SESSION['user'];
-    $kode = $_SESSION['kode'];
-    // $query untuk mengambil data nama lengkap karyawan dari tabel data_karyawan
-    $query = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
+$username = $_SESSION['user'];
+$kode = $_SESSION['kode'];
+// $query untuk mengambil data nama lengkap karyawan dari tabel data_karyawan
+$query = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
 
-    // $query2 untuk mengambil data posisi karyawan dari tabel login
-    $query2 = query("SELECT * FROM  login WHERE username = '$username'");
+// $query2 untuk mengambil data posisi karyawan dari tabel login
+$query2 = query("SELECT * FROM  login WHERE username = '$username'");
 
-    // $query3 untuk mengambil data karyawan yang belum diverifikasi
-    $query3 = query("SELECT * FROM verify ORDER BY id DESC");
+// $query3 untuk mengambil data karyawan yang belum diverifikasi
+$query3 = query("SELECT * FROM verify ORDER BY id DESC");
 
 
 ?>
@@ -36,8 +36,7 @@ if(!isset($_SESSION['karyawan'])){
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <!-- Google Material -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round" rel="stylesheet">
     <!-- Full Calendar -->
@@ -51,7 +50,7 @@ if(!isset($_SESSION['karyawan'])){
 <!-- PHP Config -->
 
 
-<body class="d-flex">
+<body class="d-none">
     <!-- Sidebar -->
     <nav class="sidebar d-flex flex-lg-column col-auto shadow" id="sidebar-nav">
         <!-- Sidebar Hedaer -->
@@ -63,15 +62,13 @@ if(!isset($_SESSION['karyawan'])){
             <span id="brand-text" class="fs-4 fw-bold">XYZ Company</span>
 
             <!-- Button Toggle Maximize Sidebar -->
-            <button
-                class="btn btn-primary toggle p-1 text-white rounded-circle d-none d-md-none d-lg-flex position-absolute">
+            <button class="btn btn-primary toggle p-1 text-white rounded-circle d-none d-md-none d-lg-flex position-absolute">
                 <i class="material-icons-round fs-5 rounded-circle toggle-icon">&#xe5cc</i>
             </button>
         </div>
 
         <!-- Sidebar Body -->
-        <ul id="menu-bar"
-            class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
+        <ul id="menu-bar" class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
             <li class="active">
                 <a href="#" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9b0</i>
@@ -97,8 +94,7 @@ if(!isset($_SESSION['karyawan'])){
                 </a>
             </li>
             <li class="mt-auto d-none d-md-none d-lg-flex sign-out">
-                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')"
-                    class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
+                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')" class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9ba</i>
                     <div class="align-items-center">
                         <span class="text-sidebar">Sign Out</span>
@@ -129,8 +125,7 @@ if(!isset($_SESSION['karyawan'])){
                 <div class="dark-mode d-flex align-items-center">
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xe518</label>
                     <div class="d-flex form-check form-switch justify-content-center" for="dark-mode">
-                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark"
-                            id="dark-mode">
+                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark" id="dark-mode">
                     </div>
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xef5e</label>
                 </div>
@@ -138,11 +133,8 @@ if(!isset($_SESSION['karyawan'])){
                 <!-- Dropdown -->
                 <div class="dropdown d-flex">
                     <!-- Toggle Dropdown -->
-                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img id="profile-img"
-                            src="../user-img/<?php echo $query['foto'] ?>"
-                            class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
+                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="profile-img" src="../user-img/<?php echo $query['foto'] ?>" class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex flex-column align-items-start me-1 ">
                             <span class="fs-6 fw-semibold text"><?= strtoupper($query['nama']); ?></span>
                             <span class="fs-6 text opacity-75"><?= strtoupper($query['posisi']); ?></span>
@@ -170,8 +162,7 @@ if(!isset($_SESSION['karyawan'])){
                             <hr class="dropdown-divider d-block d-lg-none">
                         </li>
                         <li>
-                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php"
-                                onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
+                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
                         </li>
                     </ul>
                 </div>
@@ -186,8 +177,7 @@ if(!isset($_SESSION['karyawan'])){
                 <div class="d-flex flex-column flex-lg-row col justify-content-between px-1 px-lg-2">
                     <h1 class="fw-bold header">Dashboard</h1>
                     <ol class="breadcrumb p-lg-2">
-                        <li class="breadcrumb-item"><a class="text-decoration-none"
-                                href="./employee-dashboard.php">Home</a>
+                        <li class="breadcrumb-item"><a class="text-decoration-none" href="./employee-dashboard.php">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                     </ol>
@@ -207,11 +197,11 @@ if(!isset($_SESSION['karyawan'])){
                                     <i class="material-icons-round card-icon two rounded-2 p-3">&#xef63</i>
                                 </div>
                                 <?php
-                                    $gaji = $query['gaji'];
-                                    $gaji = $gaji *1000;
+                                $gaji = $query['gaji'];
+                                $gaji = $gaji * 1000;
                                 ?>
                                 <span class="display-5 fw-bold mb-3">Rp <?php echo number_format($gaji, 0, '', '.'); ?></span>
-                                <a href="" class="text-decoration-none fs-6">Go to Payroll</a>
+                                <a href="employee-payroll.php" class="text-decoration-none fs-6">Go to Payroll</a>
                             </div>
 
                             <div class="card rounded-4 shadow border-0 col d-flex p-4 gap-1">
@@ -220,7 +210,7 @@ if(!isset($_SESSION['karyawan'])){
                                     <i class="material-icons-round card-icon one rounded-2 p-3">&#xf233</i>
                                 </div>
                                 <?php
-                                    $jumlah = mysqli_fetch_array(mysqli_query($koneksi, "SELECT COUNT(1) FROM karyawan_tetap WHERE posisi = '$query[posisi]'"))[0];
+                                $jumlah = mysqli_fetch_array(mysqli_query($koneksi, "SELECT COUNT(1) FROM karyawan_tetap WHERE posisi = '$query[posisi]'"))[0];
                                 ?>
                                 <span class="display-5 fw-bold mb-3"><?php echo $jumlah; ?></span>
                                 <span class="fs-6">People In Company</span>
@@ -241,9 +231,7 @@ if(!isset($_SESSION['karyawan'])){
                     <div class="flex-container col rounded-4 shadow border-0 d-flex flex-column p-3 gap-5">
                         <h3 class="fw-bold p-3 header d-flex justify-content-center">Profile</h3>
                         <div class="d-flex flex-column align-items-center gap-3">
-                            <img id="profile-img-container"
-                                src="../user-img/<?php echo $query['foto'] ?>"
-                                class="rounded-circle bg-light border shadow-sm" alt="Avatar" />
+                            <img id="profile-img-container" src="../user-img/<?php echo $query['foto'] ?>" class="rounded-circle bg-light border shadow-sm" alt="Avatar" />
                         </div>
                         <div class="d-flex flex-column gap-1 py-3">
                             <div class="d-flex gap-1 background">

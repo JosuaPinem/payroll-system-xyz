@@ -1,47 +1,46 @@
 /** @format */
 
+onload = function () {
+	if (localStorage.getItem("darkmode")) {
+		localStorage.getItem("darkmode");
+		$("body").addClass("dark");
+		$("#dark-mode").prop("checked", true).change();
+		localStorage.setItem("darkmode", true);
+	}
+	if (localStorage.getItem("maximized")) {
+		localStorage.getItem("maximized");
+		$(".sidebar").addClass("maximize");
+		$(".toggle").addClass("maximize-on");
+		localStorage.setItem("maximized", true);
+	}
+	$("body").toggleClass("d-none d-flex");
+};
 /* Toggle Sidebar */
 $(".toggle").on("click", function () {
 	$(".sidebar").toggleClass("maximize");
 	$(".toggle").toggleClass("maximize-on");
-	if (sessionStorage.getItem("maximized")) {
-		sessionStorage.removeItem("maximized");
+	if (localStorage.getItem("maximized")) {
+		localStorage.removeItem("maximized");
 	} else {
-		sessionStorage.setItem("maximized", true);
+		localStorage.setItem("maximized", true);
 	}
 });
 
 /* Toggle Dark Mode */
-
 $("#dark-mode").on("click", function () {
 	$("body").toggleClass("dark");
-	if (sessionStorage.getItem("darkmode")) {
-		sessionStorage.removeItem("darkmode");
+	if (localStorage.getItem("darkmode")) {
+		localStorage.removeItem("darkmode");
 	} else {
-		sessionStorage.setItem("darkmode", true);
+		localStorage.setItem("darkmode", true);
 	}
 });
-
-onload = function () {
-	if (sessionStorage.getItem("darkmode")) {
-		sessionStorage.getItem("darkmode");
-		$("body").addClass("dark");
-		$("#dark-mode").prop("checked", true).change();
-		sessionStorage.setItem("darkmode", true);
-	}
-	if (sessionStorage.getItem("maximized")) {
-		sessionStorage.getItem("maximized");
-		$(".sidebar").addClass("maximize");
-		$(".toggle").addClass("maximize-on");
-		sessionStorage.setItem("maximized", true);
-	}
-};
 
 /* Edit Profile */
 $("#edit-profile").on("click", function () {
 	$(".user-edit").removeClass("profile-info").prop("readonly", false).change();
 	$(".form-select").prop("disabled", false).change();
-	$("#save-profile").toggleClass("d-none d-flex");
+	$("#confirm-profile").toggleClass("d-none d-flex");
 	$(".change-image").toggleClass("d-none d-flex");
 	$("#edit-profile").toggleClass("d-flex d-none");
 	/* Datepicker */
@@ -58,7 +57,17 @@ $("#edit-profile").on("click", function () {
 $("#save-profile").on("click", function () {
 	$(".user-edit").addClass("profile-info").prop("readonly", true).change();
 	$(".form-select").prop("disabled", true).change();
-	$("#save-profile").toggleClass("d-flex d-none");
+	$("#confirm-profile").toggleClass("d-flex d-none");
+	$(".change-image").toggleClass("d-flex d-none");
+	$("#edit-profile").toggleClass("d-none d-flex");
+	$("#datepicker").datepicker("remove");
+});
+
+/* Cancel Profile */
+$("#cancel-profile").on("click", function () {
+	$(".user-edit").addClass("profile-info").prop("readonly", true).change();
+	$(".form-select").prop("disabled", true).change();
+	$("#confirm-profile").toggleClass("d-flex d-none");
 	$(".change-image").toggleClass("d-flex d-none");
 	$("#edit-profile").toggleClass("d-none d-flex");
 	$("#datepicker").datepicker("remove");
@@ -79,14 +88,3 @@ $("#present").on("click", function () {
 $("#edit-salary").on("click", function () {
 	$(".salary").prop("readonly", false).change();
 });
-
-
-
-$.ajax({
-	type: "GET",
-	data: "",
-	url: "../../php/detail.php",
-	success: function (result) {
-		console.log(result);
-	}
-})

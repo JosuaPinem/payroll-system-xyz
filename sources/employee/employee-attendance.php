@@ -1,29 +1,29 @@
 <!-- @format -->
-<?php 
+<?php
 session_start();
 
 include '../../php/functions.php';
 include '../../php/koneksi.php';
-if(!isset($_SESSION['karyawan'])){
+if (!isset($_SESSION['karyawan'])) {
     echo "<script>
             alert('Anda belum login, silahkan login terlebih dahulu')
           </script>";
     header('refresh:0; ../../index.php');
     return false;
 }
-    $_SESSION['posisi'] = "karyawan";
-    $_SESSION['halaman'] = "karyawan";
+$_SESSION['posisi'] = "karyawan";
+$_SESSION['halaman'] = "karyawan";
 
-    // query untuk mengambil data personal employee yang sedang login
-    $kode = $_SESSION['kode'];
-    $user = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
+// query untuk mengambil data personal employee yang sedang login
+$kode = $_SESSION['kode'];
+$user = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
 
-    // query untuk mengambil data absen employee yang sedang login
-    $absen = query("SELECT * FROM absensi WHERE kode_karyawan = '$kode'");
+// query untuk mengambil data absen employee yang sedang login
+$absen = query("SELECT * FROM absensi WHERE kode_karyawan = '$kode'");
 
-    // fungsi untuk mendapatkan bulan, agar history absen otomatis update setiap bulan
-    date_default_timezone_set('Asia/Jakarta');
-    $bulan = date('m');
+// fungsi untuk mendapatkan bulan, agar history absen otomatis update setiap bulan
+date_default_timezone_set('Asia/Jakarta');
+$bulan = date('m');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,8 +35,7 @@ if(!isset($_SESSION['karyawan'])){
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <!-- Google Material -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round" rel="stylesheet">
     <!-- Custom CSS -->
@@ -47,7 +46,7 @@ if(!isset($_SESSION['karyawan'])){
 <!-- PHP Config -->
 
 
-<body class="d-flex">
+<body class="d-none">
     <!-- Sidebar -->
     <nav class="sidebar d-flex flex-lg-column col-auto shadow" id="sidebar-nav">
         <!-- Sidebar Hedaer -->
@@ -59,15 +58,13 @@ if(!isset($_SESSION['karyawan'])){
             <span id="brand-text" class="fs-4 fw-bold">XYZ Company</span>
 
             <!-- Button Toggle Maximize Sidebar -->
-            <button
-                class="btn btn-primary toggle p-1 text-white rounded-circle d-none d-md-none d-lg-flex position-absolute">
+            <button class="btn btn-primary toggle p-1 text-white rounded-circle d-none d-md-none d-lg-flex position-absolute">
                 <i class="material-icons-round fs-5 rounded-circle toggle-icon">&#xe5cc</i>
             </button>
         </div>
 
         <!-- Sidebar Body -->
-        <ul id="menu-bar"
-            class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
+        <ul id="menu-bar" class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
             <li>
                 <a href="employee-dashboard.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9b0</i>
@@ -93,8 +90,7 @@ if(!isset($_SESSION['karyawan'])){
                 </a>
             </li>
             <li class="mt-auto d-none d-md-none d-lg-flex sign-out">
-                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')"
-                    class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
+                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')" class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9ba</i>
                     <div class="align-items-center">
                         <span class="text-sidebar">Sign Out</span>
@@ -125,8 +121,7 @@ if(!isset($_SESSION['karyawan'])){
                 <div class="dark-mode d-flex align-items-center">
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xe518</label>
                     <div class="d-flex form-check form-switch justify-content-center" for="dark-mode">
-                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark"
-                            id="dark-mode">
+                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark" id="dark-mode">
                     </div>
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xef5e</label>
                 </div>
@@ -134,10 +129,8 @@ if(!isset($_SESSION['karyawan'])){
                 <!-- Dropdown -->
                 <div class="dropdown d-flex">
                     <!-- Toggle Dropdown -->
-                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img id="profile-img" src="../user-img/<?=$user['foto']?>"
-                            class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
+                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="profile-img" src="../user-img/<?= $user['foto'] ?>" class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex flex-column align-items-start me-1 ">
                             <span class="fs-6 fw-semibold text">
                                 <?= $user['nama']; ?>
@@ -169,8 +162,7 @@ if(!isset($_SESSION['karyawan'])){
                             <hr class="dropdown-divider d-block d-lg-none">
                         </li>
                         <li>
-                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php"
-                                onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
+                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
                         </li>
                     </ul>
                 </div>
@@ -185,8 +177,7 @@ if(!isset($_SESSION['karyawan'])){
                 <div class="d-flex flex-column flex-lg-row col justify-content-between px-1 px-lg-2">
                     <h1 class="fw-bold header">Attendance</h1>
                     <ol class="breadcrumb p-lg-2">
-                        <li class="breadcrumb-item"><a class="text-decoration-none"
-                                href="employee-dashboard.php">Home</a>
+                        <li class="breadcrumb-item"><a class="text-decoration-none" href="employee-dashboard.php">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Attendance</li>
                     </ol>
@@ -203,57 +194,39 @@ if(!isset($_SESSION['karyawan'])){
                         <span class="d-flex p-3">
                             <h2 id="date" class="fw-bold">dayname, dd-month-yyyy</h2>
                         </span>
-                        <form action="../../php/attendanceController.php" method="post" enctype="multipart/form-data">
+                        <form action="../../php/attendanceController.php" method="post" enctype="multipart/form-data" class="col d-flex flex-column">
                             <div class="d-flex flex-column p-3 gap-4">
                                 <div class="d-flex">
                                     <div class="d-flex col gap-3">
-                                        <input type="radio" class="btn-check" name="keterangan" id="present"
-                                            value="Present" autocomplete="off">
-                                        <label
-                                            class="btn btn-outline-success col d-flex justify-content-center fs-5 p-3"
-                                            for="present">Present</label>
-                                        <input type="radio" class="btn-check" name="keterangan" id="permission"
-                                            value="permission" autocomplete="off">
-                                        <label class="btn btn-outline-primary col fs-5 p-3"
-                                            for="permission">Permission</label>
+                                        <input type="radio" class="btn-check" name="keterangan" id="present" value="Present" autocomplete="off">
+                                        <label class="btn btn-outline-success col d-flex justify-content-center fs-5 p-3" for="present">Present</label>
+                                        <input type="radio" class="btn-check" name="keterangan" id="permission" value="permission" autocomplete="off">
+                                        <label class="btn btn-outline-primary col fs-5 p-3" for="permission">Permission</label>
                                     </div>
                                 </div>
                                 <div class="permission col d-none flex-column gap-4">
                                     <div class="d-flex gap-3">
-                                        <input type="radio" class="btn-check reason" name="keterangan" id="sick"
-                                            value="Sick" autocomplete="off">
+                                        <input type="radio" class="btn-check reason" name="keterangan" id="sick" value="Sick" autocomplete="off">
                                         <label class="btn btn-outline-warning col" for="sick">Sick</label>
-                                        <input type="radio" class="btn-check reason" name="keterangan" id="emergency"
-                                            value="Emergency" autocomplete="off">
+                                        <input type="radio" class="btn-check reason" name="keterangan" id="emergency" value="Emergency" autocomplete="off">
                                         <label class="btn btn-outline-danger col" for="emergency">Emergency</label>
-                                        <input type="radio" class="btn-check reason" name="keterangan" value="Other"
-                                            id="other" value="Other" autocomplete="off">
+                                        <input type="radio" class="btn-check reason" name="keterangan" value="Other" id="other" value="Other" autocomplete="off">
                                         <label class="btn btn-outline-info col" for="other">Other</label>
                                     </div>
                                     <div class="d-flex flex-column">
                                         <label for="formFile" class="form-label fw-bold">Input statement letter</label>
-                                        <input class="form-control text-field text" type="file" id="formFile"
-                                            name="surat">
+                                        <input class="form-control text-field text" type="file" id="formFile" name="surat">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col d-flex p-3 gap-3">
-                                <button class="btn btn-primary d-flex py-2 rounded mt-auto" type="submit" name="kirim"
-                                    title="Kirim Absensi">
+                            <div class="col d-flex p-3 gap-3 mt-auto">
+                                <button class="btn btn-primary d-flex py-2 rounded mt-auto" type="submit" name="kirim" title="Kirim Absensi">
                                     <i class="material-icons-round">&#xe163</i>
                                 </button>
-                                <!-- <a href="../surat-izin/template_surat.docx" download style="text-decoration: none;">
-                                    <button class="btn btn-primary d-flex py-2 rounded mt-auto"
-                                        title="Download Template Surat">
-                                        <i class="material-icons-round">&#xe8ad</i>
-                                    </button>
-                                </a> -->
-                                <a href="../surat-izin/template_surat.pdf" download="Template Surat"
-                                    title="Download Template Surar" class="d-flex py-2 rounded mt-auto bg-primary p-3">
+                                <a href="../surat-izin/template_surat.pdf" download="Template Surat" title="Download Template Surar" class="d-flex btn rounded mt-auto btn-primary py-2">
                                     <i class="material-icons-round text-white">&#xe8ad</i>
                                 </a>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -265,52 +238,40 @@ if(!isset($_SESSION['karyawan'])){
                         <h3 class="fw-bold p-3 header">Digital Clock</h3>
                         <div class="d-flex flex-column flex-sm-row col gap-3 p-3 text-white">
                             <div class="col d-flex flex-row flex-sm-column justify-content-center shadow clock">
-                                <span id="hours"
-                                    class="display-3 col d-flex align-items-center justify-content-center px-3">
+                                <span id="hours" class="display-3 col d-flex align-items-center justify-content-center px-3">
                                     00
                                 </span>
-                                <div class="d-flex flex-column col gap-2 pb-2">
-                                    <div class="border-top ">
-                                    </div>
+                                <div class="d-flex flex-column col py-2 justify-content-center">
                                     <span class="d-flex justify-content-center px-3 text-uppercase time">
                                         Hours
                                     </span>
                                 </div>
                             </div>
                             <div class="col d-flex flex-row flex-sm-column justify-content-center shadow clock">
-                                <span id="minutes"
-                                    class="display-3 col d-flex align-items-center justify-content-center px-3">
+                                <span id="minutes" class="display-3 col d-flex align-items-center justify-content-center px-3">
                                     00
                                 </span>
-                                <div class="d-flex flex-column col gap-2 pb-2">
-                                    <div class="border-top ">
-                                    </div>
+                                <div class="d-flex flex-column col py-2 justify-content-center">
                                     <span class="d-flex justify-content-center px-3 text-uppercase time">
                                         Minutes
                                     </span>
                                 </div>
                             </div>
                             <div class="col d-flex flex-row flex-sm-column justify-content-center shadow clock">
-                                <span id="seconds"
-                                    class="display-3 col d-flex align-items-center justify-content-center px-3">
+                                <span id="seconds" class="display-3 col d-flex align-items-center justify-content-center px-3">
                                     00
                                 </span>
-                                <div class="d-flex flex-column col gap-2 pb-2">
-                                    <div class="border-top ">
-                                    </div>
+                                <div class="d-flex flex-column col py-2 justify-content-center">
                                     <span class="d-flex justify-content-center px-3 text-uppercase time">
                                         Seconds
                                     </span>
                                 </div>
                             </div>
                             <div class="col d-flex flex-row flex-sm-column justify-content-center shadow clock">
-                                <span id="period"
-                                    class="display-3 col d-flex align-items-center justify-content-center px-3">
+                                <span id="period" class="display-3 col d-flex align-items-center justify-content-center px-3">
                                     AM
                                 </span>
-                                <div class="d-flex flex-column col gap-2 pb-2">
-                                    <div class="border-top ">
-                                    </div>
+                                <div class="d-flex flex-column col py-2 justify-content-center">
                                     <span class="d-flex justify-content-center px-3 text-uppercase time">
                                         Period
                                     </span>
@@ -332,7 +293,7 @@ if(!isset($_SESSION['karyawan'])){
                                         <?php
                                         $dataPresent = mysqli_query($koneksi, "SELECT * FROM absensi WHERE kode_karyawan = '$kode' AND keterangan = 'Present' AND bulan = '$bulan'");
                                         $jumlahPresentUser = mysqli_num_rows($dataPresent);
-                                        if($jumlahPresentUser == 0){
+                                        if ($jumlahPresentUser == 0) {
                                             $jumlahPresentUser = "-";
                                         }
                                         echo $jumlahPresentUser;
@@ -347,7 +308,7 @@ if(!isset($_SESSION['karyawan'])){
                                         <?php
                                         $dataPresent = mysqli_query($koneksi, "SELECT * FROM absensi WHERE kode_karyawan = '$kode' AND keterangan = 'Sick'");
                                         $jumlahPresentUser = mysqli_num_rows($dataPresent);
-                                        if($jumlahPresentUser == 0){
+                                        if ($jumlahPresentUser == 0) {
                                             $jumlahPresentUser = "-";
                                         }
                                         echo $jumlahPresentUser;
@@ -364,7 +325,7 @@ if(!isset($_SESSION['karyawan'])){
                                         <?php
                                         $dataPresent = mysqli_query($koneksi, "SELECT * FROM absensi WHERE kode_karyawan = '$kode' AND keterangan = 'Emergency'");
                                         $jumlahPresentUser = mysqli_num_rows($dataPresent);
-                                        if($jumlahPresentUser == 0){
+                                        if ($jumlahPresentUser == 0) {
                                             $jumlahPresentUser = "-";
                                         }
                                         echo $jumlahPresentUser;
@@ -379,7 +340,7 @@ if(!isset($_SESSION['karyawan'])){
                                         <?php
                                         $dataPresent = mysqli_query($koneksi, "SELECT * FROM absensi WHERE kode_karyawan = '$kode' AND keterangan = 'Other'");
                                         $jumlahPresentUser = mysqli_num_rows($dataPresent);
-                                        if($jumlahPresentUser == 0){
+                                        if ($jumlahPresentUser == 0) {
                                             $jumlahPresentUser = "-";
                                         }
                                         echo $jumlahPresentUser;

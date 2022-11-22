@@ -1,28 +1,28 @@
-<?php 
+<?php
 session_start();
 
 include '../../php/functions.php';
 include '../../php/koneksi.php';
-if(!isset($_SESSION['karyawan'])){
+if (!isset($_SESSION['karyawan'])) {
     echo "<script>
             alert('Anda belum login, silahkan login terlebih dahulu')
           </script>";
     header('refresh:0; ../../index.php');
     return false;
 }
-    $_SESSION['posisi'] = "karyawan";
-    $_SESSION['halaman'] = "karyawan";
+$_SESSION['posisi'] = "karyawan";
+$_SESSION['halaman'] = "karyawan";
 
-    // query untuk mengambil data personal employee yang sedang login
-    $kode = $_SESSION['kode'];
-    $user = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
+// query untuk mengambil data personal employee yang sedang login
+$kode = $_SESSION['kode'];
+$user = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'");
 
-    // query untuk mengambil data absen employee yang sedang login
-    $gaji = query("SELECT * FROM riwayat_gaji WHERE kode_karyawan = '$kode'");
+// query untuk mengambil data absen employee yang sedang login
+$gaji = query("SELECT * FROM riwayat_gaji WHERE kode_karyawan = '$kode'");
 
-    // fungsi untuk mendapatkan bulan, agar history absen otomatis update setiap bulan
-    date_default_timezone_set('Asia/Jakarta');
-    $bulan = date('m');
+// fungsi untuk mendapatkan bulan, agar history absen otomatis update setiap bulan
+date_default_timezone_set('Asia/Jakarta');
+$bulan = date('m');
 
 
 ?>
@@ -39,8 +39,7 @@ if(!isset($_SESSION['karyawan'])){
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <!-- Google Material -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/style/main.css">
@@ -50,7 +49,7 @@ if(!isset($_SESSION['karyawan'])){
 <!-- PHP Config -->
 
 
-<body class="d-flex">
+<body class="d-none">
     <!-- Sidebar -->
     <nav class="sidebar d-flex flex-lg-column col-auto shadow" id="sidebar-nav">
         <!-- Sidebar Hedaer -->
@@ -62,15 +61,13 @@ if(!isset($_SESSION['karyawan'])){
             <span id="brand-text" class="fs-4 fw-bold">XYZ Company</span>
 
             <!-- Button Toggle Maximize Sidebar -->
-            <button
-                class="btn btn-primary toggle p-1 text-white rounded-circle d-none d-md-none d-lg-flex position-absolute">
+            <button class="btn btn-primary toggle p-1 text-white rounded-circle d-none d-md-none d-lg-flex position-absolute">
                 <i class="material-icons-round fs-5 rounded-circle toggle-icon">&#xe5cc</i>
             </button>
         </div>
 
         <!-- Sidebar Body -->
-        <ul id="menu-bar"
-            class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
+        <ul id="menu-bar" class="list-unstyled col d-flex flex-row flex-lg-column gap-4 justify-content-center fs-6 p-1 p-lg-2">
             <li>
                 <a href="./employee-dashboard.php" class="text-decoration-none p-1 px-lg-3 py-lg-2 d-flex rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9b0</i>
@@ -96,8 +93,7 @@ if(!isset($_SESSION['karyawan'])){
                 </a>
             </li>
             <li class="mt-auto d-none d-md-none d-lg-flex sign-out">
-                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')"
-                    class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
+                <a href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')" class="col text-decoration-none p-1 px-lg-3 py-lg-2 d-flex align-items-center rounded-3">
                     <i class="material-icons-round fs-2 menu-icon">&#xe9ba</i>
                     <div class="align-items-center">
                         <span class="text-sidebar">Sign Out</span>
@@ -128,8 +124,7 @@ if(!isset($_SESSION['karyawan'])){
                 <div class="dark-mode d-flex align-items-center">
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xe518</label>
                     <div class="d-flex form-check form-switch justify-content-center" for="dark-mode">
-                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark"
-                            id="dark-mode">
+                        <input class="form-check-input" type="checkbox" role="switch" title="toggle-dark" id="dark-mode">
                     </div>
                     <label class="btn text material-icons-round p-1" for="dark-mode">&#xef5e</label>
                 </div>
@@ -137,11 +132,8 @@ if(!isset($_SESSION['karyawan'])){
                 <!-- Dropdown -->
                 <div class="dropdown d-flex">
                     <!-- Toggle Dropdown -->
-                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img id="profile-img"
-                            src="../user-img/<?php echo $user['foto'] ?>"
-                            class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
+                    <button class="btn d-flex align-items-center gap-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="profile-img" src="../user-img/<?php echo $user['foto'] ?>" class="rounded-circle bg-light shadow-sm col-2" alt="Avatar" />
                         <span class="d-none d-lg-flex flex-column align-items-start me-1 ">
                             <span class="fs-6 fw-semibold text"><?= strtoupper($user['nama']); ?></span>
                             <span class="fs-6 text opacity-75"><?= strtoupper($user['posisi']); ?></span>
@@ -169,8 +161,7 @@ if(!isset($_SESSION['karyawan'])){
                             <hr class="dropdown-divider d-block d-lg-none">
                         </li>
                         <li>
-                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php"
-                                onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
+                            <a class="dropdown-item d-block d-lg-none" href="../../php/logoutController.php" onclick="return confirm('Apakah anda ingin logout')">Sign Out</a>
                         </li>
                     </ul>
                 </div>
@@ -184,8 +175,7 @@ if(!isset($_SESSION['karyawan'])){
                 <div class="d-flex flex-column flex-lg-row col justify-content-between px-1 px-lg-2">
                     <h1 class="fw-bold header">Payroll</h1>
                     <ol class="breadcrumb p-lg-2">
-                        <li class="breadcrumb-item"><a class="text-decoration-none"
-                                href="./employee-dashboard.php">Home</a>
+                        <li class="breadcrumb-item"><a class="text-decoration-none" href="./employee-dashboard.php">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Payroll</li>
                     </ol>
@@ -193,7 +183,7 @@ if(!isset($_SESSION['karyawan'])){
             </div>
 
             <!-- Content Body -->
-            <div class="d-flex  flex-column mx-0 mx-lg-4 px-md-1 gap-3">
+            <div class="d-flex flex-column mx-1 mx-lg-4 gap-4 mb-4">
                 <!-- Payroll List -->
                 <div class="flex-container rounded-4 shadow border-0 p-2">
                     <h3 class="fw-bold p-3 header">Salary History</h3>
@@ -203,8 +193,7 @@ if(!isset($_SESSION['karyawan'])){
                                 <th class="col d-none d-md-flex p-1 align-items-center justify-content-center text">
                                     Invoice ID
                                 </th>
-                                <th
-                                    class="col col-lg col-md-3 p-1 d-none d-md-flex align-items-center justify-content-center text">
+                                <th class="col col-lg col-md-3 p-1 d-none d-md-flex align-items-center justify-content-center text">
                                     Date
                                 </th>
                                 <th class="col d-flex p-1 align-items-center justify-content-center text">
@@ -219,145 +208,128 @@ if(!isset($_SESSION['karyawan'])){
                         </thead>
                         <tbody>
                             <?php
-                                $query = query("SELECT * FROM riwayat_gaji WHERE kode_karyawan = '$kode'");
-                                foreach ($query as $row) : 
+                            $query = query("SELECT * FROM riwayat_gaji WHERE kode_karyawan = '$kode'");
+                            foreach ($query as $row) :
                             ?>
-                            <tr class="d-flex col p-1">
-                                <td class="col d-none d-md-flex p-1 align-items-center justify-content-center">
-                                    <span class="text"><?= $row['invoice'];?></span>
-                                </td>
-                                <td
-                                    class="col col-lg col-md-3 d-none d-md-flex gap-2 p-1 align-items-center justify-content-center">
-                                    <span class="text"><?= $row['tanggal_bayar'];?></span>
-                                </td>
-                                <td class="col d-flex p-1 align-items-center justify-content-center">
-                                    <span class="text"><?= number_format($row['total_gaji']* 1000,0,".",",");?></span>
-                                </td>
-                                <td class="col d-none d-sm-flex p-1 align-items-center justify-content-center">
-                                    <span class="bg-success text-white px-4 py-1 rounded-1">Paid</span>
-                                </td>
-                                <td class="col d-flex p-1 align-items-center justify-content-center gap-1">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="detail"
-                                        data-bs-target="#modalViewData<?= $row['id'];?>" data-id="<?= $row['id']; ?>">Details</button>
-                                    <!-- Modal Details -->
-                                    <div class="modal fade" id="modalViewData<?= $row['id'];?>" data-id="<?= $row['id']; ?>" data-bs-keyboard="false" tabindex="-1"
-                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content flex-container">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5 text" id="staticBackdropLabel">Salary
-                                                        Details
-                                                    </h1>
-                                                    <button type="button" class="btn-close bg-light"
-                                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body" id="detail_gaji">
-                                                    <div class="d-flex p-2 gap-2">
-                                                        <div class="d-flex flex-column col gap-2">
-                                                            <div class="d-flex px-2">
-                                                                <span class="text fw-bold col-4 py-1">Invoice ID</span>
-                                                                <span class="text col py-1"><?= $row['invoice'];?></span>
-                                                            </div>
-                                                            <div class="d-flex px-2">
-                                                                <span class="text fw-bold col-4 py-1">Date</span>
-                                                                <span class="text col py-1"><?= $row['tanggal_bayar'];?></span>
-                                                            </div>
-                                                            <div class="d-flex px-2">
-                                                                <span class="text fw-bold col-4 py-1">Status</span>
-                                                                <span
-                                                                    class="bg-success text-white px-4 py-1 rounded-1"><?= $row['status_pembayaran'];?></span>
-                                                            </div>
-                                                            <div
-                                                                class="d-flex flex-column mt-3 border border-2 border-primary border-opacity-50 rounded">
-                                                                <div class="px-2 pt-2">
-                                                                    <div
-                                                                        class="d-flex justify-content-between px-2 py-1 mb-1">
-                                                                        <span
-                                                                            class="text-primary fs-5 fw-bold col">Pendapatan</span>
-                                                                        <span
-                                                                            class="d-flex align-items-center px-1 border border-primary rounded-3">
-                                                                            <i
-                                                                                class="material-icons-round text-primary">&#xe227</i>
-                                                                        </span>
-                                                                    </div>
-                                                                    <div class="d-flex px-2">
-                                                                        <span class="text col py-1 opacity-75">Gaji
-                                                                            Pokok</span>
-                                                                        <span
-                                                                            class="text-success col py-1 text-end fw-semibold numb">Rp
-                                                                            <?= number_format($row['gaji_pokok']* 1000,0,".",",");?></span>
-                                                                    </div>
-                                                                    <div class="d-flex px-2">
-                                                                        <span
-                                                                            class="text col py-1 opacity-75">Bonus</span>
-                                                                        <span
-                                                                            class="text-success col py-1 text-end fw-semibold numb">Rp
-                                                                            <?= number_format($row['bonus']* 1000,0,".",",");?></span>
-                                                                    </div>
-                                                                    <div class="d-flex px-2">
-                                                                        <span
-                                                                            class="text col py-1 opacity-75">Pajak</span>
-                                                                        <span
-                                                                            class="text-danger col py-1 text-end fw-semibold numb">Rp
-                                                                            <?= number_format($row['pajak']* 1000,0,".",",");?></span>
-                                                                    </div>
+                                <tr class="d-flex col p-1">
+                                    <td class="col d-none d-md-flex p-1 align-items-center justify-content-center">
+                                        <span class="text"><?= $row['invoice']; ?></span>
+                                    </td>
+                                    <td class="col col-lg col-md-3 d-none d-md-flex gap-2 p-1 align-items-center justify-content-center">
+                                        <span class="text"><?= $row['tanggal_bayar']; ?></span>
+                                    </td>
+                                    <td class="col d-flex p-1 align-items-center justify-content-center">
+                                        <span class="text">Rp <?= number_format($row['total_gaji'] * 1000, 0, ".", "."); ?></span>
+                                    </td>
+                                    <td class="col d-none d-sm-flex p-1 align-items-center justify-content-center">
+                                        <span class="text-success border border-1 border-success px-3 rounded-4"><?= $row['status_pembayaran']; ?></span>
+                                    </td>
+                                    <td class="col d-flex p-1 align-items-center justify-content-center gap-1">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="detail" data-bs-target="#modalViewData<?= $row['id']; ?>" data-id="<?= $row['id']; ?>">Details</button>
+                                        <!-- Modal Details -->
+                                        <div class="modal fade" id="modalViewData<?= $row['id']; ?>" data-id="<?= $row['id']; ?>" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content flex-container">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5 text" id="staticBackdropLabel">Salary
+                                                            Details
+                                                        </h1>
+                                                        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body" id="detail_gaji">
+                                                        <div class="d-flex p-2 gap-2">
+                                                            <div class="d-flex flex-column col gap-2">
+                                                                <div class="d-flex px-2">
+                                                                    <span class="text fw-bold col-4">Invoice ID</span>
+                                                                    <span class="text col"><?= $row['invoice']; ?></span>
                                                                 </div>
-                                                                <div class="d-flex background rounded-bottom fs-6 p-2">
-                                                                    <span class="text fw-semibold col-7 py-1 px-2">Total
-                                                                        pendapatan</span>
-                                                                    <span
-                                                                        class="text col py-1 px-2 text-end fw-semibold numb">Rp
-                                                                        <?= number_format($row['total_gaji']* 1000,0,".",",");?></span>
+                                                                <div class="d-flex px-2">
+                                                                    <span class="text fw-bold col-4">Date</span>
+                                                                    <span class="text col"><?= $row['tanggal_bayar']; ?></span>
+                                                                </div>
+                                                                <div class="d-flex px-2">
+                                                                    <span class="text fw-bold col-4">Status</span>
+                                                                    <span class="text-success border border-1 border-success px-3 rounded-4"><?= $row['status_pembayaran']; ?></span>
+                                                                </div>
+                                                                <div class="d-flex flex-column mt-3 border border-2 border-primary border-opacity-50 rounded">
+                                                                    <div class="px-2 pt-2">
+                                                                        <div class="d-flex justify-content-between px-2 py-1 mb-1">
+                                                                            <span class="text-primary fs-5 fw-bold col">Pendapatan</span>
+                                                                            <span class="d-flex align-items-center px-1 border border-primary rounded-3">
+                                                                                <i class="material-icons-round text-primary">&#xe227</i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="d-flex px-2">
+                                                                            <span class="text col py-1 opacity-75">Gaji
+                                                                                Pokok</span>
+                                                                            <span class="text-success col py-1 text-end fw-semibold numb">Rp
+                                                                                <?= number_format($row['gaji_pokok'] * 1000, 0, ".", "."); ?></span>
+                                                                        </div>
+                                                                        <div class="d-flex px-2">
+                                                                            <span class="text col py-1 opacity-75">Bonus</span>
+                                                                            <span class="text-success col py-1 text-end fw-semibold numb">Rp
+                                                                                <?= number_format($row['bonus'] * 1000, 0, ".", "."); ?></span>
+                                                                        </div>
+                                                                        <div class="d-flex px-2">
+                                                                            <span class="text col py-1 opacity-75">Pajak</span>
+                                                                            <span class="text-danger col py-1 text-end fw-semibold numb">Rp
+                                                                                <?= number_format($row['pajak'] * 1000, 0, ".", "."); ?></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-flex background rounded-bottom fs-6 p-2">
+                                                                        <span class="text fw-semibold col-7 py-1 px-2">Total
+                                                                            pendapatan</span>
+                                                                        <span class="text col py-1 px-2 text-end fw-semibold numb">Rp
+                                                                            <?= number_format($row['total_gaji'] * 1000, 0, ".", "."); ?></span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary"
-                                                        data-bs-dismiss="modal">Back</button>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
 
                 <!-- Pagination -->
-                <?php 
-                            $batas = 10;
-                            $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
-                            $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
-                             
-                            $previous = $halaman - 1;
-                            $next = $halaman + 1;
-                                            
-                            $data = mysqli_query($koneksi,"SELECT * FROM karyawan_tetap, daftar_gaji WHERE karyawan_tetap.kode_karyawan = daftar_gaji.kode_karyawan");
-                            $jumlah_data = mysqli_num_rows($data);
-                            $total_halaman = ceil($jumlah_data / $batas);
+                <?php
+                $batas = 10;
+                $halaman = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
+                $halaman_awal = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;
+
+                $previous = $halaman - 1;
+                $next = $halaman + 1;
+
+                $data = mysqli_query($koneksi, "SELECT * FROM karyawan_tetap, daftar_gaji WHERE karyawan_tetap.kode_karyawan = daftar_gaji.kode_karyawan");
+                $jumlah_data = mysqli_num_rows($data);
+                $total_halaman = ceil($jumlah_data / $batas);
                 ?>
                 <nav aria-label="..." class="d-flex justify-content-center mt-auto">
                     <ul class="pagination">
                         <li class="page-item">
-                            <a class="page-link d-flex"
-                                <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>><i
-                                    class="material-icons-round">&#xe408</i></a>
+                            <a class="page-link d-flex" <?php if ($halaman > 1) {
+                                                            echo "href='?halaman=$previous'";
+                                                        } ?>><i class="material-icons-round">&#xe408</i></a>
                         </li>
-                        <?php 
-                        for($x=1;$x<=$total_halaman;$x++):
+                        <?php
+                        for ($x = 1; $x <= $total_halaman; $x++) :
                         ?>
-                        <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a>
-                        </li>
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a>
+                            </li>
                         <?php endfor; ?>
                         <li class="page-item">
-                            <a class="page-link d-flex"
-                                <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>><i
-                                    class="material-icons-round">&#xe409</i></a>
+                            <a class="page-link d-flex" <?php if ($halaman < $total_halaman) {
+                                                            echo "href='?halaman=$next'";
+                                                        } ?>><i class="material-icons-round">&#xe409</i></a>
                         </li>
                     </ul>
                 </nav>
@@ -366,7 +338,7 @@ if(!isset($_SESSION['karyawan'])){
     </div>
     </div>
     </div>
-    
+
 
     <!-- Bootstrap JS -->
     <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
