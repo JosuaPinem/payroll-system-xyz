@@ -367,19 +367,6 @@ if(!isset($_SESSION['karyawan'])){
     </div>
     </div>
     
-    <script>
-        $(function(){
-            $(document).on('click', '#detail', function(e){
-                e.preventDefault();
-                $("#staticBackdrop").modal('show');
-                $.post('detail.php', {id:$(this).attr('data-id')},
-                    function(html){
-                        $(".modal-body"). html(html);
-                    });
-            });
-        });
-    </script>
-
 
     <!-- Bootstrap JS -->
     <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
