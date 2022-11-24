@@ -7,12 +7,10 @@
     <title>Sign-up</title>
     <script src="https://kit.fontawesome.com/531b145c34.js" crossorigin="anonymous"></script>
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <!-- Google Material -->
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/style/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style/main.css">
 </head>
 <?php
 session_start();
@@ -31,10 +29,8 @@ if (!isset($_SESSION['form'])) {
 }
 ?>
 
-<body class="d-flex align-items-center p-3">
-    <form action="../php/form_aksi.php" method="post"
-        class="form container d-flex flex-column col col-sm-8 col-md-7 col-lg-6 col-xxl-5 p-5 gap-3 text-center"
-        enctype="multipart/form-data">
+<body class="d-flex justify-content-center align-items-center p-3">
+    <form action="../php/form_aksi.php" method="post" class="form flex-container rounded-4 d-flex flex-column col col-sm-8 col-md-7 col-lg-6 col-xxl-5 p-5 gap-3 text-center" enctype="multipart/form-data">
         <h2 class="fw-bold fs-1">Register Form</h2>
         <div class="form-floating">
             <input type="text" class="form-control" name="nama" placeholder="Nama">
