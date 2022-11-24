@@ -198,13 +198,19 @@ $user1 = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'") //q
                                 ?>
                                 <span class="display-3 fw-bold"><?= $jumlahKaryawan; ?></span>
                                 <div class="d-flex flex-column gap-1">
+                                    <?php 
+                                        date_default_timezone_set('Asia/Jakarta');
+                                        $tanggal = date('d M Y');
+                                        $hadir = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM absensi WHERE tanggal = '$tanggal' AND keterangan = 'Present'"));
+                                        $izin = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM absensi WHERE tanggal = '$tanggal' AND keterangan != 'Present'"));
+                                    ?>
                                     <div class="d-flex flex-column background px-2 py-1">
                                         <span class="fs-6">Attendance</span>
-                                        <span class="fs-6 fw-bold">95</span>
+                                        <span class="fs-6 fw-bold"><?= $hadir;?></span>
                                     </div>
                                     <div class="d-flex flex-column background px-2 py-1">
-                                        <span class="fs-6">Absent</span>
-                                        <span class="fs-6 fw-bold">5</span>
+                                        <span class="fs-6">Permission</span>
+                                        <span class="fs-6 fw-bold"><?= $izin;?></span>
                                     </div>
                                 </div>
                                 <a href="admin-employee-list.php" class="text-decoration-none btn btn-primary fs-6 p-2 mt-auto">Employee
