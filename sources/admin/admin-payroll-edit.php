@@ -140,7 +140,7 @@ $akun = query("SELECT * FROM karyawan_tetap WHERE kode_karyawan = '$kode'")
                                 <input class="form-control text text-field" type="text" aria-label="readonly input example" value="<?= $query['nama'] ?>" readonly>
                             </div>
                             <div>
-                                <label class="form-label d-flex">Nama Karyawan</label>
+                                <label class="form-label d-flex">Posisi Karyawan</label>
                                 <input class="form-control text text-field" type="text" aria-label="readonly input example" value="<?= $query['posisi'] ?>" readonly>
                             </div>
                             <div class="d-flex flex-column">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Nov 2022 pada 15.52
+-- Waktu pembuatan: 24 Nov 2022 pada 14.44
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 8.1.10
 
@@ -54,7 +54,17 @@ INSERT INTO `absensi` (`id`, `kode_karyawan`, `nama`, `tanggal`, `bulan`, `jam`,
 (55, 'SYL580', 'Rendy Herianto', '18 Nov 2022', '11', '11:01', 'Present', 'rendy.png', ''),
 (56, 'URV047', 'Fitri Anisa', '20 Nov 2022', '11', '10:12', 'Present', 'silvia.png', ''),
 (58, 'WKQ250', 'Josep Sembiring', '20 Nov 2022', '11', '10:28', 'Present', 'josep.png', ''),
-(59, 'FSR366', 'Tomi Ginting', '21 Nov 2022', '11', '12:48', 'Present', 'tomi.png', '');
+(59, 'FSR366', 'Tomi Ginting', '21 Nov 2022', '11', '12:48', 'Present', 'tomi.png', ''),
+(60, 'URV047', 'Fitri Anisa', '22 Nov 2022', '11', '08:46', 'Present', 'silvia.png', ''),
+(61, 'FSR366', 'Tomi Ginting', '22 Nov 2022', '11', '08:49', 'Present', 'tomi.png', ''),
+(62, 'WKQ250', 'Josep Sembiring', '22 Nov 2022', '11', '08:50', 'Present', 'josep.png', ''),
+(63, 'FSR366', 'Tomi Ginting', '24 Nov 2022', '11', '19:44', 'Present', 'tomi.png', ''),
+(64, 'WKQ250', 'Josep Sembiring', '24 Nov 2022', '11', '19:45', 'Present', 'josep.png', ''),
+(65, 'BZG488', 'Lidya Sularto', '24 Nov 2022', '11', '19:46', 'Sick', 'lidya.png', '__Blank diagram.pdf'),
+(66, 'NNG812', 'Fadly', '24 Nov 2022', '11', '19:56', 'Present', 'fadly.png', ''),
+(67, 'URV047', 'Fitri Anisa', '24 Nov 2022', '11', '19:56', 'Present', 'silvia.png', ''),
+(68, 'SYL580', 'Rendy Herianto', '24 Nov 2022', '11', '19:57', 'Present', 'rendy.png', ''),
+(69, 'ACV829', 'Wiliam wijaya', '24 Nov 2022', '11', '19:57', 'Present', 'wiliam.png', '');
 
 -- --------------------------------------------------------
 
@@ -124,7 +134,8 @@ CREATE TABLE `data_karyawan` (
 
 INSERT INTO `data_karyawan` (`id`, `kode_karyawan`, `nama`, `nip`, `tanggal`, `tempat`, `alamat`, `foto`, `posisi`, `jenis_kelamin`, `gaji`) VALUES
 (58, 'SRN288', 'Valentina', '112344552234', '2001-10-23', 'Bogor', 'Bogor', 'yura.png', '', 'Female', 0),
-(59, 'MXC145', 'Fino Aldebaran', '2341123568843', '2000-02-01', 'Palangkaraya', 'Palangkaraya', 'josep.png', '', 'Male', 0);
+(59, 'MXC145', 'Fino Aldebaran', '2341123568843', '2000-02-01', 'Palangkaraya', 'Palangkaraya', 'josep.png', '', 'Male', 0),
+(66, 'YYE420', 'Kalpin Sitepu', '123456789', '2022-11-01', 'Jakarta', 'Medan', 'afiq.png', '', 'Male', 0);
 
 -- --------------------------------------------------------
 
@@ -322,13 +333,13 @@ CREATE TABLE `top` (
 --
 
 INSERT INTO `top` (`id`, `kode_karyawan`, `jumlah_hadir`, `nama`) VALUES
-(1, 'FSR366', '2', 'Tomi Ginting'),
+(1, 'FSR366', '4', 'Tomi Ginting'),
 (2, 'WXK009', '1', 'Mark Ferdinan'),
 (3, 'PGT728', '1', 'Natan Sigalingging'),
-(4, 'NNG812', '1', 'Fadly'),
-(5, 'ACV829', '1', 'Wiliam Wijaya'),
-(6, 'WKQ250', '2', 'Josep Sembiring'),
-(7, 'SYL580', '2', 'Rendy Herianto'),
+(4, 'NNG812', '2', 'Fadly'),
+(5, 'ACV829', '2', 'Wiliam Wijaya'),
+(6, 'WKQ250', '4', 'Josep Sembiring'),
+(7, 'SYL580', '3', 'Rendy Herianto'),
 (8, 'MYU889', '1', 'Vira Siburian'),
 (9, 'BZG488', '5', 'Lidya Sularto'),
 (10, 'URV047', '', 'Fitri Anisa');
@@ -353,7 +364,8 @@ CREATE TABLE `verify` (
 
 INSERT INTO `verify` (`id`, `kode_karyawan`, `username`, `password`, `email`) VALUES
 (12379, 'SRN288', 'valentina', '$2y$10$ySshDPsq8pbrsi1ejKbip.1zQlShU33xWC5WA.DMvIYuUpxV7Pk7O', 'valentina@gmail.com'),
-(12380, 'MXC145', 'fino', '$2y$10$hdd9iIdXYbbueMhd9d8evuVJKEFKYOdznZS1mN45oZ6AbszKbuoxa', 'fino@gmail.com');
+(12380, 'MXC145', 'fino', '$2y$10$hdd9iIdXYbbueMhd9d8evuVJKEFKYOdznZS1mN45oZ6AbszKbuoxa', 'fino@gmail.com'),
+(12387, 'YYE420', 'kalpin', '$2y$10$nHJ40wdBJZ/JJerH7MKTNeEens/Axv4vxJIAzG7MOjvey35bONVdK', 'kalpin@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -415,7 +427,7 @@ ALTER TABLE `verify`
 -- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT untuk tabel `daftar_gaji`
@@ -427,7 +439,7 @@ ALTER TABLE `daftar_gaji`
 -- AUTO_INCREMENT untuk tabel `data_karyawan`
 --
 ALTER TABLE `data_karyawan`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT untuk tabel `karyawan_tetap`
@@ -457,7 +469,7 @@ ALTER TABLE `top`
 -- AUTO_INCREMENT untuk tabel `verify`
 --
 ALTER TABLE `verify`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12387;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12388;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
