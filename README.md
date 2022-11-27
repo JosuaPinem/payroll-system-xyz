@@ -1,14 +1,38 @@
-Selamat datang di projek PPW Kelompok 2 
-Pada projek ini kami mengambil tema sistem informasi payroll pada suatu perusahaan
-Perusahaan yang kami buat disini adalah perusahaan XYZ
-Pada pembuatan projek ini, kami terdiri dari 5 anggota, berikut adalah 5 anggotanya
-1. Afiq Alghazali
-    username github : afiqalghazali
-2. Bright Nine Ginting
-    username github : brightnine
-3. Josua Pinem
-    username github : JosuaPinem
-4. Muhammad Agus Syaputra
-    username github : maguslbs
-5. Raihan Maulana
-    username github : RAIHANMLN12
+# Payroll System
+
+in this time we make payroll system based on web application.
+
+## Features
+
+- Light/dark mode toggle
+- Responsive layout
+- Fullscreen mode
+- Cross platform
+- Employee payroll
+- Verification for new Employee
+- Payroll history of Employee
+- Statistic of Employee
+
+## Screenshots
+
+This is some of preview of payroll system web apps
+
+- Dashboard preview if you login as an admin
+  ![image](https://cdn.discordapp.com/attachments/1021420311654170667/1046404840831586335/Admin-Dashboard.png)
+
+- Employee preview if you login as an admin
+  ![image](https://cdn.discordapp.com/attachments/1021420311654170667/1046404840470872166/Admin-Employee.png)
+
+- Dashboard preview if you login as an Employee
+  ![image](https://cdn.discordapp.com/attachments/1021420311654170667/1046404840043057252/Employee-Dashboard.png)
+
+- Attendance preview if you login as an Employee
+  ![image](https://cdn.discordapp.com/attachments/1021420311654170667/1046404839640399892/Employee-Attendance.png)
+
+## Tech Stack
+
+**Client:** HTML, CSS, Javasricpt, Bootstrap
+
+**Server:** PHP, MySQL
+
+happy coding :)
